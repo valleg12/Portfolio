@@ -20,12 +20,7 @@ import {
 } from "recharts"
 import { LoadingScreen } from "./LoadingScreen"
 
-// Ajoutons des types plus précis
-type TranslationType = {
-  fr: TranslationLanguage;
-  en: TranslationLanguage;
-};
-
+// Supprimons le type non utilisé et gardons uniquement l'interface
 interface TranslationLanguage {
   titles: Record<string, string>;
   competences: {
@@ -83,7 +78,7 @@ interface TranslationLanguage {
 }
 
 // Définir les traductions avec le type correct
-const translations = {
+const translations: Record<'fr' | 'en', TranslationLanguage> = {
   fr: {
     titles: {
       cv: "CV",
