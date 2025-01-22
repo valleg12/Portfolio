@@ -1,6 +1,6 @@
 "use client"
 
-import { Moon, Sun, MessageCircle, X, Calendar, Mail, Phone, Github, Linkedin, ChevronRight } from "lucide-react"
+import { Moon, Sun, Calendar, Mail, Phone, Github, Linkedin, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -26,7 +26,7 @@ type TranslationType = {
   en: TranslationLanguage;
 };
 
-type TranslationLanguage = {
+interface TranslationLanguage {
   titles: Record<string, string>;
   competences: {
     title: string;
@@ -80,7 +80,7 @@ type TranslationLanguage = {
     send: string;
     autoReply: string;
   };
-};
+}
 
 // Définir les traductions avec le type correct
 const translations = {
@@ -312,11 +312,11 @@ export function Portfolio() {
   const getArray = (path: string): string[] => {
     const lang = isEnglish ? 'en' : 'fr';
     const keys = path.split('.');
-    let current: any = translations[lang];
+    let current = translations[lang] as Record<string, unknown>;
     
     for (const key of keys) {
       if (!current?.[key]) return [];
-      current = current[key];
+      current = current[key] as Record<string, unknown>;
     }
     
     return Array.isArray(current) ? current : [];
