@@ -333,14 +333,10 @@ export function Portfolio() {
                 className={`relative w-32 h-32 rounded-full overflow-hidden border-4 border-current cursor-pointer transition-transform duration-300 hover:animate-wiggle focus:outline-none`}
                 onClick={() => setIsLinksVisible(!isLinksVisible)}
               >
-                <Image
+                <img
                   src="/Portfolio/PHOTO.jpg"
                   alt="Victorien ALLEG"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover"
-                  priority
-                  quality={100}
+                  className="object-cover w-full h-full"
                 />
               </div>
               
