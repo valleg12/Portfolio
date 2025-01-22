@@ -334,7 +334,7 @@ export function Portfolio() {
                 onClick={() => setIsLinksVisible(!isLinksVisible)}
               >
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/PHOTO.jpg`}
+                  src="/Portfolio/PHOTO.jpg"
                   alt="Victorien ALLEG"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

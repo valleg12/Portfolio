@@ -5,10 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: '/Portfolio',
-  assetPrefix: '/Portfolio/',
-  env: {
-    NEXT_PUBLIC_BASE_PATH: '/Portfolio'
-  }
+  assetPrefix: '/Portfolio/'
 }
 
 module.exports = nextConfig 
