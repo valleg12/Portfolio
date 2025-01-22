@@ -6,6 +6,9 @@ const nextConfig = {
   },
   basePath: '/Portfolio',
   assetPrefix: '/Portfolio/',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/Portfolio'
+  }
 }
 
 module.exports = nextConfig 
