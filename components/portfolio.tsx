@@ -293,7 +293,7 @@ export function Portfolio() {
   const getText = (path: string): string => {
     const lang = isEnglish ? 'en' : 'fr';
     const keys = path.split('.');
-    let current = translations[lang] as Record<string, unknown>;
+    let current = translations[lang] as unknown as Record<string, unknown>;
     
     for (const key of keys) {
       if (!current?.[key]) return path;
@@ -307,7 +307,7 @@ export function Portfolio() {
   const getArray = (path: string): string[] => {
     const lang = isEnglish ? 'en' : 'fr';
     const keys = path.split('.');
-    let current = translations[lang] as Record<string, unknown>;
+    let current = translations[lang] as unknown as Record<string, unknown>;
     
     for (const key of keys) {
       if (!current?.[key]) return [];
