@@ -1,6 +1,6 @@
 "use client"
 
-import { Moon, Sun, MessageCircle, X, ChevronDown, Calendar, Mail, Phone, Github, Linkedin, ChevronRight, Flag } from "lucide-react"
+import { Moon, Sun, MessageCircle, X, Calendar, Mail, Phone, Github, Linkedin, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
@@ -20,22 +20,65 @@ import {
 } from "recharts"
 import { LoadingScreen } from "./LoadingScreen"
 
-// Définir un type pour la structure des traductions
+// Ajoutons des types plus précis
 type TranslationType = {
-  fr: {
-    titles: Record<string, string>;
-    competences: {
-      title: string;
-      items: string[];
-    };
-    services: {
-      title: string;
-      items: string[];
-    };
-    // ... autres sections
+  fr: TranslationLanguage;
+  en: TranslationLanguage;
+};
+
+type TranslationLanguage = {
+  titles: Record<string, string>;
+  competences: {
+    title: string;
+    items: string[];
   };
-  en: {
-    // même structure que fr
+  services: {
+    title: string;
+    items: string[];
+  };
+  offwork: {
+    title: string;
+    items: string[];
+  };
+  education: {
+    title: string;
+    msc: {
+      title: string;
+      location: string;
+    };
+    master: {
+      title: string;
+      location: string;
+    };
+  };
+  languages: {
+    title: string;
+    french: string;
+    frenchLevel: string;
+    english: string;
+    englishLevel: string;
+    spanish: string;
+    spanishLevel: string;
+  };
+  projects: {
+    title: string;
+    sportech: {
+      title: string;
+      description: string;
+    };
+    getStaty: {
+      title: string;
+      description: string;
+      features: string;
+      featuresList: string[];
+      conclusion: string;
+    };
+  };
+  chat: {
+    title: string;
+    placeholder: string;
+    send: string;
+    autoReply: string;
   };
 };
 
@@ -232,10 +275,6 @@ const translations = {
 export function Portfolio() {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [isEnglish, setIsEnglish] = useState(false)
-  const [isChatOpen, setIsChatOpen] = useState(false)
-  const [message, setMessage] = useState("")
-  const [chatMessages, setChatMessages] = useState<{type: 'user' | 'bot', content: string}[]>([])
-  const [activeSection, setActiveSection] = useState<string | null>(null)
   const [isCVOpen, setIsCVOpen] = useState(false)
   const [isLinksVisible, setIsLinksVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -255,29 +294,15 @@ export function Portfolio() {
     document.documentElement.classList.toggle('dark')
   }
 
-  const handleChat = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (message.trim()) {
-      setChatMessages([...chatMessages, { type: 'user', content: message }])
-      setTimeout(() => {
-        setChatMessages(prev => [...prev, { 
-          type: 'bot', 
-          content: "Merci pour votre message. Je vous répondrai dans les plus brefs délais." 
-        }])
-      }, 1000)
-      setMessage("")
-    }
-  }
-
   // Fonction helper pour obtenir un texte simple
   const getText = (path: string): string => {
     const lang = isEnglish ? 'en' : 'fr';
     const keys = path.split('.');
-    let current: any = translations[lang];
+    let current = translations[lang] as Record<string, unknown>;
     
     for (const key of keys) {
       if (!current?.[key]) return path;
-      current = current[key];
+      current = current[key] as Record<string, unknown>;
     }
     
     return typeof current === 'string' ? current : path;
@@ -687,47 +712,6 @@ export function Portfolio() {
           >
             {isDarkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
           </Button>
-        </div>
-
-        {/* Chat Bot */}
-        <div className="fixed bottom-4 right-4">
-          <Collapsible open={isChatOpen} onOpenChange={setIsChatOpen}>
-            <CollapsibleTrigger asChild>
-              <Button size="icon" className="rounded-full h-12 w-12">
-                <MessageCircle className="h-6 w-6" />
-              </Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="absolute bottom-16 right-0 w-80 bg-background border rounded-lg shadow-lg p-4">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-semibold">{getText('chat.title')}</h2>
-                <Button variant="ghost" size="sm" onClick={() => setIsChatOpen(false)}>
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-              <div className="h-60 overflow-y-auto space-y-4 mb-4">
-                {chatMessages.map((msg, index) => (
-                  <div
-                    key={index}
-                    className={`p-2 rounded-lg ${
-                      msg.type === 'user' ? 'bg-primary text-primary-foreground ml-auto' : 'bg-muted'
-                    } max-w-[80%] ${msg.type === 'user' ? 'ml-auto' : 'mr-auto'}`}
-                  >
-                    {msg.content}
-                  </div>
-                ))}
-              </div>
-              <form onSubmit={handleChat} className="flex gap-2">
-                <input
-                  type="text"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder={getText('chat.placeholder')}
-                  className="flex-1 rounded-md border p-2"
-                />
-                <Button type="submit">{getText('chat.send')}</Button>
-              </form>
-            </CollapsibleContent>
-          </Collapsible>
         </div>
       </div>
     </div>

@@ -105,7 +105,7 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               animationDelay: `${index * 0.4}s`
             }}
           >
-            "{quote.text}"
+            &ldquo;{quote.text}&rdquo;
           </div>
         ))}
         
