@@ -1,7 +1,6 @@
 "use client"
 
 import { Moon, Sun, Calendar, Mail, Phone, Github, Linkedin, ChevronRight } from "lucide-react"
-import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -333,6 +332,7 @@ export function Portfolio() {
                 className={`relative w-32 h-32 rounded-full overflow-hidden border-4 border-current cursor-pointer transition-transform duration-300 hover:animate-wiggle focus:outline-none`}
                 onClick={() => setIsLinksVisible(!isLinksVisible)}
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/Portfolio/PHOTO.jpg"
                   alt="Victorien ALLEG"
