@@ -369,7 +369,7 @@ export function Portfolio() {
                   <Phone className="h-6 w-6" />
                 </a>
                 <a 
-                  href="https://github.com/VictorienAlleg" 
+                  href="https://github.com/valleg12/valleg12" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:opacity-70 transition-opacity hover:scale-110 transform duration-200"
@@ -401,8 +401,17 @@ export function Portfolio() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">Formation</h3>
-                    <p>MSc AI Applied to Business - Eugenia School, Paris</p>
-                    <p>Master Management Organisations Sportives - AMOS, Lille</p>
+                    <p className="text-lg font-bold mb-2">{getText('education.msc.title')}</p>
+                    <p className="text-muted-foreground mb-4">{getText('education.msc.location')}</p>
+                    <ul className="list-disc list-inside space-y-1 mb-4">
+                      <li>Business analytics</li>
+                      <li>Data visualisation</li>
+                      <li>CRM</li>
+                      <li>Nocode</li>
+                      <li>Marketing analytique</li>
+                    </ul>
+                    <p className="font-semibold mb-2">Langages et outils:</p>
+                    <p className="text-muted-foreground">Python, SQL, PowerBI, Hubspot, Dataiku, ChatGPT, Google Analytics, Airtable, Notion, Zapier</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">Expérience Professionnelle</h3>
@@ -493,13 +502,20 @@ export function Portfolio() {
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-4 space-y-4 text-sm font-light">
                 <div>
-                  <h3 className="font-semibold">{getText('education.title')}</h3>
-                  <p className="text-muted-foreground">
-                    {getText('education.msc.title')} | {getText('education.msc.location')}
-                  </p>
+                  <p className="text-lg font-bold mb-2">{getText('education.msc.title')}</p>
+                  <p className="text-muted-foreground mb-4">{getText('education.msc.location')}</p>
+                  <ul className="list-disc list-inside space-y-1 mb-4">
+                    <li>Business analytics</li>
+                    <li>Data visualisation</li>
+                    <li>CRM</li>
+                    <li>Nocode</li>
+                    <li>Marketing analytique</li>
+                  </ul>
+                  <p className="font-semibold mb-2">Langages et outils:</p>
+                  <p className="text-muted-foreground">Python, SQL, PowerBI, Hubspot, Dataiku, ChatGPT, Google Analytics, Airtable, Notion, Zapier</p>
                 </div>
-                <div>
-                  <h3 className="font-semibold">{getText('education.master.title')}</h3>
+                <div className="mt-6">
+                  <p className="text-lg font-bold mb-2">{getText('education.master.title')}</p>
                   <p className="text-muted-foreground">{getText('education.master.location')}</p>
                 </div>
               </CollapsibleContent>
