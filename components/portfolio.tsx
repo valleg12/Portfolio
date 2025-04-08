@@ -606,7 +606,7 @@ export function Portfolio() {
                       </CollapsibleTrigger>
                       {/* Nouveau logo Sportech complètement repensé */}
                       <div className="w-16 h-16 relative cursor-pointer group"
-                           onClick={() => window.open('#', '_blank')}>
+                           onClick={() => window.open('https://valleg12.github.io/Scoutech/', '_blank')}>
                         {/* Fond principal */}
                         <div className="absolute inset-0 bg-[#1a2639] rounded-lg overflow-hidden">
                           {/* Grille de données animée */}
