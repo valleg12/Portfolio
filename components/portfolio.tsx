@@ -334,7 +334,7 @@ export function Portfolio() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/Portfolio/PHOTO.jpg"
+                  src={process.env.NODE_ENV === 'production' ? "/Portfolio/PHOTO.jpg" : "/PHOTO.jpg"}
                   alt="Victorien ALLEG"
                   className="object-cover w-full h-full"
                 />
