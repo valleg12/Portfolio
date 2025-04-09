@@ -1,7 +1,7 @@
 "use client"
 
 import { Moon, Sun, Calendar, Mail, Phone, Github, Linkedin, ChevronRight } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
@@ -67,12 +67,23 @@ interface TranslationLanguage {
       featuresList: string[];
       conclusion: string;
     };
+    novarena: {
+      title: string;
+      description: string;
+      features: string;
+      featuresList: string[];
+      conclusion: string;
+    };
   };
   chat: {
     title: string;
     placeholder: string;
     send: string;
     autoReply: string;
+  };
+  skills: {
+    fr: string[];
+    en: string[];
   };
 }
 
@@ -110,10 +121,8 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
         "Optimisation de la gestion des événements sportifs",
         "Engagement des fans et marketing personnalisé",
         "Stratégies de billetterie et pricing dynamique",
-        "Analyse de sentiment des fans",
         "Scouting et recrutement des talents avec l'IA",
-        "Gestion des infrastructures sportives",
-        "Analyse des commandites"
+        "Gestion des infrastructures sportives"
       ]
     },
     offwork: {
@@ -129,7 +138,7 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
       title: "education",
       msc: {
         title: "MSc AI Applied to Business",
-        location: "Eugenia School, Paris | 2023-2025"
+        location: "Eugenia School, Paris | 2024-2026"
       },
       master: {
         title: "Master Management Organisations Sportives",
@@ -152,7 +161,7 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
         description: "Sportech est une solution innovante intégrant l'intelligence artificielle pour optimiser la performance sportive, prévenir les blessures et faciliter le recrutement. En analysant et en contextualisant les données de joueurs, elle permet aux clubs de prévoir le potentiel des athlètes, de prendre des décisions éclairées pour la gestion d'équipe et d'optimiser les stratégies de transfert. Avec des tableaux de bord interactifs et des prédictions basées sur la data science, Sportech transforme la prise de décision dans les organisations sportives."
       },
       getStaty: {
-        title: "GetStaty",
+        title: "GetStaty (en développement)",
         description: "Ce projet propose une solution dynamique d'analyse de matchs et de joueurs pour les championnats de football, avec une interface permettant à l'utilisateur de sélectionner un championnat et une journée de compétition. Grâce à l'intégration d'API sportives (ex. API-FOOTBALL, Football-Data.org), l'application récupère les matchs et génère des statistiques détaillées sur les performances des joueurs.",
         features: "Fonctionnalités clés :",
         featuresList: [
@@ -162,6 +171,18 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
           "Rendu des résultats : Présentation sous forme de tableau ou de message, offrant à l'utilisateur un résumé clair des performances."
         ],
         conclusion: "Cette solution apporte une vue d'ensemble rapide et pertinente des meilleurs joueurs et des performances attendues, idéale pour les passionnés, analystes ou parieurs sportifs."
+      },
+      novarena: {
+        title: "Novarena (en développement)",
+        description: "Novarena est une suite intégrée de gestion intelligente pour stades modernes, combinant tous les aspects opérationnels, business et expérience utilisateur dans une plateforme unifiée. Cette solution complète intègre des modules de performance & analytics, gestion des spectateurs, gestion des talents et business & sponsoring, le tout dans une architecture cloud-native multi-région.",
+        features: "Modules clés :",
+        featuresList: [
+          "Performance & Analytics : Analyse en temps réel des matchs, métriques tactiques et physiques, tableaux de bord décisionnels, prédictions et insights",
+          "Gestion des Spectateurs : Billeterie dynamique, expérience personnalisée, gestion des foules, optimisation des concessions",
+          "Gestion des Talents : Suivi des joueurs (Smart Player Routing), scouting et recrutement, gestion des blessures, développement des jeunes",
+          "Business & Sponsoring : Gestion des partenariats, ROI et analytics, activation des sponsors, gestion des médias"
+        ],
+        conclusion: "Cette plateforme vise à révolutionner la gestion des stades modernes en intégrant tous les aspects dans une solution unifiée, data-driven et évolutive, permettant une optimisation complète des opérations et de l'expérience utilisateur."
       }
     },
     chat: {
@@ -169,6 +190,30 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
       placeholder: "Écrivez votre message...",
       send: "Envoyer",
       autoReply: "Merci pour votre message. Je vous répondrai dans les plus brefs délais."
+    },
+    skills: {
+      fr: [
+        "Conception et déploiement de modèles d'IA prédictifs",
+        "Analyse avancée de données et visualisation interactive",
+        "Traitement du langage naturel et analyse de texte",
+        "Automatisation intelligente des processus métier",
+        "Création de solutions BI sur mesure",
+        "Direction de projets d'IA et gestion agile",
+        "Analyse comportementale et études de marché",
+        "Systèmes de recommandation personnalisés",
+        "Intelligence artificielle appliquée au marketing"
+      ],
+      en: [
+        "Design and deployment of predictive AI models",
+        "Advanced data analysis and interactive visualization",
+        "Natural language processing and text analytics",
+        "Intelligent business process automation",
+        "Custom BI solution development",
+        "AI project leadership and agile management",
+        "Behavioral analysis and market research",
+        "Personalized recommendation systems",
+        "Marketing-focused artificial intelligence"
+      ]
     }
   },
   en: {
@@ -203,10 +248,8 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
         "Sports event management optimization",
         "Fan engagement and personalized marketing",
         "Ticketing strategies and dynamic pricing",
-        "Fan sentiment analysis",
-        "AI-powered talent scouting and recruitment",
-        "Sports infrastructure management",
-        "Sponsorship analysis"
+        "Scouting and recruitment of talents with AI",
+        "Sports infrastructure management"
       ]
     },
     offwork: {
@@ -222,7 +265,7 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
       title: "education",
       msc: {
         title: "MSc AI Applied to Business",
-        location: "Eugenia School, Paris | 2023-2025"
+        location: "Eugenia School, Paris | 2024-2026"
       },
       master: {
         title: "Master in Sports Organizations Management",
@@ -245,7 +288,7 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
         description: "Sportech is an innovative solution integrating artificial intelligence to optimize sports performance, prevent injuries, and facilitate recruitment. By analyzing and contextualizing player data, it enables clubs to predict athlete potential, make informed team management decisions, and optimize transfer strategies. With interactive dashboards and data science-based predictions, Sportech transforms decision-making in sports organizations."
       },
       getStaty: {
-        title: "GetStaty",
+        title: "GetStaty (in development)",
         description: "This project offers a dynamic match and player analysis solution for football championships, with an interface allowing users to select a championship and match day. Through integration with sports APIs (e.g., API-FOOTBALL, Football-Data.org), the application retrieves matches and generates detailed statistics on player performance.",
         features: "Key features:",
         featuresList: [
@@ -255,6 +298,18 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
           "Results rendering: Presentation in table or message format, providing users with a clear performance summary."
         ],
         conclusion: "This solution provides a quick and relevant overview of the best players and expected performances, ideal for enthusiasts, analysts, or sports bettors."
+      },
+      novarena: {
+        title: "Novarena (in development)",
+        description: "Novarena is a comprehensive intelligent management suite for modern stadiums, combining all operational, business, and user experience aspects into a unified platform. This complete solution integrates performance & analytics modules, spectator management, talent management, and business & sponsorship, all within a multi-region cloud-native architecture.",
+        features: "Key modules :",
+        featuresList: [
+          "Performance & Analytics : Real-time match analysis, tactical and physical metrics, decision dashboards, predictions, and insights",
+          "Spectator Management : Dynamic ticketing, personalized experience, crowd management, concession optimization",
+          "Talent Management : Player tracking (Smart Player Routing), scouting, recruitment, injury management, youth development",
+          "Business & Sponsorship : Partnership management, ROI and analytics, sponsor activation, media management"
+        ],
+        conclusion: "This platform aims to revolutionize modern stadium management by integrating all aspects into a unified, data-driven, and scalable solution, enabling complete optimization of operations and user experience."
       }
     },
     chat: {
@@ -262,6 +317,30 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
       placeholder: "Write your message...",
       send: "Send",
       autoReply: "Thank you for your message. I will reply as soon as possible."
+    },
+    skills: {
+      fr: [
+        "Conception et déploiement de modèles d'IA prédictifs",
+        "Analyse avancée de données et visualisation interactive",
+        "Traitement du langage naturel et analyse de texte",
+        "Automatisation intelligente des processus métier",
+        "Création de solutions BI sur mesure",
+        "Direction de projets d'IA et gestion agile",
+        "Analyse comportementale et études de marché",
+        "Systèmes de recommandation personnalisés",
+        "Intelligence artificielle appliquée au marketing"
+      ],
+      en: [
+        "Design and deployment of predictive AI models",
+        "Advanced data analysis and interactive visualization",
+        "Natural language processing and text analytics",
+        "Intelligent business process automation",
+        "Custom BI solution development",
+        "AI project leadership and agile management",
+        "Behavioral analysis and market research",
+        "Personalized recommendation systems",
+        "Marketing-focused artificial intelligence"
+      ]
     }
   }
 };
@@ -272,6 +351,7 @@ export function Portfolio() {
   const [isCVOpen, setIsCVOpen] = useState(false)
   const [isLinksVisible, setIsLinksVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null)
 
   const skillsData = [
     { skill: "Python", value: 85 },
@@ -287,6 +367,33 @@ export function Portfolio() {
     setIsDarkMode(!isDarkMode)
     document.documentElement.classList.toggle('dark')
   }
+
+  // Fonction pour gérer l'affichage des liens avec délai
+  const handleMouseEnter = () => {
+    setIsLinksVisible(true)
+    // Annuler tout délai précédent
+    if (hideTimeout) {
+      clearTimeout(hideTimeout)
+      setHideTimeout(null)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    // Créer un délai de 10 secondes avant de cacher les liens
+    const timeout = setTimeout(() => {
+      setIsLinksVisible(false)
+    }, 10000)
+    setHideTimeout(timeout)
+  }
+
+  // Nettoyer le timeout lors du démontage du composant
+  useEffect(() => {
+    return () => {
+      if (hideTimeout) {
+        clearTimeout(hideTimeout)
+      }
+    }
+  }, [hideTimeout])
 
   // Fonction helper pour obtenir un texte simple
   const getText = (path: string): string => {
@@ -329,8 +436,9 @@ export function Portfolio() {
             {/* Photo and CV */}
             <div className="space-y-4">
               <div 
-                className={`relative w-32 h-32 rounded-full overflow-hidden border-4 border-current cursor-pointer transition-transform duration-300 hover:animate-wiggle focus:outline-none`}
-                onClick={() => setIsLinksVisible(!isLinksVisible)}
+                className={`relative w-32 h-32 rounded-full overflow-hidden border-4 border-current cursor-pointer transition-transform duration-300 hover:animate-wiggle focus:outline-none group`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -338,6 +446,10 @@ export function Portfolio() {
                   alt="Victorien ALLEG"
                   className="object-cover w-full h-full"
                 />
+                {/* Curseur animé */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute w-6 h-6 bg-white/20 rounded-full blur-sm animate-cursor-move"></div>
+                </div>
               </div>
               
               {/* Liens sociaux avec animation */}
@@ -415,8 +527,12 @@ export function Portfolio() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg">Expérience Professionnelle</h3>
-                    <p>Business Development Manager - Le Five Valenciennes</p>
-                    <p>Responsable Event - Saint Amand Football Club</p>
+                    <p className="font-semibold">VASPP</p>
+                    <p className="text-muted-foreground">Business Intelligence & Growth Analyst</p>
+                    <p className="font-semibold mt-2">Le Five Valenciennes / Zone Revolution</p>
+                    <p className="text-muted-foreground">Business Analytics & Customer Success Manager</p>
+                    <p className="font-semibold mt-2">Saint Amand Football Club</p>
+                    <p className="text-muted-foreground">Event Analytics & Operations Manager</p>
                   </div>
                 </CollapsibleContent>
               </Collapsible>
@@ -436,7 +552,7 @@ export function Portfolio() {
               <CollapsibleContent className="mt-4 space-y-4 text-sm font-light">
                 <div>
                   <ul className="list-disc list-inside space-y-1">
-                    {getArray('competences.items').map((item: string) => (
+                    {getArray('skills.fr').map((item: string) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
@@ -604,30 +720,42 @@ export function Portfolio() {
                         <ChevronRight className="w-4 h-4 transition-transform duration-200" />
                         {getText('projects.sportech.title')}
                       </CollapsibleTrigger>
-                      {/* Nouveau logo Sportech complètement repensé */}
+                      {/* Logo Sportech */}
                       <div className="w-16 h-16 relative cursor-pointer group"
                            onClick={() => window.open('https://valleg12.github.io/Scoutech/', '_blank')}>
-                        {/* Fond principal */}
-                        <div className="absolute inset-0 bg-[#1a2639] rounded-lg overflow-hidden">
-                          {/* Grille de données animée */}
-                          <div className="absolute inset-0 opacity-20">
-                            <div className="absolute inset-0 bg-[linear-gradient(0deg,transparent_46%,#4a90e2_47%,#4a90e2_53%,transparent_54%)] bg-[length:100%_10px] animate-scroll"></div>
-                            <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_46%,#4a90e2_47%,#4a90e2_53%,transparent_54%)] bg-[length:10px_100%] animate-scroll-horizontal"></div>
-                          </div>
+                        <div className="absolute inset-0 bg-[#1a2639] overflow-hidden flex items-center justify-center">
+                          <svg viewBox="0 0 100 100" className="w-14 h-14">
+                            <defs>
+                              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style={{ stopColor: '#e8e8e0' }} />
+                                <stop offset="100%" style={{ stopColor: '#d4d4c7' }} />
+                              </linearGradient>
+                            </defs>
+                            <g transform="rotate(45, 50, 50)">
+                              <path
+                                d="M50 10 C80 10 90 40 90 50 C90 70 70 90 50 90 C30 90 10 70 10 50 C10 40 20 10 50 10"
+                                fill="none"
+                                stroke="url(#goldGradient)"
+                                strokeWidth="10"
+                                strokeLinecap="round"
+                              />
+                              <path
+                                d="M50 30 C65 30 70 45 70 50 C70 60 60 70 50 70 C40 70 30 60 30 50 C30 45 35 30 50 30"
+                                fill="none"
+                                stroke="url(#goldGradient)"
+                                strokeWidth="10"
+                                strokeLinecap="round"
+                              />
+                              <path
+                                d="M50 50 C55 50 57 52 57 55 C57 58 55 60 50 60 C45 60 43 58 43 55 C43 52 45 50 50 50"
+                                fill="none"
+                                stroke="url(#goldGradient)"
+                                strokeWidth="10"
+                                strokeLinecap="round"
+                              />
+                            </g>
+                          </svg>
                         </div>
-                        {/* Élément central */}
-                        <div className="absolute inset-2 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-md transform group-hover:scale-110 transition-all duration-500">
-                          {/* Ligne de vitesse */}
-                          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-white/50 transform -translate-y-1/2"></div>
-                          {/* Points de données */}
-                          <div className="absolute inset-0 flex items-center justify-around">
-                            <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-                            <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse delay-100"></div>
-                            <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse delay-200"></div>
-                          </div>
-                        </div>
-                        {/* Overlay avec effet de brillance */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                       </div>
                     </div>
                     <CollapsibleContent className="mt-2 pl-6">
@@ -686,6 +814,66 @@ export function Portfolio() {
                       </ul>
                       <p className="text-sm leading-relaxed mt-2">
                         {getText('projects.getStaty.conclusion')}
+                      </p>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+
+                {/* Projet Novarena avec nouveau logo */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <div className="flex items-center justify-between">
+                      <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                        <ChevronRight className="w-4 h-4 transition-transform duration-200" />
+                        {getText('projects.novarena.title')}
+                      </CollapsibleTrigger>
+                      {/* Logo Novarena */}
+                      <div className="w-16 h-16 relative cursor-pointer group"
+                           onClick={() => window.open('#', '_blank')}>
+                        <div className="absolute inset-0 bg-[#1a2639] overflow-hidden flex items-center justify-center">
+                          <svg viewBox="0 0 100 100" className="w-14 h-14">
+                            <defs>
+                              <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style={{ stopColor: '#4a90e2' }} />
+                                <stop offset="100%" style={{ stopColor: '#357abd' }} />
+                              </linearGradient>
+                            </defs>
+                            {/* Hexagone externe */}
+                            <path
+                              d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z"
+                              fill="url(#blueGradient)"
+                            />
+                            {/* Hexagone interne avec effet de profondeur */}
+                            <path
+                              d="M50 15 L80 32.5 L80 67.5 L50 85 L20 67.5 L20 32.5 Z"
+                              fill="#1a2639"
+                              opacity="0.8"
+                            />
+                            {/* Lignes de structure */}
+                            <path
+                              d="M35 40 L65 40 M35 60 L65 60 M50 30 L50 70"
+                              stroke="#4a90e2"
+                              strokeWidth="2"
+                              opacity="0.5"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <CollapsibleContent className="mt-2 pl-6">
+                      <p className="text-sm leading-relaxed">
+                        {getText('projects.novarena.description')}
+                      </p>
+                      <p className="text-sm leading-relaxed mt-2">
+                        {getText('projects.novarena.features')}
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 mt-2 text-sm">
+                        {getArray('projects.novarena.featuresList').map((feature: string, index: number) => (
+                          <li key={index}>{feature}</li>
+                        ))}
+                      </ul>
+                      <p className="text-sm leading-relaxed mt-2">
+                        {getText('projects.novarena.conclusion')}
                       </p>
                     </CollapsibleContent>
                   </Collapsible>

@@ -16,63 +16,29 @@ const quotes = [
   'Intelligence is the ability to adapt to change, and artificial intelligence is the ability to anticipate it.'
 ]
 
-// Fonction pour vérifier si une nouvelle position chevauche les positions existantes
-const isOverlapping = (
-  newPos: { top: number; left: number },
-  existingPositions: { top: number; left: number }[]
-) => {
-  const margin = 25 // Augmenté de 15 à 25 pour plus d'espace entre les citations
-  return existingPositions.some(pos => {
-    const xOverlap = Math.abs(newPos.left - pos.left) < margin
-    const yOverlap = Math.abs(newPos.top - pos.top) < margin
-    return xOverlap && yOverlap
-  })
-}
-
-// Fonction pour générer une position aléatoire qui évite la zone centrale et les chevauchements
-const generateSafePosition = (existingPositions: { top: number; left: number }[]) => {
-  const centerZone = { minX: 35, maxX: 65, minY: 35, maxY: 65 } // Zone à éviter (centre)
-  let left, top
-  let attempts = 0
-  const maxAttempts = 100 // Éviter une boucle infinie
-
-  do {
-    left = Math.random() * 70 + 15 // Réduit de 80+10 à 70+15 pour éviter les bords
-    top = Math.random() * 70 + 15  // Réduit de 80+10 à 70+15 pour éviter les bords
-    attempts++
-  } while (
-    (left > centerZone.minX && 
-    left < centerZone.maxX && 
-    top > centerZone.minY && 
-    top < centerZone.maxY ||
-    isOverlapping({ top, left }, existingPositions)) &&
-    attempts < maxAttempts
-  )
-
-  return { top, left }
-}
-
 export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [randomQuotes, setRandomQuotes] = useState<{ text: string; top: number; left: number }[]>([])
   const [progress, setProgress] = useState(0)
+  const [showContent, setShowContent] = useState(false)
 
   useEffect(() => {
-    // Sélectionner 3 citations aléatoires au lieu de 5
-    const selectedQuotes: { text: string; top: number; left: number }[] = []
-    
-    for (let i = 0; i < 3; i++) { // Changé de 5 à 3
-      const position = generateSafePosition(selectedQuotes)
-      selectedQuotes.push({
-        text: quotes[Math.floor(Math.random() * quotes.length)],
-        ...position
-      })
-    }
+    // Sélectionner 3 citations aléatoires avec des positions
+    const selectedQuotes = Array.from({ length: 3 }, () => ({
+      text: quotes[Math.floor(Math.random() * quotes.length)],
+      top: Math.random() * 70 + 15, // Entre 15% et 85%
+      left: Math.random() * 70 + 15 // Entre 15% et 85%
+    }))
     
     setRandomQuotes(selectedQuotes)
+    
+    // Afficher le contenu après un court délai
+    const contentTimer = setTimeout(() => {
+      setShowContent(true)
+    }, 300)
 
     // Animation de la barre de progression
-    const duration = 3500 // 3.5 secondes au total
-    const interval = 50 // Mise à jour toutes les 50ms
+    const duration = 3500
+    const interval = 50
     const steps = duration / interval
     let currentStep = 0
 
@@ -86,14 +52,17 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       }
     }, interval)
 
-    return () => clearInterval(progressInterval)
+    return () => {
+      clearInterval(progressInterval)
+      clearTimeout(contentTimer)
+    }
   }, [onComplete])
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#e8e8e0] dark:bg-[#1a2639] transition-opacity duration-500">
-      <div className="relative w-full h-full">
-        {/* Citations aléatoires */}
-        {randomQuotes.map((quote, index) => (
+    <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-[#e8e8e0] to-[#d8d8d0] dark:from-[#1a2639] dark:to-[#0f172a] transition-all duration-700">
+      <div className="relative w-full h-full overflow-hidden">
+        {/* Citations aléatoires avec animation */}
+        {showContent && randomQuotes.map((quote, index) => (
           <div
             key={index}
             className="absolute text-sm md:text-base opacity-0 animate-fadeIn italic"
@@ -102,7 +71,8 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               left: `${quote.left}%`,
               maxWidth: '300px',
               transform: 'translate(-50%, -50%)',
-              animationDelay: `${index * 0.4}s`
+              animationDelay: `${index * 0.4}s`,
+              animationDuration: '1.2s'
             }}
           >
             &ldquo;{quote.text}&rdquo;
@@ -112,11 +82,29 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
         {/* Logo animé avec barre de progression */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="relative">
+            {/* Cercles concentriques animés */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div 
+                className="absolute w-40 h-40 rounded-full border-2 border-black/10 dark:border-white/10"
+                style={{
+                  animation: 'pulse 2s ease-in-out infinite',
+                  animationDelay: '0s'
+                }}
+              />
+              <div 
+                className="absolute w-36 h-36 rounded-full border-2 border-black/10 dark:border-white/10"
+                style={{
+                  animation: 'pulse 2s ease-in-out infinite',
+                  animationDelay: '0.3s'
+                }}
+              />
+            </div>
+            
             {/* Barre de progression circulaire */}
             <svg className="w-32 h-32 -rotate-90 transform">
               <circle
-                className="text-black/10"
-                strokeWidth="2"
+                className="text-black/10 dark:text-white/10"
+                strokeWidth="3"
                 stroke="currentColor"
                 fill="none"
                 r="58"
@@ -124,8 +112,8 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
                 cy="64"
               />
               <circle
-                className="text-black transition-all duration-300"
-                strokeWidth="2"
+                className="text-black dark:text-white transition-all duration-300 ease-out"
+                strokeWidth="3"
                 strokeDasharray={`${2 * Math.PI * 58}`}
                 strokeDashoffset={`${2 * Math.PI * 58 * (1 - progress / 100)}`}
                 strokeLinecap="round"
@@ -137,15 +125,26 @@ export function LoadingScreen({ onComplete }: { onComplete: () => void }) {
               />
             </svg>
             
-            {/* Logo */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-float">
-              <Cloud className="w-24 h-24 text-[#1a2639]" />
-              <Brain 
-                className="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black"
-                style={{
-                  opacity: progress / 100
-                }}
-              />
+            {/* Logo avec animation */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+              <div className="relative animate-float" style={{ animationDuration: '3s' }}>
+                <div className="relative">
+                  {/* Nuages supplémentaires pour plus de détails */}
+                  <Cloud className="w-8 h-8 absolute -top-2 -left-4 text-[#1a2639] dark:text-[#e8e8e0] opacity-50 transition-colors duration-700" />
+                  <Cloud className="w-8 h-8 absolute -top-1 -right-3 text-[#1a2639] dark:text-[#e8e8e0] opacity-50 transition-colors duration-700" />
+                  <Cloud className="w-8 h-8 absolute -bottom-2 -left-3 text-[#1a2639] dark:text-[#e8e8e0] opacity-50 transition-colors duration-700" />
+                  {/* Nuage principal */}
+                  <Cloud className="w-24 h-24 text-[#1a2639] dark:text-[#e8e8e0] transition-colors duration-700" />
+                  {/* Cerveau centré */}
+                  <Brain 
+                    className="w-12 h-12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition-colors duration-700"
+                    style={{
+                      opacity: progress / 100,
+                      transform: `translate(-50%, -50%) scale(${0.8 + (progress / 100) * 0.2})`
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -55,7 +55,39 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+  		keyframes: {
+  			wiggle: {
+  				'0%, 100%': { transform: 'rotate(-3deg)' },
+  				'50%': { transform: 'rotate(3deg)' },
+  			},
+  			'cursor-move': {
+  				'0%': { transform: 'translate(0, 0)' },
+  				'25%': { transform: 'translate(100%, 0)' },
+  				'50%': { transform: 'translate(100%, 100%)' },
+  				'75%': { transform: 'translate(0, 100%)' },
+  				'100%': { transform: 'translate(0, 0)' },
+  			},
+  			fadeIn: {
+  				'0%': { opacity: '0', transform: 'translateY(10px)' },
+  				'100%': { opacity: '1', transform: 'translateY(0)' },
+  			},
+  			float: {
+  				'0%, 100%': { transform: 'translateY(0)' },
+  				'50%': { transform: 'translateY(-10px)' },
+  			},
+  			pulse: {
+  				'0%, 100%': { transform: 'scale(1)', opacity: '1' },
+  				'50%': { transform: 'scale(1.1)', opacity: '0.8' },
+  			}
+  		},
+  		animation: {
+  			wiggle: 'wiggle 1s ease-in-out infinite',
+  			'cursor-move': 'cursor-move 4s linear infinite',
+  			fadeIn: 'fadeIn 0.6s ease-out forwards',
+  			float: 'float 3s ease-in-out infinite',
+  			pulse: 'pulse 2s ease-in-out infinite',
+  		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
