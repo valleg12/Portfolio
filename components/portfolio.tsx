@@ -9,14 +9,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import {
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  ResponsiveContainer,
-} from "recharts"
 import { LoadingScreen } from "./LoadingScreen"
 
 // Supprimons le type non utilisé et gardons uniquement l'interface
@@ -419,16 +411,6 @@ export function Portfolio() {
   const [isLoading, setIsLoading] = useState(true)
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null)
 
-  const skillsData = [
-    { skill: "Python", value: 85 },
-    { skill: "SQL", value: 80 },
-    { skill: "Power BI", value: 90 },
-    { skill: "Hubspot", value: 75 },
-    { skill: "Dataiku", value: 70 },
-    { skill: "ChatGPT", value: 85 },
-    { skill: "Data Analytics", value: 80 },
-  ]
-
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
     document.documentElement.classList.toggle('dark')
@@ -488,50 +470,6 @@ export function Portfolio() {
     
     return Array.isArray(current) ? current : [];
   };
-
-  // 1. Nouvelle structure des compétences
-  const skillsGrid = [
-    {
-      title: 'Data Science & Machine Learning',
-      items: [
-        { name: 'Python', icon: <span className="text-[#3776AB]">🐍</span> },
-        { name: 'Machine Learning', icon: <span className="text-[#F7931E]">🤖</span> },
-        { name: 'Data Analytics', icon: <span className="text-[#4B8BBE]">📊</span> },
-        { name: 'APIs & Web Scraping', icon: <span className="text-[#E34F26]">🌐</span> },
-        { name: 'ChatGPT / LLM', icon: <span className="text-[#10A37F]">��</span> },
-      ]
-    },
-    {
-      title: 'Business & Outils No-code',
-      items: [
-        { name: 'Notion', icon: <span className="text-black">🗒️</span> },
-        { name: 'Make', icon: <span className="text-[#5C2D91]">⚙️</span> },
-        { name: 'N8N', icon: <span className="text-[#EF652A]">🔗</span> },
-        { name: 'Gestion de projet agile', icon: <span className="text-[#0052CC]">🛠️</span> },
-        { name: 'Business Intelligence', icon: <span className="text-[#1D6F42]">📈</span> },
-      ]
-    },
-    {
-      title: 'Data Engineering & BI',
-      items: [
-        { name: 'SQL', icon: <span className="text-[#336791]">🗄️</span> },
-        { name: 'Power BI', icon: <span className="text-[#F2C811]">📊</span> },
-        { name: 'Dataiku', icon: <span className="text-[#FF6600]">🧩</span> },
-        { name: 'Tableau', icon: <span className="text-[#E97627]">📉</span> },
-        { name: 'Excel avancé', icon: <span className="text-[#217346]">📗</span> },
-      ]
-    },
-    {
-      title: 'Marketing & Analytics',
-      items: [
-        { name: 'Google Analytics', icon: <span className="text-[#FABB05]">📈</span> },
-        { name: 'Airtable', icon: <span className="text-[#18BFFF]">🗃️</span> },
-        { name: 'Power Automate', icon: <span className="text-[#0066FF]">🔄</span> },
-        { name: 'Data Visualization', icon: <span className="text-[#FF9900]">📊</span> },
-        { name: 'Cloud Data Platforms', icon: <span className="text-[#4285F4]">☁️</span> },
-      ]
-    },
-  ]
 
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />
