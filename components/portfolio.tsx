@@ -494,15 +494,15 @@ export function Portfolio() {
   }
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-[#1a2639] text-[#e8e8e0]' : 'bg-[#e8e8e0] text-[#1a2639]'} transition-colors duration-300`}>
-      <div className="max-w-[1600px] mx-auto px-8 py-12">
-        <div className="grid grid-cols-[1fr_1fr] gap-16">
-          {/* Left Column */}
-          <div className="space-y-8">
-            {/* Photo and CV */}
+    <div className={`min-h-screen w-full overflow-x-hidden ${isDarkMode ? 'bg-[#1a2639] text-[#e8e8e0]' : 'bg-[#e8e8e0] text-[#1a2639]'} transition-colors duration-300`}>
+      <div className="max-w-[1600px] mx-auto px-2 sm:px-8 py-6 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] gap-4 sm:gap-16">
+          {/* Left Column (ou bloc 1 sur mobile) */}
+          <div className="space-y-6 sm:space-y-8">
+            {/* Photo et CV */}
             <div className="space-y-4">
               <div 
-                className={`relative w-32 h-32 rounded-full overflow-hidden border-4 border-current cursor-pointer transition-transform duration-300 hover:animate-wiggle focus:outline-none group`}
+                className={`relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-current cursor-pointer transition-transform duration-300 hover:animate-wiggle focus:outline-none group mx-auto sm:mx-0`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
@@ -517,10 +517,9 @@ export function Portfolio() {
                   <div className="absolute w-6 h-6 bg-white/20 rounded-full blur-sm animate-cursor-move"></div>
                 </div>
               </div>
-              
               {/* Liens sociaux avec animation */}
               <div 
-                className={`flex gap-4 items-center justify-start transition-all duration-300 ${
+                className={`flex gap-4 items-center justify-center sm:justify-start transition-all duration-300 ${
                   isLinksVisible 
                     ? 'opacity-100 transform translate-y-0' 
                     : 'opacity-0 transform -translate-y-4 pointer-events-none'
