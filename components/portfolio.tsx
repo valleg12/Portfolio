@@ -497,8 +497,8 @@ export function Portfolio() {
     <div className={`min-h-screen w-full overflow-x-hidden ${isDarkMode ? 'bg-[#1a2639] text-[#e8e8e0]' : 'bg-[#e8e8e0] text-[#1a2639]'} transition-colors duration-300`}>
       <div className="max-w-[1600px] mx-auto px-2 sm:px-8 py-6 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] gap-4 sm:gap-16">
-          {/* Left Column (ou bloc 1 sur mobile) */}
-          <div className="space-y-6 sm:space-y-8">
+          {/* MOBILE: Ordre spécifique */}
+          <div className="block sm:hidden space-y-6">
             {/* Photo et CV */}
             <div className="space-y-4">
               <div 
@@ -605,7 +605,39 @@ export function Portfolio() {
 
             <hr className="border-current border-t-2 my-6" />
 
-            {/* Remplacer la section 'work' */}
+            {/* Formation */}
+            <Collapsible>
+              <CollapsibleTrigger className="w-full text-left">
+                <div
+                  className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                >
+                  {getText('titles.education')}
+                </div>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="mt-4 space-y-4 text-sm font-light">
+                <div>
+                  <p className="text-lg font-bold mb-2">{getText('education.msc.title')}</p>
+                  <p className="text-muted-foreground mb-4">{getText('education.msc.location')}</p>
+                  <ul className="list-disc list-inside space-y-1 mb-4">
+                    <li>Business analytics</li>
+                    <li>Data visualisation</li>
+                    <li>CRM</li>
+                    <li>Nocode</li>
+                    <li>Marketing analytique</li>
+                  </ul>
+                  <p className="font-semibold mb-2">Langages et outils:</p>
+                  <p className="text-muted-foreground">Python, SQL, PowerBI, Hubspot, Dataiku, ChatGPT, Google Analytics, Airtable, Notion, Zapier</p>
+                </div>
+                <div className="mt-6">
+                  <p className="text-lg font-bold mb-2">{getText('education.master.title')}</p>
+                  <p className="text-muted-foreground">{getText('education.master.location')}</p>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+
+            <hr className="border-current border-t-2 my-6" />
+
+            {/* Compétences */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
                 <div
@@ -627,7 +659,7 @@ export function Portfolio() {
 
             <hr className="border-current border-t-2 my-6" />
 
-            {/* Remplacer la section 'communication skills' */}
+            {/* Services */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
                 <div
@@ -649,6 +681,206 @@ export function Portfolio() {
 
             <hr className="border-current border-t-2 my-6" />
 
+            {/* Projets */}
+            <Collapsible>
+              <CollapsibleTrigger className="w-full text-left">
+                <div
+                  className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                >
+                  {getText('titles.projects')}
+                </div>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                {/* WTTJ Project */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.wttj.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                          <p className="text-muted-foreground text-sm sm:text-base">
+                            {getText('projects.wttj.description')}
+                          </p>
+                          <a 
+                            href="https://github.com/valleg12/WTTJ" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-600 transition-colors self-end sm:self-auto"
+                          >
+                            <Github className="h-5 w-5 sm:h-6 sm:w-6" />
+                          </a>
+                        </div>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.wttj.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.wttj.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.wttj.conclusion')}
+                          </p>
+                        </div>
+                      </Card>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+
+                {/* Carrefour Project */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      Carrefour
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                          <h3 className="text-xl sm:text-2xl font-bold">
+                            {getText('projects.carrefour.title')}
+                          </h3>
+                          <a 
+                            href="https://github.com/valleg12/Carrefour-Project" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-600 transition-colors self-end sm:self-auto"
+                          >
+                            <Github className="h-5 w-5 sm:h-6 sm:w-6" />
+                          </a>
+                        </div>
+                        <p className="text-muted-foreground mb-6 text-sm sm:text-base">
+                          {getText('projects.carrefour.description')}
+                        </p>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.carrefour.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.carrefour.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.carrefour.conclusion')}
+                          </p>
+                        </div>
+                      </Card>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+
+                {/* Sportech Project */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.sportech.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                          <p className="text-muted-foreground text-sm sm:text-base">
+                            {getText('projects.sportech.description')}
+                          </p>
+                          <div className="flex gap-2 self-end sm:self-auto">
+                            <a 
+                              href="https://valleg12.github.io/Scoutech/" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-500 hover:text-blue-600 transition-colors"
+                            >
+                              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                            </a>
+                            <a 
+                              href="https://github.com/valleg12/Scoutech" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-500 hover:text-blue-600 transition-colors"
+                            >
+                              <Github className="h-5 w-5 sm:h-6 sm:w-6" />
+                            </a>
+                          </div>
+                        </div>
+                      </Card>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+
+                {/* GetStaty Project */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.getStaty.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <p className="text-muted-foreground mb-6 text-sm sm:text-base">
+                          {getText('projects.getStaty.description')}
+                        </p>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.getStaty.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.getStaty.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.getStaty.conclusion')}
+                          </p>
+                        </div>
+                      </Card>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+
+                {/* Novarena Project */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.novarena.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <p className="text-muted-foreground mb-6 text-sm sm:text-base">
+                          {getText('projects.novarena.description')}
+                        </p>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.novarena.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.novarena.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.novarena.conclusion')}
+                          </p>
+                        </div>
+                      </Card>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+
             {/* Off Work */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -667,11 +899,206 @@ export function Portfolio() {
               </CollapsibleContent>
             </Collapsible>
 
-            <hr className="border-current border-t-2 my-6" />
+            {/* Langues */}
+            <Collapsible>
+              <CollapsibleTrigger className="w-full text-left">
+                <div
+                  className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                >
+                  {getText('titles.languages')}
+                </div>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="mt-4 grid grid-cols-2 gap-6 text-sm font-light">
+                <div>
+                  <p className="font-semibold">{getText('languages.french')}</p>
+                  <p className="text-muted-foreground">{getText('languages.frenchLevel')}</p>
+                </div>
+                <div>
+                  <p className="font-semibold">{getText('languages.english')}</p>
+                  <p className="text-muted-foreground">{getText('languages.englishLevel')}</p>
+                </div>
+                <div>
+                  <p className="font-semibold">{getText('languages.spanish')}</p>
+                  <p className="text-muted-foreground">{getText('languages.spanishLevel')}</p>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
+          {/* DESKTOP: Colonnes classiques */}
+          <div className="hidden sm:block space-y-8">
+            {/* Colonne gauche desktop (photo, CV, compétences, services, off work) */}
+            <div className="space-y-6">
+              {/* Photo et CV */}
+              <div className="space-y-4">
+                <div 
+                  className={`relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-current cursor-pointer transition-transform duration-300 hover:animate-wiggle focus:outline-none group mx-auto sm:mx-0`}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={process.env.NODE_ENV === 'production' ? "/Portfolio/PHOTO.jpg" : "/PHOTO.jpg"}
+                    alt="Victorien ALLEG"
+                    className="object-cover w-full h-full"
+                  />
+                  {/* Curseur animé */}
+                  <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute w-6 h-6 bg-white/20 rounded-full blur-sm animate-cursor-move"></div>
+                  </div>
+                </div>
+                {/* Liens sociaux avec animation */}
+                <div 
+                  className={`flex gap-4 items-center justify-center sm:justify-start transition-all duration-300 ${
+                    isLinksVisible 
+                      ? 'opacity-100 transform translate-y-0' 
+                      : 'opacity-0 transform -translate-y-4 pointer-events-none'
+                  }`}
+                >
+                  <a 
+                    href="https://calendly.com/victorienalleg" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:opacity-70 transition-opacity hover:scale-110 transform duration-200"
+                  >
+                    <Calendar className="h-6 w-6" />
+                  </a>
+                  <a 
+                    href="mailto:victorienalleg@gmail.com"
+                    className="hover:opacity-70 transition-opacity hover:scale-110 transform duration-200"
+                  >
+                    <Mail className="h-6 w-6" />
+                  </a>
+                  <a 
+                    href="tel:+33602035791"
+                    className="hover:opacity-70 transition-opacity hover:scale-110 transform duration-200"
+                  >
+                    <Phone className="h-6 w-6" />
+                  </a>
+                  <a 
+                    href="https://github.com/valleg12/valleg12" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:opacity-70 transition-opacity hover:scale-110 transform duration-200"
+                  >
+                    <Github className="h-6 w-6" />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/victorien-alleg-6573b7173/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:opacity-70 transition-opacity hover:scale-110 transform duration-200"
+                  >
+                    <Linkedin className="h-6 w-6" />
+                  </a>
+                </div>
+                <Collapsible open={isCVOpen} onOpenChange={setIsCVOpen}>
+                  <CollapsibleTrigger className="w-full text-left">
+                    <div
+                      className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                    >
+                      CV
+                    </div>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="mt-4 space-y-4 text-sm font-light">
+                    <div>
+                      <h3 className="font-semibold text-lg">Informations Personnelles</h3>
+                      <p>victorienalleg@gmail.com</p>
+                      <p>06 02 03 57 91</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Formation</h3>
+                      <p className="text-lg font-bold mb-2">{getText('education.msc.title')}</p>
+                      <p className="text-muted-foreground mb-4">{getText('education.msc.location')}</p>
+                      <ul className="list-disc list-inside space-y-1 mb-4">
+                        <li>Business analytics</li>
+                        <li>Data visualisation</li>
+                        <li>CRM</li>
+                        <li>Nocode</li>
+                        <li>Marketing analytique</li>
+                      </ul>
+                      <p className="font-semibold mb-2">Langages et outils:</p>
+                      <p className="text-muted-foreground">Python, SQL, PowerBI, Hubspot, Dataiku, ChatGPT, Google Analytics, Airtable, Notion, Zapier</p>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg">Expérience Professionnelle</h3>
+                      <p className="font-semibold">VASPP</p>
+                      <p className="text-muted-foreground">Business Intelligence & Growth Analyst</p>
+                      <p className="font-semibold mt-2">Le Five Valenciennes / Zone Revolution</p>
+                      <p className="text-muted-foreground">Business Analytics & Customer Success Manager</p>
+                      <p className="font-semibold mt-2">Saint Amand Football Club</p>
+                      <p className="text-muted-foreground">Event Analytics & Operations Manager</p>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              </div>
 
-          {/* Right Column */}
-          <div className="space-y-8">
+              <hr className="border-current border-t-2 my-6" />
+
+              {/* Compétences */}
+              <Collapsible>
+                <CollapsibleTrigger className="w-full text-left">
+                  <div
+                    className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                  >
+                    {getText('competences.title')}
+                  </div>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="mt-4 space-y-4 text-sm font-light">
+                  <div>
+                    <ul className="list-disc list-inside space-y-1">
+                      {getArray('skills.fr').map((item: string) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+
+              <hr className="border-current border-t-2 my-6" />
+
+              {/* Services */}
+              <Collapsible>
+                <CollapsibleTrigger className="w-full text-left">
+                  <div
+                    className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                  >
+                    {getText('services.title')}
+                  </div>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="mt-4 space-y-4 text-sm font-light">
+                  <div>
+                    <ul className="list-disc list-inside space-y-1">
+                      {getArray('services.items').map((item: string) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+
+              <hr className="border-current border-t-2 my-6" />
+
+              {/* Off Work */}
+              <Collapsible>
+                <CollapsibleTrigger className="w-full text-left">
+                  <div
+                    className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                  >
+                    {getText('offwork.title')}
+                  </div>
+                </CollapsibleTrigger>
+                <CollapsibleContent className="mt-4 space-y-4 text-sm font-light">
+                  <ul className="list-disc list-inside space-y-1">
+                    {getArray('offwork.items').map((item: string) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </CollapsibleContent>
+              </Collapsible>
+            </div>
+          </div>
+          <div className="hidden sm:block space-y-8">
+            {/* Colonne droite desktop (formation, skills, langues, projets) */}
             {/* Education */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -769,10 +1196,12 @@ export function Portfolio() {
 
             <hr className="border-current border-t-2 my-6" />
 
-            {/* Projets avec nouveaux logos */}
+            {/* Projets */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
-                <div className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer">
+                <div
+                  className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
+                >
                   {getText('titles.projects')}
                 </div>
               </CollapsibleTrigger>
