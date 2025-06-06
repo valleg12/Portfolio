@@ -56,6 +56,20 @@ interface TranslationLanguage {
   };
   projects: {
     title: string;
+    wttj: {
+      title: string;
+      description: string;
+      features: string;
+      featuresList: string[];
+      conclusion: string;
+    };
+    carrefour: {
+      title: string;
+      description: string;
+      features: string;
+      featuresList: string[];
+      conclusion: string;
+    };
     sportech: {
       title: string;
       description: string;
@@ -156,6 +170,32 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
     },
     projects: {
       title: "projets",
+      wttj: {
+        title: "Jungle Gather",
+        description: "Application web immersive inspirée de Gather, conçue pour favoriser la dynamique sociale et la gestion du planning dans une entreprise multi-sites. L'interface propose un univers pixel-art, un calendrier interactif, la gestion de la présence (remote/préso), des avatars animaux (mascottes) et des fonctionnalités d'export de listes.",
+        features: "Fonctionnalités principales :",
+        featuresList: [
+          "Calendrier interactif avec vue semaine, mini-calendrier et création d'événements dynamiques",
+          "Gestion de la présence avec sélection cyclique remote/préso/aucun",
+          "Avatars mascottes représentant chaque utilisateur sur la carte",
+          "Export CSV des listes de présence (remote/présentiel)",
+          "Interface moderne et responsive inspirée de Notion/Linear/Slack"
+        ],
+        conclusion: "Cette solution innovante améliore la gestion des espaces de travail et la communication entre équipes dans un contexte multi-sites, tout en apportant une dimension ludique et sociale à l'expérience utilisateur."
+      },
+      carrefour: {
+        title: "Système de Vérification des Marques Carrefour",
+        description: "Développement d'un système sophistiqué de vérification de propriété des marques utilisant l'IA pour analyser et valider les relations entre les marques et leurs propriétaires. Ce projet a été réalisé dans le cadre du Geniathon Carrefour.",
+        features: "Fonctionnalités principales :",
+        featuresList: [
+          "Vérification systématique des marques avec calcul de score de confiance",
+          "Gestion intelligente des sources et validation des données",
+          "Optimisation des performances avec traitement parallèle",
+          "Analyse approfondie des relations entre marques",
+          "Interface utilisateur informative et intuitive"
+        ],
+        conclusion: "Cette solution automatisée permet à Carrefour d'optimiser la gestion de ses marques et de réduire les risques liés à la propriété intellectuelle, tout en améliorant l'efficacité opérationnelle."
+      },
       sportech: {
         title: "Sportech",
         description: "Sportech est une solution innovante intégrant l'intelligence artificielle pour optimiser la performance sportive, prévenir les blessures et faciliter le recrutement. En analysant et en contextualisant les données de joueurs, elle permet aux clubs de prévoir le potentiel des athlètes, de prendre des décisions éclairées pour la gestion d'équipe et d'optimiser les stratégies de transfert. Avec des tableaux de bord interactifs et des prédictions basées sur la data science, Sportech transforme la prise de décision dans les organisations sportives."
@@ -283,6 +323,32 @@ const translations: Record<'fr' | 'en', TranslationLanguage> = {
     },
     projects: {
       title: "projects",
+      wttj: {
+        title: "Jungle Gather",
+        description: "An immersive web application inspired by Gather, designed to enhance social dynamics and schedule management in a multi-site company. The interface features a pixel-art universe, interactive calendar, presence management (remote/onsite), animal avatars (mascots), and list export functionality.",
+        features: "Key features:",
+        featuresList: [
+          "Interactive calendar with week view, mini-calendar, and dynamic event creation",
+          "Presence management with cyclic selection of remote/onsite/none",
+          "Mascot avatars representing each user on the map",
+          "CSV export of presence lists (remote/onsite)",
+          "Modern and responsive interface inspired by Notion/Linear/Slack"
+        ],
+        conclusion: "This innovative solution improves workspace management and team communication in a multi-site context, while adding a playful and social dimension to the user experience."
+      },
+      carrefour: {
+        title: "Carrefour Brand Verification System",
+        description: "Development of a sophisticated brand ownership verification system using AI to analyze and validate relationships between brands and their owners. This project was completed as part of the Carrefour Geniathon.",
+        features: "Key features:",
+        featuresList: [
+          "Systematic brand verification with confidence score calculation",
+          "Intelligent source management and data validation",
+          "Performance optimization with parallel processing",
+          "In-depth analysis of brand relationships",
+          "Informative and intuitive user interface"
+        ],
+        conclusion: "This automated solution enables Carrefour to optimize brand management and reduce intellectual property risks while improving operational efficiency."
+      },
       sportech: {
         title: "Sportech",
         description: "Sportech is an innovative solution integrating artificial intelligence to optimize sports performance, prevent injuries, and facilitate recruitment. By analyzing and contextualizing player data, it enables clubs to predict athlete potential, make informed team management decisions, and optimize transfer strategies. With interactive dashboards and data science-based predictions, Sportech transforms decision-making in sports organizations."
@@ -712,169 +778,190 @@ export function Portfolio() {
                 </div>
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
-                {/* Projet Sportech avec nouveau logo */}
+                {/* WTTJ Project */}
                 <div className="space-y-4">
                   <Collapsible>
-                    <div className="flex items-center justify-between">
-                      <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
-                        <ChevronRight className="w-4 h-4 transition-transform duration-200" />
-                        {getText('projects.sportech.title')}
-                      </CollapsibleTrigger>
-                      {/* Logo Sportech */}
-                      <div className="w-16 h-16 relative cursor-pointer group"
-                           onClick={() => window.open('https://valleg12.github.io/Scoutech/', '_blank')}>
-                        <div className="absolute inset-0 bg-[#1a2639] overflow-hidden flex items-center justify-center">
-                          <svg viewBox="0 0 100 100" className="w-14 h-14">
-                            <defs>
-                              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style={{ stopColor: '#e8e8e0' }} />
-                                <stop offset="100%" style={{ stopColor: '#d4d4c7' }} />
-                              </linearGradient>
-                            </defs>
-                            <g transform="rotate(45, 50, 50)">
-                              <path
-                                d="M50 10 C80 10 90 40 90 50 C90 70 70 90 50 90 C30 90 10 70 10 50 C10 40 20 10 50 10"
-                                fill="none"
-                                stroke="url(#goldGradient)"
-                                strokeWidth="10"
-                                strokeLinecap="round"
-                              />
-                              <path
-                                d="M50 30 C65 30 70 45 70 50 C70 60 60 70 50 70 C40 70 30 60 30 50 C30 45 35 30 50 30"
-                                fill="none"
-                                stroke="url(#goldGradient)"
-                                strokeWidth="10"
-                                strokeLinecap="round"
-                              />
-                              <path
-                                d="M50 50 C55 50 57 52 57 55 C57 58 55 60 50 60 C45 60 43 58 43 55 C43 52 45 50 50 50"
-                                fill="none"
-                                stroke="url(#goldGradient)"
-                                strokeWidth="10"
-                                strokeLinecap="round"
-                              />
-                            </g>
-                          </svg>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.wttj.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                          <p className="text-muted-foreground text-sm sm:text-base">
+                            {getText('projects.wttj.description')}
+                          </p>
+                          <a 
+                            href="https://github.com/valleg12/WTTJ" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-600 transition-colors self-end sm:self-auto"
+                          >
+                            <Github className="h-5 w-5 sm:h-6 sm:w-6" />
+                          </a>
                         </div>
-                      </div>
-                    </div>
-                    <CollapsibleContent className="mt-2 pl-6">
-                      <p className="text-sm leading-relaxed">
-                        {getText('projects.sportech.description')}
-                      </p>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.wttj.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.wttj.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.wttj.conclusion')}
+                          </p>
+                        </div>
+                      </Card>
                     </CollapsibleContent>
                   </Collapsible>
                 </div>
 
-                {/* Projet GetStaty avec nouveau logo */}
+                {/* Carrefour Project */}
                 <div className="space-y-4">
                   <Collapsible>
-                    <div className="flex items-center justify-between">
-                      <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
-                        <ChevronRight className="w-4 h-4 transition-transform duration-200" />
-                        {getText('projects.getStaty.title')}
-                      </CollapsibleTrigger>
-                      {/* Nouveau logo GetStaty */}
-                      <div className="w-16 h-16 relative cursor-pointer group"
-                           onClick={() => window.open('#', '_blank')}>
-                        {/* Cercle principal */}
-                        <div className="absolute inset-0 bg-[#1a2639] rounded-full overflow-hidden">
-                          {/* Effet de vague de données */}
-                          <div className="absolute inset-0">
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 animate-wave"></div>
-                          </div>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      Carrefour
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                          <h3 className="text-xl sm:text-2xl font-bold">
+                            {getText('projects.carrefour.title')}
+                          </h3>
+                          <a 
+                            href="https://github.com/valleg12/Carrefour-Project" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-600 transition-colors self-end sm:self-auto"
+                          >
+                            <Github className="h-5 w-5 sm:h-6 sm:w-6" />
+                          </a>
                         </div>
-                        {/* Symbole central */}
-                        <div className="absolute inset-3 flex items-center justify-center">
-                          <div className="relative w-full h-full">
-                            {/* Graphique stylisé */}
-                            <div className="absolute inset-0 flex items-end justify-around">
-                              <div className="w-1 bg-white/80 h-[30%] transform group-hover:h-[60%] transition-all duration-500"></div>
-                              <div className="w-1 bg-white/80 h-[50%] transform group-hover:h-[80%] transition-all duration-500 delay-75"></div>
-                              <div className="w-1 bg-white/80 h-[40%] transform group-hover:h-[70%] transition-all duration-500 delay-150"></div>
-                              <div className="w-1 bg-white/80 h-[60%] transform group-hover:h-[90%] transition-all duration-500 delay-225"></div>
-                            </div>
-                          </div>
+                        <p className="text-muted-foreground mb-6 text-sm sm:text-base">
+                          {getText('projects.carrefour.description')}
+                        </p>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.carrefour.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.carrefour.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.carrefour.conclusion')}
+                          </p>
                         </div>
-                        {/* Anneau externe animé */}
-                        <div className="absolute inset-0 border-2 border-white/30 rounded-full scale-100 group-hover:scale-110 transition-transform duration-500"></div>
-                      </div>
-                    </div>
-                    <CollapsibleContent className="mt-2 pl-6">
-                      <p className="text-sm leading-relaxed">
-                        {getText('projects.getStaty.description')}
-                      </p>
-                      <p className="text-sm leading-relaxed mt-2">
-                        {getText('projects.getStaty.features')}
-                      </p>
-                      <ul className="list-disc list-inside space-y-1 mt-2 text-sm">
-                        {getArray('projects.getStaty.featuresList').map((feature: string, index: number) => (
-                          <li key={index}>{feature}</li>
-                        ))}
-                      </ul>
-                      <p className="text-sm leading-relaxed mt-2">
-                        {getText('projects.getStaty.conclusion')}
-                      </p>
+                      </Card>
                     </CollapsibleContent>
                   </Collapsible>
                 </div>
 
-                {/* Projet Novarena avec nouveau logo */}
+                {/* Sportech Project */}
                 <div className="space-y-4">
                   <Collapsible>
-                    <div className="flex items-center justify-between">
-                      <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
-                        <ChevronRight className="w-4 h-4 transition-transform duration-200" />
-                        {getText('projects.novarena.title')}
-                      </CollapsibleTrigger>
-                      {/* Logo Novarena */}
-                      <div className="w-16 h-16 relative cursor-pointer group"
-                           onClick={() => window.open('#', '_blank')}>
-                        <div className="absolute inset-0 bg-[#1a2639] overflow-hidden flex items-center justify-center">
-                          <svg viewBox="0 0 100 100" className="w-14 h-14">
-                            <defs>
-                              <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style={{ stopColor: '#4a90e2' }} />
-                                <stop offset="100%" style={{ stopColor: '#357abd' }} />
-                              </linearGradient>
-                            </defs>
-                            {/* Hexagone externe */}
-                            <path
-                              d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z"
-                              fill="url(#blueGradient)"
-                            />
-                            {/* Hexagone interne avec effet de profondeur */}
-                            <path
-                              d="M50 15 L80 32.5 L80 67.5 L50 85 L20 67.5 L20 32.5 Z"
-                              fill="#1a2639"
-                              opacity="0.8"
-                            />
-                            {/* Lignes de structure */}
-                            <path
-                              d="M35 40 L65 40 M35 60 L65 60 M50 30 L50 70"
-                              stroke="#4a90e2"
-                              strokeWidth="2"
-                              opacity="0.5"
-                            />
-                          </svg>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.sportech.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                          <p className="text-muted-foreground text-sm sm:text-base">
+                            {getText('projects.sportech.description')}
+                          </p>
+                          <div className="flex gap-2 self-end sm:self-auto">
+                            <a 
+                              href="https://valleg12.github.io/Scoutech/" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-500 hover:text-blue-600 transition-colors"
+                            >
+                              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                            </a>
+                            <a 
+                              href="https://github.com/valleg12/Scoutech" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-blue-500 hover:text-blue-600 transition-colors"
+                            >
+                              <Github className="h-5 w-5 sm:h-6 sm:w-6" />
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <CollapsibleContent className="mt-2 pl-6">
-                      <p className="text-sm leading-relaxed">
-                        {getText('projects.novarena.description')}
-                      </p>
-                      <p className="text-sm leading-relaxed mt-2">
-                        {getText('projects.novarena.features')}
-                      </p>
-                      <ul className="list-disc list-inside space-y-1 mt-2 text-sm">
-                        {getArray('projects.novarena.featuresList').map((feature: string, index: number) => (
-                          <li key={index}>{feature}</li>
-                        ))}
-                      </ul>
-                      <p className="text-sm leading-relaxed mt-2">
-                        {getText('projects.novarena.conclusion')}
-                      </p>
+                      </Card>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+
+                {/* GetStaty Project */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.getStaty.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <p className="text-muted-foreground mb-6 text-sm sm:text-base">
+                          {getText('projects.getStaty.description')}
+                        </p>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.getStaty.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.getStaty.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.getStaty.conclusion')}
+                          </p>
+                        </div>
+                      </Card>
+                    </CollapsibleContent>
+                  </Collapsible>
+                </div>
+
+                {/* Novarena Project */}
+                <div className="space-y-4">
+                  <Collapsible>
+                    <CollapsibleTrigger className="flex items-center gap-2 text-lg font-semibold hover:opacity-70 transition-opacity">
+                      {getText('projects.novarena.title')}
+                      <ChevronRight className="h-4 w-4" />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
+                      <Card className="p-4 sm:p-6">
+                        <p className="text-muted-foreground mb-6 text-sm sm:text-base">
+                          {getText('projects.novarena.description')}
+                        </p>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-base sm:text-lg">
+                            {getText('projects.novarena.features')}
+                          </h4>
+                          <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+                            {getArray('projects.novarena.featuresList').map((feature: string, index: number) => (
+                              <li key={index} className="text-muted-foreground">
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                          <p className="text-muted-foreground mt-4 text-sm sm:text-base">
+                            {getText('projects.novarena.conclusion')}
+                          </p>
+                        </div>
+                      </Card>
                     </CollapsibleContent>
                   </Collapsible>
                 </div>
