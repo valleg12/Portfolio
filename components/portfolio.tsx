@@ -881,6 +881,8 @@ export function Portfolio() {
               </CollapsibleContent>
             </Collapsible>
 
+            <hr className="border-current border-t-2 my-6" />
+
             {/* Off Work */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -898,6 +900,8 @@ export function Portfolio() {
                 </ul>
               </CollapsibleContent>
             </Collapsible>
+
+            <hr className="border-current border-t-2 my-6" />
 
             {/* Langues */}
             <Collapsible>
