@@ -498,7 +498,7 @@ export function Portfolio() {
       <div className="max-w-[1600px] mx-auto px-2 sm:px-8 py-6 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] gap-4 sm:gap-16">
           {/* MOBILE: Ordre spécifique */}
-          <div className="block sm:hidden space-y-6">
+          <div className="block sm:hidden space-y-0">
             {/* Photo et CV */}
             <div className="space-y-4">
               <div 
@@ -602,9 +602,7 @@ export function Portfolio() {
                 </CollapsibleContent>
               </Collapsible>
             </div>
-
             <hr className="border-current border-t-2 my-6" />
-
             {/* Formation */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -634,9 +632,7 @@ export function Portfolio() {
                 </div>
               </CollapsibleContent>
             </Collapsible>
-
             <hr className="border-current border-t-2 my-6" />
-
             {/* Compétences */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -656,9 +652,7 @@ export function Portfolio() {
                 </div>
               </CollapsibleContent>
             </Collapsible>
-
             <hr className="border-current border-t-2 my-6" />
-
             {/* Services */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -678,9 +672,7 @@ export function Portfolio() {
                 </div>
               </CollapsibleContent>
             </Collapsible>
-
             <hr className="border-current border-t-2 my-6" />
-
             {/* Projets */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -880,9 +872,7 @@ export function Portfolio() {
                 </div>
               </CollapsibleContent>
             </Collapsible>
-
             <hr className="border-current border-t-2 my-6" />
-
             {/* Off Work */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
@@ -900,9 +890,7 @@ export function Portfolio() {
                 </ul>
               </CollapsibleContent>
             </Collapsible>
-
             <hr className="border-current border-t-2 my-6" />
-
             {/* Langues */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
