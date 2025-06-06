@@ -9,7 +9,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { LoadingScreen } from "./LoadingScreen"
 
 // Supprimons le type non utilisé et gardons uniquement l'interface
 interface TranslationLanguage {
@@ -408,7 +407,6 @@ export function Portfolio() {
   const [isEnglish, setIsEnglish] = useState(false)
   const [isCVOpen, setIsCVOpen] = useState(false)
   const [isLinksVisible, setIsLinksVisible] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
   const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null)
 
   const toggleDarkMode = () => {
@@ -470,10 +468,6 @@ export function Portfolio() {
     
     return Array.isArray(current) ? current : [];
   };
-
-  if (isLoading) {
-    return <LoadingScreen onComplete={() => setIsLoading(false)} />
-  }
 
   return (
     <div className={`min-h-screen w-full overflow-x-hidden ${isDarkMode ? 'bg-[#1a2639] text-[#e8e8e0]' : 'bg-[#e8e8e0] text-[#1a2639]'} transition-colors duration-300`}>
@@ -732,10 +726,13 @@ export function Portfolio() {
             {/* Projets */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
-                <div
-                  className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
-                >
+                <div className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer flex items-center gap-2">
                   {getText('titles.projects')}
+                  <a href="/dev" title="Backstage Tech & Projets" className="ml-2 inline-flex items-center justify-center rounded-full bg-white/80 dark:bg-black/60 p-1 shadow hover:scale-110 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-black dark:text-white">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                  </a>
                 </div>
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
@@ -1238,10 +1235,13 @@ export function Portfolio() {
             {/* Projets */}
             <Collapsible>
               <CollapsibleTrigger className="w-full text-left">
-                <div
-                  className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer"
-                >
+                <div className="w-full text-left p-0 text-4xl font-bold hover:underline cursor-pointer flex items-center gap-2">
                   {getText('titles.projects')}
+                  <a href="/dev" title="Backstage Tech & Projets" className="ml-2 inline-flex items-center justify-center rounded-full bg-white/80 dark:bg-black/60 p-1 shadow hover:scale-110 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-black dark:text-white">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                    </svg>
+                  </a>
                 </div>
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-4 space-y-6 text-sm font-light">
