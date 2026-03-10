@@ -1,52 +1,94 @@
-import { useRef, useState, useEffect, Suspense, lazy } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import {
+  SiPython, SiPostgresql, SiPandas, SiScikitlearn,
+  SiOpenai, SiGit, SiNotion,
+} from 'react-icons/si'
+import { TbBrain, TbBrandAzure, TbLayoutDashboard, TbChartBar, TbFileSpreadsheet } from 'react-icons/tb'
+import type { IconType } from 'react-icons'
 
-const PhysicsBalls = lazy(() => import('./PhysicsBalls'))
+interface TechItem {
+  name: string
+  icon: IconType
+  color: string
+  category: 'IA' | 'Data' | 'Business' | 'Tools'
+  level: number
+}
+
+const TECH_ITEMS: TechItem[] = [
+  { name: 'Python',       icon: SiPython,          color: '#3b82f6', category: 'Data',     level: 85 },
+  { name: 'SQL',          icon: SiPostgresql,       color: '#f59e0b', category: 'Data',     level: 80 },
+  { name: 'Pandas',       icon: SiPandas,           color: '#6366f1', category: 'Data',     level: 75 },
+  { name: 'Scikit-learn', icon: SiScikitlearn,      color: '#f97316', category: 'IA',       level: 70 },
+  { name: 'GPT API',      icon: SiOpenai,           color: '#10b981', category: 'IA',       level: 90 },
+  { name: 'LangChain',    icon: TbBrain,            color: '#8b5cf6', category: 'IA',       level: 75 },
+  { name: 'Power BI',     icon: TbLayoutDashboard,  color: '#f97316', category: 'Business', level: 85 },
+  { name: 'Tableau',      icon: TbChartBar,         color: '#0ea5e9', category: 'Business', level: 80 },
+  { name: 'Excel',        icon: TbFileSpreadsheet,  color: '#22c55e', category: 'Business', level: 90 },
+  { name: 'Azure',        icon: TbBrandAzure,       color: '#0078d4', category: 'Tools',    level: 60 },
+  { name: 'Git',          icon: SiGit,              color: '#f97316', category: 'Tools',    level: 75 },
+  { name: 'Notion',       icon: SiNotion,           color: '#e2e8f0', category: 'Tools',    level: 95 },
+]
+
+const CATEGORY_COLORS: Record<string, string> = {
+  IA:       'text-accent border-accent/30 bg-accent/10',
+  Data:     'text-blue-400 border-blue-400/30 bg-blue-400/10',
+  Business: 'text-emerald-400 border-emerald-400/30 bg-emerald-400/10',
+  Tools:    'text-orange-400 border-orange-400/30 bg-orange-400/10',
+}
+
+function TechCard({ item, animate }: { item: TechItem; animate: boolean }) {
+  const Icon = item.icon
+  return (
+    <div className="p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-primary/30 hover:bg-white/[0.04] transition-all duration-300">
+      <div className="flex items-center justify-between mb-4">
+        <Icon size={28} style={{ color: item.color }} />
+        <span className={`text-xs font-body px-2 py-0.5 rounded-full border ${CATEGORY_COLORS[item.category]}`}>
+          {item.category}
+        </span>
+      </div>
+      <p className="font-display font-semibold text-white text-sm mb-3">{item.name}</p>
+      <div className="h-1 rounded-full bg-white/5">
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
+          style={{
+            width: animate ? `${item.level}%` : '0%',
+            transition: animate ? 'width 1s ease-out' : 'none',
+          }}
+        />
+      </div>
+      <p className="font-body text-muted text-xs mt-1.5 text-right">{item.level}%</p>
+    </div>
+  )
+}
 
 export default function Skills() {
   const { t } = useTranslation()
   const sectionRef = useRef<HTMLDivElement>(null)
-  const [isActive, setIsActive] = useState(false)
+  const [animate, setAnimate] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setIsActive(entry.isIntersecting),
-      { threshold: 0.3 }
+      ([entry]) => { if (entry.isIntersecting) setAnimate(true) },
+      { threshold: 0.2 }
     )
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
-  const items = t('skills.items', { returnObjects: true }) as string[]
-
   return (
-    <section id="skills" className="py-24 relative" style={{ zIndex: 10 }} ref={sectionRef}>
-      <div className="max-w-7xl mx-auto px-6 mb-12">
+    <section id="skills" className="py-32 relative" style={{ zIndex: 10 }} ref={sectionRef}>
+      <div className="max-w-7xl mx-auto px-6">
         <h2 className="font-display font-bold text-4xl text-white mb-3">
           {t('skills.title')}
         </h2>
-        <p className="font-body text-muted">{t('skills.subtitle')}</p>
-      </div>
+        <div className="h-px w-24 bg-gradient-to-r from-primary to-accent mb-14" />
 
-      <div className="w-full h-[60vh]">
-        <Suspense fallback={
-          <div className="w-full h-full flex items-center justify-center text-muted font-body text-sm">
-            Loading 3D...
-          </div>
-        }>
-          <PhysicsBalls isActive={isActive} />
-        </Suspense>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 mt-12 flex flex-wrap gap-3">
-        {items.map((item) => (
-          <span
-            key={item}
-            className="font-body text-sm px-4 py-2 rounded-full border border-white/10 text-muted hover:border-primary/50 hover:text-white transition-all"
-          >
-            {item}
-          </span>
-        ))}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {TECH_ITEMS.map((item) => (
+            <TechCard key={item.name} item={item} animate={animate} />
+          ))}
+        </div>
       </div>
     </section>
   )
