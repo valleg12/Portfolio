@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "name": "Victorien Alleg",
+    "role": "IA & Sport Business",
+    "cta": "Voir mes projets",
+    "cv": "Télécharger le CV",
+    "flip": "Retourner",
+    "whatIDo": "Ce que je fais"
+  },
+  "about": {
+    "title": "À propos",
+    "bio": "Étudiant en MSc IA Appliquée aux Affaires à Eugenia School Paris, je combine expertise en intelligence artificielle et passion pour le sport business. Mon approche : transformer les données en décisions stratégiques.",
+    "education": "Formation",
+    "msc": "MSc AI Applied to Business",
+    "mscLocation": "Eugenia School, Paris · 2024–2026",
+    "master": "Master Management Organisations Sportives",
+    "masterLocation": "AMOS, Lille · 2021–2023"
+  },
+  "skills": {
+    "title": "Compétences",
+    "subtitle": "Outils & technologies",
+    "items": [
+      "Modèles prédictifs",
+      "Business Intelligence",
+      "NLP & Analyse de texte",
+      "Automatisation IA",
+      "Dashboards interactifs",
+      "Gestion de projets IA",
+      "Analyse de sentiment",
+      "Systèmes de recommandation"
+    ]
+  },
+  "projects": {
+    "title": "Projets",
+    "items": [
+      {
+        "id": "jungle-gather",
+        "title": "Jungle Gather",
+        "tags": ["React", "TypeScript", "Pixel Art"],
+        "description": "Application web immersive inspirée de Gather pour la dynamique sociale et le planning en entreprise multi-sites. Interface pixel-art, calendrier interactif, gestion de présence remote/préso."
+      },
+      {
+        "id": "carrefour",
+        "title": "Carrefour Brand Verification",
+        "tags": ["Python", "NLP", "AI", "Geniathon"],
+        "description": "Système sophistiqué de vérification de propriété de marques utilisant l'IA pour analyser et valider les relations entre marques et propriétaires. Calcul de score de confiance et traitement parallèle."
+      },
+      {
+        "id": "sportech",
+        "title": "Sportech",
+        "tags": ["Data Science", "ML", "Sport Analytics"],
+        "description": "Solution IA pour optimiser la performance sportive, prévenir les blessures et faciliter le recrutement. Tableaux de bord décisionnels et prédictions basées sur la data science."
+      },
+      {
+        "id": "getstaty",
+        "title": "GetStaty",
+        "tags": ["API", "Python", "Football Analytics"],
+        "description": "Analyse dynamique de matchs et de joueurs pour les championnats de football. Intégration d'API sportives, classement des top performers et statistiques détaillées."
+      },
+      {
+        "id": "novarena",
+        "title": "Novarena",
+        "tags": ["SaaS", "Cloud", "Stadium Management"],
+        "description": "Suite intégrée de gestion intelligente pour stades modernes : performance & analytics, gestion des spectateurs, des talents et business & sponsoring. Architecture cloud-native multi-région."
+      }
+    ]
+  },
+  "services": {
+    "title": "Services IA pour le Sport Business",
+    "items": [
+      { "icon": "🏃", "title": "Performance Athlètes", "desc": "Analyse prédictive des performances et prévention des blessures" },
+      { "icon": "🏟️", "title": "Gestion d'Événements", "desc": "Optimisation opérationnelle des événements sportifs" },
+      { "icon": "🎯", "title": "Marketing Fans", "desc": "Engagement personnalisé et marketing data-driven" },
+      { "icon": "💰", "title": "Pricing Dynamique", "desc": "Stratégies de billetterie et revenue optimization" },
+      { "icon": "🔍", "title": "Scouting IA", "desc": "Recrutement de talents augmenté par l'intelligence artificielle" },
+      { "icon": "📊", "title": "Business Intelligence", "desc": "Tableaux de bord et KPIs pour décisions stratégiques" }
+    ]
+  },
+  "offwork": {
+    "title": "Off Work",
+    "items": ["Échecs ♟️", "Football ⚽", "Ski 🎿", "Boxe 🥊", "Histoire 📚", "Cinéma 🎬"]
+  },
+  "languages": {
+    "title": "Langues",
+    "items": [
+      { "lang": "Français", "level": "Natif", "pct": 100 },
+      { "lang": "Anglais", "level": "Bilingue", "pct": 95 },
+      { "lang": "Espagnol", "level": "Intermédiaire", "pct": 55 }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Travaillons ensemble",
+    "email": "victorienalleg@gmail.com",
+    "linkedin": "linkedin.com/in/victorien-alleg",
+    "github": "github.com/victorienalleg"
+  }
+}

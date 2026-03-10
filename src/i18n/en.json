@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Victorien Alleg",
+    "role": "AI & Sports Business",
+    "cta": "View my work",
+    "cv": "Download CV",
+    "flip": "Flip",
+    "whatIDo": "What I do"
+  },
+  "about": {
+    "title": "About",
+    "bio": "MSc AI Applied to Business student at Eugenia School Paris, I combine artificial intelligence expertise with a passion for sports business. My approach: turning data into strategic decisions.",
+    "education": "Education",
+    "msc": "MSc AI Applied to Business",
+    "mscLocation": "Eugenia School, Paris · 2024–2026",
+    "master": "Master Sports Organisation Management",
+    "masterLocation": "AMOS, Lille · 2021–2023"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Tools & technologies",
+    "items": [
+      "Predictive models",
+      "Business Intelligence",
+      "NLP & Text analysis",
+      "AI automation",
+      "Interactive dashboards",
+      "AI project management",
+      "Sentiment analysis",
+      "Recommendation systems"
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "items": [
+      {
+        "id": "jungle-gather",
+        "title": "Jungle Gather",
+        "tags": ["React", "TypeScript", "Pixel Art"],
+        "description": "Immersive web app inspired by Gather for social dynamics and planning in multi-site companies. Pixel-art interface, interactive calendar, remote/office attendance management."
+      },
+      {
+        "id": "carrefour",
+        "title": "Carrefour Brand Verification",
+        "tags": ["Python", "NLP", "AI", "Geniathon"],
+        "description": "Sophisticated trademark ownership verification system using AI to analyze and validate brand-owner relationships. Confidence score computation and parallel processing."
+      },
+      {
+        "id": "sportech",
+        "title": "Sportech",
+        "tags": ["Data Science", "ML", "Sport Analytics"],
+        "description": "AI solution to optimize athletic performance, prevent injuries and facilitate recruitment. Decision dashboards and data-science-based predictions."
+      },
+      {
+        "id": "getstaty",
+        "title": "GetStaty",
+        "tags": ["API", "Python", "Football Analytics"],
+        "description": "Dynamic match and player analysis for football leagues. Sports API integration, top performer rankings and detailed statistics."
+      },
+      {
+        "id": "novarena",
+        "title": "Novarena",
+        "tags": ["SaaS", "Cloud", "Stadium Management"],
+        "description": "Integrated intelligent management suite for modern stadiums: performance & analytics, fan management, talent management, and business & sponsoring. Multi-region cloud-native architecture."
+      }
+    ]
+  },
+  "services": {
+    "title": "AI Services for Sports Business",
+    "items": [
+      { "icon": "🏃", "title": "Athlete Performance", "desc": "Predictive performance analysis and injury prevention" },
+      { "icon": "🏟️", "title": "Event Management", "desc": "Operational optimization of sports events" },
+      { "icon": "🎯", "title": "Fan Marketing", "desc": "Personalized engagement and data-driven marketing" },
+      { "icon": "💰", "title": "Dynamic Pricing", "desc": "Ticketing strategies and revenue optimization" },
+      { "icon": "🔍", "title": "AI Scouting", "desc": "AI-powered talent recruitment and assessment" },
+      { "icon": "📊", "title": "Business Intelligence", "desc": "Dashboards and KPIs for strategic decisions" }
+    ]
+  },
+  "offwork": {
+    "title": "Off Work",
+    "items": ["Chess ♟️", "Football ⚽", "Skiing 🎿", "Boxing 🥊", "History 📚", "Cinema 🎬"]
+  },
+  "languages": {
+    "title": "Languages",
+    "items": [
+      { "lang": "French", "level": "Native", "pct": 100 },
+      { "lang": "English", "level": "Bilingual", "pct": 95 },
+      { "lang": "Spanish", "level": "Intermediate", "pct": 55 }
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's work together",
+    "email": "victorienalleg@gmail.com",
+    "linkedin": "linkedin.com/in/victorien-alleg",
+    "github": "github.com/victorienalleg"
+  }
+}
