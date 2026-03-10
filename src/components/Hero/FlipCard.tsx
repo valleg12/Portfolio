@@ -16,7 +16,7 @@ export default function FlipCard({ front, back, className = '' }: FlipCardProps)
     const rect = ref.current.getBoundingClientRect()
     const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)
     const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)
-    setTilt({ x: -dy * 7, y: dx * 7 })
+    setTilt({ x: -dy * 8, y: dx * 8 })
   }, [flipped])
 
   const handleMouseLeave = useCallback(() => {

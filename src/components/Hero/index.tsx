@@ -28,8 +28,8 @@ function useTypewriter(items: string[]) {
 function CardShell({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`w-full h-full rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-md
-        hover:border-primary/40 transition-colors duration-300 overflow-hidden ${className}`}
+      className={`w-full h-full rounded-2xl border border-primary/30 bg-white/[0.03] backdrop-blur-md
+        hover:border-accent/50 transition-colors duration-300 overflow-hidden ${className}`}
     >
       {children}
     </div>
@@ -193,7 +193,7 @@ export default function Hero() {
     >
       <div className="w-full max-w-3xl">
         {/* Two cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" style={{ height: '520px' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8" style={{ height: '520px' }}>
           <FlipCard front={leftFront} back={leftBack} />
           <FlipCard front={rightFront} back={rightBack} />
         </div>
