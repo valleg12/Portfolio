@@ -24,7 +24,7 @@ const TECH_ITEMS: TechItem[] = [
   { name: 'LangChain',    icon: TbBrain,            color: '#8b5cf6', category: 'IA',       level: 75 },
   { name: 'Power BI',     icon: TbLayoutDashboard,  color: '#f97316', category: 'Business', level: 85 },
   { name: 'Tableau',      icon: TbChartBar,         color: '#0ea5e9', category: 'Business', level: 80 },
-  { name: 'Excel',        icon: TbFileSpreadsheet,  color: '#22c55e', category: 'Business', level: 90 },
+  { name: 'Excel/Sheets', icon: TbFileSpreadsheet,  color: '#22c55e', category: 'Business', level: 90 },
   { name: 'Azure',        icon: TbBrandAzure,       color: '#0078d4', category: 'Tools',    level: 60 },
   { name: 'Git',          icon: SiGit,              color: '#f97316', category: 'Tools',    level: 75 },
   { name: 'Notion',       icon: SiNotion,           color: '#e2e8f0', category: 'Tools',    level: 95 },
