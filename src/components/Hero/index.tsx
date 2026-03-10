@@ -11,15 +11,19 @@ function useTypewriter(items: string[]) {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
-    const id = setInterval(() => {
+    let timeoutId: ReturnType<typeof setTimeout>
+    const intervalId = setInterval(() => {
       setVisible(false)
-      setTimeout(() => {
+      timeoutId = setTimeout(() => {
         setIndex((i) => (i + 1) % items.length)
         setVisible(true)
       }, 400)
     }, 3000)
-    return () => clearInterval(id)
-  }, [items.length])
+    return () => {
+      clearInterval(intervalId)
+      clearTimeout(timeoutId)
+    }
+  }, [items])
 
   return { text: items[index], visible }
 }
@@ -40,7 +44,7 @@ function CardShell({ children, className = '' }: { children: React.ReactNode; cl
 function FlipHint({ label }: { label: string }) {
   return (
     <div className="absolute bottom-4 right-4 flex items-center gap-1.5 text-muted/60 text-xs font-body">
-      <RotateCcw size={12} />
+      <RotateCcw size={12} aria-hidden="true" />
       {label}
     </div>
   )
@@ -120,7 +124,7 @@ export default function Hero() {
             {t('hero.name')}
           </h2>
           <div className="h-px w-10 bg-primary mb-6" />
-          <p className="font-body text-muted text-sm mb-2">What I do</p>
+          <p className="font-body text-muted text-sm mb-2">{t('hero.whatIDo')}</p>
           <p
             className="font-display font-semibold text-accent text-xl transition-opacity duration-[400ms]"
             style={{ opacity: roleVisible ? 1 : 0 }}

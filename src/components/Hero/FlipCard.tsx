@@ -29,9 +29,13 @@ export default function FlipCard({ front, back, className = '' }: FlipCardProps)
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={flipped}
       style={{ perspective: '1200px' }}
       className={`cursor-pointer select-none ${className}`}
       onClick={() => setFlipped((f) => !f)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setFlipped((f) => !f) }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       ref={ref}
