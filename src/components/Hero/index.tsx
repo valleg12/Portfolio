@@ -60,7 +60,7 @@ export default function Hero() {
     <CardShell>
       <div className="relative w-full h-full">
         <img
-          src="/PHOTO.jpg"
+          src={`${import.meta.env.BASE_URL}PHOTO.jpg`}
           alt="Victorien Alleg"
           className="w-full h-full object-cover object-top"
         />
