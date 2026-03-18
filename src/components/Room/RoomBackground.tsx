@@ -41,7 +41,7 @@ export default function RoomBackground() {
           style={{
             position: 'absolute',
             inset: '-5%',
-            backgroundImage: `url(${BASE}PHOTO.jpg)`,
+            backgroundImage: `url(${BASE}ROOM.jpg)`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             transform: `translate(0px, 0px) scale(${layer.scale})`,
