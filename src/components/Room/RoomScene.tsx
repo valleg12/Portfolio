@@ -9,13 +9,13 @@ import HotspotMesh from './HotspotMesh'
 import type { FrameId } from '../../context/RoomContext'
 
 // ── CALIBRATION ─────────────────────────────────────────────────────────────
-// camera
-const CAM_POS: [number, number, number]    = [-2,   1.8,  4]
-const CAM_TARGET: [number, number, number] = [ 0,   0.1,  0]
+// camera — fov=62, tilt slightly down to hide open-ceiling black zone
+const CAM_POS: [number, number, number]    = [-0.8, 1.0,  5.0]
+const CAM_TARGET: [number, number, number] = [ 0.0,  0.2, 0  ]
 
-// window plane (ROOM.png cropped to Bernabéu view)
-const WIN_POS: [number, number, number]    = [-0.3, 0.4, -3.9]
-const WIN_SCALE: [number, number, number]  = [3.8,  3.0,  1  ]
+// window plane — bernabeu.png, 2:1 aspect
+const WIN_POS: [number, number, number]    = [-0.4, 0.1, -3.9]
+const WIN_SCALE: [number, number, number]  = [4.0,  2.0,  1  ]
 
 // hotspot zones: [x, y, z] center + [w, h, d] size — all in world units (scale=5)
 // These are first-pass estimates; calibrate visually after scene loads.
@@ -77,16 +77,32 @@ export default function RoomScene({ onZoneClick }: Props) {
 
   return (
     <>
-      <PerspectiveCamera ref={camRef} makeDefault position={CAM_POS} fov={72} />
+      <PerspectiveCamera ref={camRef} makeDefault position={CAM_POS} fov={62} />
 
       {/* Lighting */}
-      <ambientLight intensity={0.55} />
-      <pointLight position={[-3.5, 2.5, 2.5]} intensity={18} color="#ffa060" decay={2} />
-      <pointLight position={[-0.3, 1.5, -3.5]} intensity={12} color="#aaccff" decay={2} />
+      <ambientLight intensity={2.5} />
+      <pointLight position={[-3.5, 2.5, 2.5]} intensity={40} color="#ffa060" decay={2} />
+      <pointLight position={[-0.3, 1.5, -3.5]} intensity={28} color="#aaccff" decay={2} />
+      <pointLight position={[ 3.0, 2.0,  1.0]} intensity={20} color="#fff8f0" decay={2} />
 
       {/* Models */}
       <RoomModel />
       <BustModel />
+
+      {/* Skybox — large dark box surrounding the entire scene.
+          BackSide renders interior faces, filling any gaps in the room model
+          (open ceiling, side gaps) with the same deep-brown background color. */}
+      <mesh>
+        <boxGeometry args={[40, 20, 40]} />
+        <meshBasicMaterial color="#0a0806" side={THREE.BackSide} />
+      </mesh>
+
+      {/* Occluder: hide Meshy watermark star embedded in floor geometry.
+          renderOrder=2 + depthTest=false ensures it paints over the star regardless of depth. */}
+      <mesh position={[2.8, -2.2, 1.8]} rotation={[-Math.PI / 2, 0, 0]} renderOrder={2}>
+        <planeGeometry args={[4.0, 4.0]} />
+        <meshBasicMaterial color="#0c0a12" depthTest={false} />
+      </mesh>
 
       {/* Window background + glass */}
       <WindowPlane position={WIN_POS} scale={WIN_SCALE} />

@@ -63,8 +63,8 @@ export default function Room() {
       >
         <Canvas
           gl={{ alpha: false, antialias: true }}
-          style={{ background: '#050510' }}
-          camera={{ position: [-2, 1.8, 4], fov: 72 }}
+          style={{ background: '#0a0806' }}
+          camera={{ position: [-0.8, 1.0, 5.0], fov: 62 }}
         >
           <Suspense fallback={null}>
             {activeFrame === 'home' && <RoomScene onZoneClick={handleZoneClick} />}
