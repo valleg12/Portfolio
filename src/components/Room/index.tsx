@@ -13,7 +13,7 @@ import FrameOverlay from './FrameOverlay'
 const ZONES: HotspotZoneDef[] = [
   {
     frame: 'neon',
-    key: 'neon',
+    i18nKey: 'neon',
     label: 'Skills',
     x: 7, y: 40, w: 8, h: 55,
     color: '#6366f1',
@@ -21,7 +21,7 @@ const ZONES: HotspotZoneDef[] = [
   },
   {
     frame: 'bernabeu',
-    key: 'bernabeu',
+    i18nKey: 'bernabeu',
     label: 'Sport Projects',
     x: 41, y: 50, w: 33, h: 85,
     color: '#3b82f6',
@@ -29,7 +29,7 @@ const ZONES: HotspotZoneDef[] = [
   },
   {
     frame: 'lab',
-    key: 'lab',
+    i18nKey: 'lab',
     label: 'Lab',
     x: 63, y: 35, w: 8, h: 40,
     color: '#22c55e',
@@ -37,7 +37,7 @@ const ZONES: HotspotZoneDef[] = [
   },
   {
     frame: 'buste',
-    key: 'buste',
+    i18nKey: 'buste',
     label: 'About',
     x: 68, y: 62, w: 5, h: 14,
     color: '#f59e0b',
@@ -45,7 +45,7 @@ const ZONES: HotspotZoneDef[] = [
   },
   {
     frame: 'iMac',
-    key: 'iMac',
+    i18nKey: 'iMac',
     label: 'Tech Projects',
     x: 77, y: 47, w: 11, h: 25,
     color: '#22d3ee',
@@ -53,7 +53,7 @@ const ZONES: HotspotZoneDef[] = [
   },
   {
     frame: 'bibliotheque',
-    key: 'bibliotheque',
+    i18nKey: 'bibliotheque',
     label: 'Education',
     x: 91, y: 42, w: 8, h: 55,
     color: '#f97316',
@@ -61,7 +61,7 @@ const ZONES: HotspotZoneDef[] = [
   },
   {
     frame: 'hobbies',
-    key: 'hobbies',
+    i18nKey: 'hobbies',
     label: 'Hobbies',
     x: 84, y: 72, w: 10, h: 18,
     color: '#f43f5e',
@@ -121,7 +121,7 @@ export default function Room() {
         <HotspotZone
           key={zone.frame}
           {...zone}
-          label={labels[zone.key] ?? zone.label}
+          label={labels[zone.i18nKey] ?? zone.label}
           onClick={() => handleHotspotClick(zone)}
         />
       ))}

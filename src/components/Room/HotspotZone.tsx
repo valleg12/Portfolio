@@ -3,7 +3,7 @@ import type { FrameId } from '../../context/RoomContext'
 
 export interface HotspotZoneDef {
   frame: FrameId
-  key: string
+  i18nKey: string
   label: string
   // Position: center of zone as % of viewport
   x: number
