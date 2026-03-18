@@ -102,5 +102,31 @@
     "email": "victorienalleg@gmail.com",
     "linkedin": "linkedin.com/in/victorien-alleg",
     "github": "github.com/victorienalleg"
+  },
+  "lab": {
+    "title": "Lab",
+    "subtitle": "Ce que je construis",
+    "items": [
+      { "icon": "🧠", "title": "Architecte IA", "desc": "Conception et déploiement d'agents IA autonomes, pipelines LLM et intégrations API." },
+      { "icon": "📊", "title": "Business & Data Analyst", "desc": "Transformer la donnée en décisions stratégiques — dashboards, KPIs, Power BI, Tableau." },
+      { "icon": "⚽", "title": "Sport Analytics", "desc": "Performance athlètes, prévention blessures, recrutement IA et engagement fans." },
+      { "icon": "🤖", "title": "Automatisation IA", "desc": "Automatiser vos workflows — emails, documents, CRM, agents de planification." },
+      { "icon": "🔮", "title": "Modélisation Prédictive", "desc": "Prévisions, systèmes de recommandation et modèles de classification sur mesure." },
+      { "icon": "🗺️", "title": "Stratégie IA", "desc": "Roadmaps, audits IA et conseil en transformation digitale pour startups et PME." }
+    ]
+  },
+  "room": {
+    "back": "Retour",
+    "cv": "Télécharger le CV",
+    "contact": "Me contacter",
+    "hotspot": {
+      "buste": "À propos",
+      "iMac": "Projets tech",
+      "bernabeu": "Projets sport",
+      "neon": "Compétences",
+      "bibliotheque": "Formation",
+      "lab": "Lab",
+      "hobbies": "Loisirs"
+    }
   }
 }

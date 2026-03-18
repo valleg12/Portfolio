@@ -8,8 +8,8 @@ i18n.use(initReactI18next).init({
     fr: { translation: fr },
     en: { translation: en },
   },
-  lng: 'fr',
-  fallbackLng: 'fr',
+  lng: 'en',
+  fallbackLng: 'en',
   interpolation: { escapeValue: false },
 })
 
