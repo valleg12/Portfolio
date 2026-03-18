@@ -58,13 +58,7 @@ export default function FrameOverlay({ onBack }: FrameOverlayProps) {
   }, { dependencies: [activeFrame] })
 
   function handleBack() {
-    if (!overlayRef.current) { onBack(); return }
-    gsap.to(overlayRef.current, {
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.in',
-      onComplete: onBack,
-    })
+    onBack()
   }
 
   return (
