@@ -3,8 +3,6 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useRoom } from '../../context/RoomContext'
 import type { FrameId } from '../../context/RoomContext'
-
-const BASE = import.meta.env.BASE_URL
 import BackButton from './BackButton'
 import FrameBuste from './frames/FrameBuste'
 import FrameIMac from './frames/FrameIMac'
@@ -13,6 +11,8 @@ import FrameNeon from './frames/FrameNeon'
 import FrameBibliotheque from './frames/FrameBibliotheque'
 import FrameLab from './frames/FrameLab'
 import FrameHobbies from './frames/FrameHobbies'
+
+const BASE = import.meta.env.BASE_URL
 
 const FRAME_COMPONENTS: Record<Exclude<FrameId, 'home'>, ReactElement> = {
   buste:        <FrameBuste />,
@@ -24,33 +24,52 @@ const FRAME_COMPONENTS: Record<Exclude<FrameId, 'home'>, ReactElement> = {
   hobbies:      <FrameHobbies />,
 }
 
-export default function FrameOverlay() {
-  const { activeFrame, goHome } = useRoom()
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const isHome = activeFrame === 'home'
+interface FrameOverlayProps {
+  onBack: () => void
+}
 
-  // Escape key → go home
+export default function FrameOverlay({ onBack }: FrameOverlayProps) {
+  const { activeFrame } = useRoom()
+  const overlayRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  // Escape key
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') goHome() }
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') handleBack() }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [goHome])
+  }, [])
 
-  // Animate in when frame changes (not on home)
+  // Animate in
   useGSAP(() => {
-    if (!overlayRef.current || isHome) return
+    if (!overlayRef.current) return
     gsap.fromTo(
       overlayRef.current,
-      { opacity: 0, scale: 0.96 },
-      { opacity: 1, scale: 1, duration: 0.45, ease: 'power2.out' }
+      { opacity: 0 },
+      { opacity: 1, duration: 0.35, ease: 'power2.out' }
     )
+    if (contentRef.current) {
+      gsap.fromTo(
+        contentRef.current,
+        { opacity: 0, y: 20, scale: 0.97 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'power2.out', delay: 0.1 }
+      )
+    }
   }, { dependencies: [activeFrame] })
 
-  if (isHome) return null
+  function handleBack() {
+    if (!overlayRef.current) { onBack(); return }
+    gsap.to(overlayRef.current, {
+      opacity: 0,
+      duration: 0.3,
+      ease: 'power2.in',
+      onComplete: onBack,
+    })
+  }
 
   return (
     <>
-      <BackButton />
+      <BackButton onBack={handleBack} />
       <div
         ref={overlayRef}
         style={{
@@ -71,12 +90,13 @@ export default function FrameOverlay() {
           backgroundImage: `url(${BASE}ROOM.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'blur(18px) brightness(0.25)',
-          transform: 'scale(1.05)',
+          filter: 'blur(16px) brightness(0.35)',
+          transform: 'scale(1.04)',
           zIndex: -1,
         }} />
-        {/* Content */}
-        {FRAME_COMPONENTS[activeFrame as Exclude<FrameId, 'home'>]}
+        <div ref={contentRef} style={{ width: '100%', maxWidth: 800, position: 'relative' }}>
+          {FRAME_COMPONENTS[activeFrame as Exclude<FrameId, 'home'>]}
+        </div>
       </div>
     </>
   )
