@@ -74,7 +74,7 @@ export default function FrameBibliotheque() {
                     {title}
                   </p>
                   <p style={{ color: '#9d8f7a', fontSize: '0.75rem', fontFamily: 'var(--font-body)', marginTop: 2 }}>
-                    {place} · {book.dates}
+                    {book.placeKey ? place : `${place} · ${book.dates}`}
                   </p>
                 </div>
                 <span style={{ color: book.color, fontSize: '0.85rem', flexShrink: 0, transition: 'transform 0.3s', display: 'block', transform: open === i ? 'rotate(90deg)' : 'rotate(0deg)' }}>›</span>
