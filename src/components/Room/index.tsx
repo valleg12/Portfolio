@@ -3,6 +3,7 @@ import { useRoom } from '../../context/RoomContext'
 import type { FrameId } from '../../context/RoomContext'
 import RoomBackground from './RoomBackground'
 import Hotspot from './Hotspot'
+import FrameOverlay from './FrameOverlay'
 
 interface HotspotDef {
   frame: FrameId
@@ -38,6 +39,7 @@ export default function Room() {
           y={h.y}
         />
       ))}
+      <FrameOverlay />
     </div>
   )
 }
