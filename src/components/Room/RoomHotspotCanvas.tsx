@@ -18,14 +18,17 @@ const ZONES: Array<{
   size: [number, number, number]
   labelOffset: [number, number, number]
 }> = [
-  { frame: 'neon',         color: '#6366f1', position: [-4.5, 0.3,  0], size: [0.5, 3.6, 0.4], labelOffset: [0,  2.0, 0] },
-  { frame: 'bernabeu',     color: '#3b82f6', position: [-0.5, 0.2,  0], size: [3.2, 2.8, 0.2], labelOffset: [0,  1.6, 0] },
-  { frame: 'lab',          color: '#22c55e', position: [ 1.6, 0.6,  0], size: [0.8, 2.4, 0.2], labelOffset: [0,  1.4, 0] },
-  { frame: 'buste',        color: '#f59e0b', position: [ 2.2, -0.2, 0], size: [0.7, 1.2, 0.4], labelOffset: [0,  0.7, 0] },
-  { frame: 'iMac',         color: '#22d3ee', position: [ 3.0, 0.1,  0], size: [1.2, 1.4, 0.3], labelOffset: [0,  0.8, 0] },
-  { frame: 'bibliotheque', color: '#f97316', position: [ 4.5, 0.3,  0], size: [0.8, 3.2, 0.4], labelOffset: [0,  1.8, 0] },
-  { frame: 'hobbies',      color: '#f43f5e', position: [ 3.5, -1.0, 0], size: [1.2, 0.7, 0.4], labelOffset: [0,  0.5, 0] },
+  { frame: 'neon',         color: '#6366f1', position: [-3.74,  0.40, 0], size: [0.75, 4.61, 0.4], labelOffset: [0, 2.605, 0] },
+  { frame: 'bernabeu',     color: '#3b82f6', position: [-0.84,  0.00, 0], size: [3.09, 6.87, 0.2], labelOffset: [0, 3.735, 0] },
+  { frame: 'lab',          color: '#22c55e', position: [ 1.22,  1.21, 0], size: [0.75, 3.39, 0.2], labelOffset: [0, 1.995, 0] },
+  { frame: 'buste',        color: '#f59e0b', position: [ 2.48, -1.10, 0], size: [0.60, 1.10, 0.4], labelOffset: [0, 0.85,  0] },
+  { frame: 'iMac',         color: '#22d3ee', position: [ 3.55, -0.86, 0], size: [1.31, 1.27, 0.3], labelOffset: [0, 0.94,  0] },
+  { frame: 'bibliotheque', color: '#f97316', position: [ 3.83,  0.69, 0], size: [0.75, 4.61, 0.4], labelOffset: [0, 2.605, 0] },
+  { frame: 'hobbies',      color: '#f43f5e', position: [ 3.18, -1.78, 0], size: [0.94, 1.62, 0.4], labelOffset: [0, 1.110, 0] },
 ]
+
+// Temporary debug flag — set to true to show all zone outlines without hover
+const DEBUG_SHOW_ALL = false
 
 // ─── Single HotspotZone ───────────────────────────────────────────────────────
 interface ZoneProps {
@@ -66,8 +69,8 @@ function HotspotZone({ frame, color, position, size, labelOffset, onClick }: Zon
         <meshBasicMaterial transparent opacity={0} />
       </mesh>
 
-      {/* Neon wire cage — only on hover */}
-      {hovered && (
+      {/* Neon wire cage — on hover, or always when DEBUG_SHOW_ALL */}
+      {(hovered || DEBUG_SHOW_ALL) && (
         <>
           <lineSegments geometry={edges}>
             <lineBasicMaterial color={color} transparent opacity={0.95} />
