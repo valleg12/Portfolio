@@ -1,45 +1,46 @@
-import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Github, Linkedin } from 'lucide-react'
+import { useRoom, FrameId } from '../../context/RoomContext'
 
-const NAV_LINKS = ['about', 'skills', 'projects', 'services', 'contact'] as const
+type NavItem = {
+  key: 'about' | 'skills' | 'projects' | 'services' | 'contact'
+  frame: FrameId
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { key: 'about',    frame: 'buste' },
+  { key: 'skills',   frame: 'neon'  },
+  { key: 'projects', frame: 'iMac'  },
+  { key: 'services', frame: 'lab'   },
+  { key: 'contact',  frame: 'buste' },
+]
 
 export default function Navbar() {
   const { t, i18n } = useTranslation()
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const { goTo, goHome } = useRoom()
 
   const toggleLang = () =>
     i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr')
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled ? 'bg-bg/80 backdrop-blur-md border-b border-white/5' : ''
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a
-          href="#hero"
-          className="font-display font-semibold text-white tracking-tight hover:text-primary transition-colors"
+        <button
+          onClick={goHome}
+          className="font-display font-semibold text-white tracking-tight hover:text-primary transition-colors bg-transparent border-none p-0 cursor-pointer"
         >
           VA<span className="text-primary">.</span>
-        </a>
+        </button>
 
         <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((key) => (
-            <a
+          {NAV_ITEMS.map(({ key, frame }) => (
+            <button
               key={key}
-              href={`#${key}`}
-              className="font-body text-sm text-muted hover:text-white transition-colors"
+              onClick={() => goTo(frame)}
+              className="font-body text-sm text-muted hover:text-white transition-colors bg-transparent border-none p-0 cursor-pointer"
             >
               {t(`nav.${key}`)}
-            </a>
+            </button>
           ))}
         </div>
 
