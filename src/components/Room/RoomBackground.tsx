@@ -2,54 +2,37 @@ import { useEffect, useRef } from 'react'
 
 const BASE = import.meta.env.BASE_URL
 
-const LAYERS = [
-  { id: 'far',  strength: 0.008, scale: 1.06 },
-  { id: 'mid',  strength: 0.018, scale: 1.08 },
-  { id: 'near', strength: 0.030, scale: 1.10 },
-]
-
 export default function RoomBackground() {
-  const refs = useRef<(HTMLDivElement | null)[]>([])
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      if (!ref.current) return
       const cx = window.innerWidth / 2
       const cy = window.innerHeight / 2
-      const dx = e.clientX - cx
-      const dy = e.clientY - cy
-      LAYERS.forEach((layer, i) => {
-        const el = refs.current[i]
-        if (!el) return
-        el.style.transform = `translate(${-dx * layer.strength}px, ${-dy * layer.strength}px) scale(${layer.scale})`
-      })
+      const dx = (e.clientX - cx) * 0.006
+      const dy = (e.clientY - cy) * 0.006
+      ref.current.style.transform = `translate(${-dx}px, ${-dy}px) scale(1.015)`
     }
     window.addEventListener('mousemove', handleMouseMove)
-    // Set initial scale
-    LAYERS.forEach((layer, i) => {
-      const el = refs.current[i]
-      if (el) el.style.transform = `translate(0px, 0px) scale(${layer.scale})`
-    })
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-      {LAYERS.map((layer, i) => (
-        <div
-          key={layer.id}
-          ref={el => { refs.current[i] = el }}
-          style={{
-            position: 'absolute',
-            inset: '-5%',
-            backgroundImage: `url(${BASE}ROOM.png)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transform: `translate(0px, 0px) scale(${layer.scale})`,
-            transition: 'transform 0.12s ease-out',
-            willChange: 'transform',
-          }}
-        />
-      ))}
+      <div
+        ref={ref}
+        style={{
+          position: 'absolute',
+          inset: '-2%',
+          backgroundImage: `url(${BASE}ROOM.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          transform: 'translate(0px, 0px) scale(1.015)',
+          transition: 'transform 0.15s ease-out',
+          willChange: 'transform',
+        }}
+      />
     </div>
   )
 }
