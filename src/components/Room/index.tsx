@@ -1,41 +1,38 @@
-import { useRef, useEffect, Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { useRoom } from '../../context/RoomContext'
 import type { FrameId } from '../../context/RoomContext'
-import RoomScene from './RoomScene'
+import RoomBackground from './RoomBackground'
+import RoomHotspotCanvas from './RoomHotspotCanvas'
 import FrameOverlay from './FrameOverlay'
 
-// Viewport % position of each zone center (as seen from camera).
-// Adjust these after visual calibration.
 const ZONE_CENTERS: Record<Exclude<FrameId, 'home'>, { x: number; y: number }> = {
-  neon:         { x:  5, y: 40 },  // left wall, edge of viewport
-  bernabeu:     { x: 32, y: 42 },  // window center
-  lab:          { x: 52, y: 22 },  // back wall upper right of window
-  buste:        { x: 57, y: 37 },  // bust sculpture
-  iMac:         { x: 50, y: 43 },  // iMac monitor on desk
-  bibliotheque: { x: 70, y: 38 },  // bookshelf right side
-  hobbies:      { x: 55, y: 55 },  // chess/desk foreground
+  neon:         { x: 7,  y: 40 },
+  bernabeu:     { x: 41, y: 50 },
+  lab:          { x: 63, y: 35 },
+  buste:        { x: 68, y: 62 },
+  iMac:         { x: 77, y: 47 },
+  bibliotheque: { x: 91, y: 42 },
+  hobbies:      { x: 84, y: 72 },
 }
 
 export default function Room() {
   const { activeFrame, goTo, goHome } = useRoom()
-  const sceneRef  = useRef<HTMLDivElement>(null)
-  const zoomOrigin = useRef<{ x: number; y: number } | null>(null)
-  const didZoom = useRef(false)
+  const sceneRef = useRef<HTMLDivElement>(null)
+  const [zoomOrigin, setZoomOrigin] = useState<{ x: number; y: number } | null>(null)
 
-  // Zoom-out when returning home
   useEffect(() => {
-    if (activeFrame === 'home' && zoomOrigin.current && sceneRef.current) {
+    if (activeFrame === 'home' && zoomOrigin && sceneRef.current) {
       gsap.fromTo(
         sceneRef.current,
-        { scale: 4, opacity: 0, transformOrigin: `${zoomOrigin.current.x}% ${zoomOrigin.current.y}%` },
-        { scale: 1, opacity: 1, duration: 0.55, ease: 'power2.out',
-          onComplete: () => { zoomOrigin.current = null; didZoom.current = false } }
+        { scale: 4, opacity: 0, transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%` },
+        {
+          scale: 1, opacity: 1, duration: 0.55, ease: 'power2.out',
+          onComplete: () => setZoomOrigin(null),
+        }
       )
-    } else if (activeFrame === 'home' && !zoomOrigin.current && didZoom.current && sceneRef.current) {
-      // Only clear GSAP props after a real zoom cycle, not on initial mount
-      gsap.set(sceneRef.current, { clearProps: 'transform,opacity' })
+    } else if (activeFrame === 'home' && !zoomOrigin && sceneRef.current) {
+      gsap.set(sceneRef.current, { scale: 1, opacity: 1, transformOrigin: 'center center' })
     }
   }, [activeFrame])
 
@@ -43,8 +40,7 @@ export default function Room() {
     if (!sceneRef.current) return
     const center = ZONE_CENTERS[frame as Exclude<FrameId, 'home'>]
     if (!center) return
-    zoomOrigin.current = center
-    didZoom.current = true
+    setZoomOrigin(center)
     gsap.to(sceneRef.current, {
       scale: 5,
       transformOrigin: `${center.x}% ${center.y}%`,
@@ -57,21 +53,12 @@ export default function Room() {
 
   return (
     <>
-      <div
-        ref={sceneRef}
-        style={{ position: 'fixed', inset: 0, zIndex: 10 }}
-      >
-        <Canvas
-          gl={{ alpha: false, antialias: true }}
-          style={{ background: '#0a0806' }}
-          camera={{ position: [-0.8, 1.0, 5.0], fov: 62 }}
-        >
-          <Suspense fallback={null}>
-            {activeFrame === 'home' && <RoomScene onZoneClick={handleZoneClick} />}
-          </Suspense>
-        </Canvas>
+      <div style={{ position: 'fixed', inset: 0, zIndex: 10 }}>
+        <div ref={sceneRef} style={{ position: 'absolute', inset: 0 }}>
+          <RoomBackground />
+          {activeFrame === 'home' && <RoomHotspotCanvas onClick={handleZoneClick} />}
+        </div>
       </div>
-
       {activeFrame !== 'home' && <FrameOverlay onBack={goHome} />}
     </>
   )
