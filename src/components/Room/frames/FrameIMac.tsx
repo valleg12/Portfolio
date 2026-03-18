@@ -1,38 +1,70 @@
 import { useTranslation } from 'react-i18next'
+import SpotlightCard from './SpotlightCard'
 
 const TECH_IDS = ['jungle-gather', 'carrefour']
 
+const EMOJI_MAP: Record<string, string> = {
+  'jungle-gather': '🌿',
+  'carrefour': '🔍',
+}
+
+const COLOR_MAP: Record<string, string> = {
+  'jungle-gather': '#22d3ee',
+  'carrefour': '#06b6d4',
+}
+
 export default function FrameIMac() {
   const { t } = useTranslation()
-  const projects = (t('projects.items', { returnObjects: true }) as any[]).filter((p: any) => TECH_IDS.includes(p.id))
+  const allProjects = t('projects.items', { returnObjects: true }) as Array<{ id: string; title: string; tags: string[]; description: string }>
+  const projects = allProjects.filter(p => TECH_IDS.includes(p.id))
 
   return (
-    <div style={{ maxWidth: 700, width: '100%' }}>
-      <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-        <p style={{ color: '#22d3ee', fontFamily: 'var(--font-body)', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 8 }}>
+    <div style={{ width: '100%', maxWidth: 680 }}>
+      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <p style={{ color: '#22d3ee', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
           💻 Tech · Code · Build
         </p>
-        <h2 style={{ color: 'white', fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 8 }}>Tech Projects</h2>
-        <div style={{ height: 1, width: 80, background: 'linear-gradient(90deg, transparent, #22d3ee, transparent)', margin: '0 auto' }} />
+        <h2 style={{ color: 'white', fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700 }}>Tech Projects</h2>
       </div>
-      <div style={{ display: 'grid', gap: '1rem' }}>
-        {projects.map((p: any) => (
-          <div key={p.id} style={{
-            padding: '1.5rem',
-            borderRadius: 16,
-            border: '1px solid rgba(34,211,238,0.18)',
-            background: 'rgba(5,20,30,0.6)',
-            backdropFilter: 'blur(12px)',
-          }}>
-            <h3 style={{ color: 'white', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.625rem' }}>{p.title}</h3>
-            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: '0.75rem' }}>
-              {p.tags.map((tag: string) => (
-                <span key={tag} style={{ fontSize: 10, padding: '2px 10px', borderRadius: 20, border: '1px solid rgba(34,211,238,0.28)', color: '#67e8f9', fontFamily: 'var(--font-body)', background: 'rgba(34,211,238,0.07)', letterSpacing: '0.04em' }}>{tag}</span>
-              ))}
-            </div>
-            <p style={{ color: '#94a3b8', fontFamily: 'var(--font-body)', fontSize: '0.85rem', lineHeight: 1.65 }}>{p.description}</p>
-          </div>
-        ))}
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        {projects.map(project => {
+          const color = COLOR_MAP[project.id] || '#22d3ee'
+          const emoji = EMOJI_MAP[project.id] || '💻'
+          return (
+            <SpotlightCard
+              key={project.id}
+              color={color}
+              style={{
+                background: 'rgba(0,15,20,0.75)',
+                border: `1px solid ${color}25`,
+                borderRadius: 16,
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                padding: '1.5rem',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                <span style={{ fontSize: '2rem', lineHeight: 1, flexShrink: 0 }}>{emoji}</span>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ color: 'white', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                    {project.title}
+                  </h3>
+                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+                    {project.tags.map(tag => (
+                      <span key={tag} style={{ fontSize: '0.7rem', padding: '2px 10px', borderRadius: 20, border: `1px solid ${color}40`, color: color, fontFamily: 'var(--font-body)', letterSpacing: '0.04em' }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p style={{ color: '#94a3b8', fontSize: '0.85rem', lineHeight: 1.7, fontFamily: 'var(--font-body)' }}>
+                    {project.description}
+                  </p>
+                </div>
+              </div>
+            </SpotlightCard>
+          )
+        })}
       </div>
     </div>
   )
