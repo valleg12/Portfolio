@@ -39,3 +39,4 @@ next-env.d.ts
 # Large 3D assets (stored locally, not in git)
 public/desk.glb
 public/bust.glb
+Meshy_AI_Desk_0318135816_texture.glb
