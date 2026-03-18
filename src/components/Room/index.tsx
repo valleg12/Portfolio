@@ -12,14 +12,15 @@ interface HotspotDef {
   y: number
 }
 
+// Positions calibrated for 2806×1536 image on a 1920×1080 viewport (background-size: cover)
 const HOTSPOTS: HotspotDef[] = [
-  { frame: 'buste',        key: 'buste',        x: 62, y: 68 },
-  { frame: 'iMac',         key: 'iMac',         x: 72, y: 52 },
-  { frame: 'bernabeu',     key: 'bernabeu',     x: 48, y: 40 },
-  { frame: 'neon',         key: 'neon',         x: 13, y: 42 },
-  { frame: 'bibliotheque', key: 'bibliotheque', x: 88, y: 45 },
-  { frame: 'lab',          key: 'lab',          x: 72, y: 35 },
-  { frame: 'hobbies',      key: 'hobbies',      x: 80, y: 80 },
+  { frame: 'neon',         key: 'neon',         x: 9,  y: 33 }, // neon sign left wall
+  { frame: 'bernabeu',     key: 'bernabeu',     x: 44, y: 36 }, // window / stadium
+  { frame: 'lab',          key: 'lab',          x: 63, y: 26 }, // whiteboard area (wall right of window)
+  { frame: 'buste',        key: 'buste',        x: 68, y: 60 }, // bust sculpture on desk
+  { frame: 'iMac',         key: 'iMac',         x: 76, y: 46 }, // iMac screen
+  { frame: 'bibliotheque', key: 'bibliotheque', x: 90, y: 38 }, // bookshelf far right
+  { frame: 'hobbies',      key: 'hobbies',      x: 84, y: 70 }, // chess set + ball
 ]
 
 export default function Room() {
