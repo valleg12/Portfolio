@@ -17,7 +17,7 @@ const NAV_ITEMS: NavItem[] = [
 
 export default function Navbar() {
   const { t, i18n } = useTranslation()
-  const { goTo, goHome } = useRoom()
+  const { goTo, goHome, activeFrame } = useRoom()
 
   const toggleLang = () =>
     i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr')
@@ -32,17 +32,19 @@ export default function Navbar() {
           VA<span className="text-primary">.</span>
         </button>
 
-        <div className="hidden md:flex items-center gap-8">
-          {NAV_ITEMS.map(({ key, frame }) => (
-            <button
-              key={key}
-              onClick={() => goTo(frame)}
-              className="font-body text-sm text-muted hover:text-white transition-colors bg-transparent border-none p-0 cursor-pointer"
-            >
-              {t(`nav.${key}`)}
-            </button>
-          ))}
-        </div>
+        {activeFrame === 'home' && (
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_ITEMS.map(({ key, frame }) => (
+              <button
+                key={key}
+                onClick={() => goTo(frame)}
+                className="font-body text-sm text-muted hover:text-white transition-colors bg-transparent border-none p-0 cursor-pointer"
+              >
+                {t(`nav.${key}`)}
+              </button>
+            ))}
+          </div>
+        )}
 
         <div className="flex items-center gap-4">
           <a

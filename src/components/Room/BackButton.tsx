@@ -10,23 +10,23 @@ export default function BackButton() {
       onClick={goHome}
       style={{
         position: 'fixed',
-        top: 24,
-        left: 24,
+        top: 20,
+        left: 20,
         zIndex: 200,
         display: 'flex',
         alignItems: 'center',
         gap: 8,
-        background: 'rgba(5,5,16,0.75)',
-        border: '1px solid rgba(99,102,241,0.35)',
-        color: '#e2e8f0',
+        background: 'rgba(10,8,5,0.75)',
+        border: '1px solid rgba(245,158,11,0.4)',
+        color: '#fde68a',
         borderRadius: 8,
-        padding: '8px 16px',
+        padding: '8px 18px',
         cursor: 'pointer',
         fontSize: 14,
-        fontFamily: 'Inter, sans-serif',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
-        transition: 'background 0.2s, border-color 0.2s',
+        fontFamily: 'var(--font-body, Inter, sans-serif)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        letterSpacing: '0.02em',
       }}
       aria-label={t('room.back')}
     >

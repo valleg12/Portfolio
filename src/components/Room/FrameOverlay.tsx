@@ -3,6 +3,8 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useRoom } from '../../context/RoomContext'
 import type { FrameId } from '../../context/RoomContext'
+
+const BASE = import.meta.env.BASE_URL
 import BackButton from './BackButton'
 import FrameBuste from './frames/FrameBuste'
 import FrameIMac from './frames/FrameIMac'
@@ -55,9 +57,6 @@ export default function FrameOverlay() {
           position: 'fixed',
           inset: 0,
           zIndex: 50,
-          background: 'rgba(5,5,16,0.92)',
-          backdropFilter: 'blur(14px)',
-          WebkitBackdropFilter: 'blur(14px)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -65,6 +64,18 @@ export default function FrameOverlay() {
           padding: '80px 24px 40px',
         }}
       >
+        {/* Blurred room background */}
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundImage: `url(${BASE}ROOM.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(18px) brightness(0.25)',
+          transform: 'scale(1.05)',
+          zIndex: -1,
+        }} />
+        {/* Content */}
         {FRAME_COMPONENTS[activeFrame as Exclude<FrameId, 'home'>]}
       </div>
     </>

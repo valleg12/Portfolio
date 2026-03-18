@@ -7,19 +7,30 @@ export default function FrameIMac() {
   const projects = (t('projects.items', { returnObjects: true }) as any[]).filter((p: any) => TECH_IDS.includes(p.id))
 
   return (
-    <div style={{ maxWidth: 700, width: '100%', padding: '1rem' }}>
-      <h2 style={{ color: 'white', fontFamily: 'var(--font-display, Space Grotesk, sans-serif)', fontSize: '1.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>Tech Projects</h2>
-      <div style={{ height: 2, width: 60, background: 'linear-gradient(90deg,#6366f1,#22d3ee)', marginBottom: '2rem', borderRadius: 2 }} />
-      <div style={{ display: 'grid', gap: '1.25rem' }}>
+    <div style={{ maxWidth: 700, width: '100%' }}>
+      <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+        <p style={{ color: '#22d3ee', fontFamily: 'var(--font-body)', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: 8 }}>
+          💻 Tech · Code · Build
+        </p>
+        <h2 style={{ color: 'white', fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 8 }}>Tech Projects</h2>
+        <div style={{ height: 1, width: 80, background: 'linear-gradient(90deg, transparent, #22d3ee, transparent)', margin: '0 auto' }} />
+      </div>
+      <div style={{ display: 'grid', gap: '1rem' }}>
         {projects.map((p: any) => (
-          <div key={p.id} style={{ padding: '1.25rem 1.5rem', borderRadius: 14, border: '1px solid rgba(99,102,241,0.2)', background: 'rgba(99,102,241,0.06)', backdropFilter: 'blur(8px)' }}>
-            <h3 style={{ color: 'white', fontFamily: 'var(--font-display, Space Grotesk, sans-serif)', fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{p.title}</h3>
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+          <div key={p.id} style={{
+            padding: '1.5rem',
+            borderRadius: 16,
+            border: '1px solid rgba(34,211,238,0.18)',
+            background: 'rgba(5,20,30,0.6)',
+            backdropFilter: 'blur(12px)',
+          }}>
+            <h3 style={{ color: 'white', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: '1rem', marginBottom: '0.625rem' }}>{p.title}</h3>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: '0.75rem' }}>
               {p.tags.map((tag: string) => (
-                <span key={tag} style={{ fontSize: 11, padding: '2px 10px', borderRadius: 20, border: '1px solid rgba(34,211,238,0.3)', color: '#22d3ee', fontFamily: 'var(--font-body, Inter, sans-serif)', background: 'rgba(34,211,238,0.08)' }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 10, padding: '2px 10px', borderRadius: 20, border: '1px solid rgba(34,211,238,0.28)', color: '#67e8f9', fontFamily: 'var(--font-body)', background: 'rgba(34,211,238,0.07)', letterSpacing: '0.04em' }}>{tag}</span>
               ))}
             </div>
-            <p style={{ color: '#94a3b8', fontFamily: 'var(--font-body, Inter, sans-serif)', fontSize: '0.88rem', lineHeight: 1.6 }}>{p.description}</p>
+            <p style={{ color: '#94a3b8', fontFamily: 'var(--font-body)', fontSize: '0.85rem', lineHeight: 1.65 }}>{p.description}</p>
           </div>
         ))}
       </div>
