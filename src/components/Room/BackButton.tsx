@@ -1,36 +1,43 @@
-import { useRoom } from '../../context/RoomContext'
-import { useTranslation } from 'react-i18next'
+interface BackButtonProps {
+  onBack: () => void
+}
 
-export default function BackButton() {
-  const { goHome } = useRoom()
-  const { t } = useTranslation()
-
+export default function BackButton({ onBack }: BackButtonProps) {
   return (
     <button
-      onClick={goHome}
+      onClick={onBack}
+      aria-label="Go back to room"
       style={{
         position: 'fixed',
         top: 20,
         left: 20,
         zIndex: 200,
+        width: 44,
+        height: 44,
+        borderRadius: '50%',
+        background: 'rgba(0,0,0,0.5)',
+        border: '1px solid rgba(255,255,255,0.15)',
+        color: 'white',
+        fontSize: '1.2rem',
+        cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
-        gap: 8,
-        background: 'rgba(10,8,5,0.75)',
-        border: '1px solid rgba(245,158,11,0.4)',
-        color: '#fde68a',
-        borderRadius: 8,
-        padding: '8px 18px',
-        cursor: 'pointer',
-        fontSize: 14,
-        fontFamily: 'var(--font-body, Inter, sans-serif)',
+        justifyContent: 'center',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        letterSpacing: '0.02em',
+        transition: 'border-color 0.2s, background 0.2s',
+        lineHeight: 1,
       }}
-      aria-label={t('room.back')}
+      onMouseEnter={e => {
+        ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.4)'
+        ;(e.currentTarget as HTMLButtonElement).style.background = 'rgba(0,0,0,0.7)'
+      }}
+      onMouseLeave={e => {
+        ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.15)'
+        ;(e.currentTarget as HTMLButtonElement).style.background = 'rgba(0,0,0,0.5)'
+      }}
     >
-      ← {t('room.back')}
+      ←
     </button>
   )
 }
