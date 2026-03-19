@@ -16,7 +16,16 @@ export default function FrameBuste() {
   const { t } = useTranslation()
 
   return (
-    <div style={{ width: '100%', maxWidth: 560 }}>
+    <div style={{
+      width: '100%', maxWidth: 560,
+      background: 'rgba(8,8,20,0.92)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: 16,
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      padding: '40px 48px',
+      fontFamily: "'Space Grotesk', sans-serif",
+    }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <div style={{

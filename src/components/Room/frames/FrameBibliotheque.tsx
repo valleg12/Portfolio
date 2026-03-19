@@ -36,10 +36,19 @@ export default function FrameBibliotheque() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <div style={{ width: '100%', maxWidth: 640 }}>
+    <div style={{
+      width: '100%', maxWidth: 640,
+      background: 'rgba(8,8,20,0.92)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: 16,
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      padding: '40px 48px',
+      fontFamily: "'Space Grotesk', sans-serif",
+    }}>
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <p style={{ color: '#f97316', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-          📚 Background · Formation
+          📚 Background · Education
         </p>
         <h2 style={{ color: 'white', fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700 }}>Education</h2>
       </div>

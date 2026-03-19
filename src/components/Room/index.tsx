@@ -40,13 +40,22 @@ export default function Room() {
   const [zoomOrigin, setZoomOrigin] = useState({ x: 50, y: 50 })
   const [zoomScale, setZoomScale]   = useState(4)
   const phaseRef = useRef<Phase>('home')
-  const [hovered, setHovered]       = useState<string | null>(null)
 
   // Keep phaseRef in sync
   useEffect(() => { phaseRef.current = phase }, [phase])
 
+  // Explore hint state
+  const [showHint, setShowHint]     = useState(false)
+  const hintDismissed               = useRef(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setShowHint(true), 1500)
+    return () => clearTimeout(t)
+  }, [])
+
   // Ambient light & mouse refs
   const lightRef       = useRef<HTMLDivElement>(null)
+  const spotlightRef   = useRef<HTMLDivElement>(null)
   const targetMouse    = useRef({ nx: 0, ny: 0 })
   const currentMouse   = useRef({ nx: 0, ny: 0 })
 
@@ -63,12 +72,12 @@ export default function Room() {
         cm.ny += (tm.ny - cm.ny) * 0.05
 
         const { nx, ny } = cm
-        const rotY = nx * 12
-        const rotX = -ny * 8
+        const rotY = nx * 4
+        const rotX = -ny * 3
 
         // 3D perspective tilt on the whole scene
         sceneRef.current.style.transform =
-          `perspective(900px) rotateY(${rotY.toFixed(3)}deg) rotateX(${rotX.toFixed(3)}deg) scale(1.04)`
+          `perspective(1400px) rotateY(${rotY.toFixed(3)}deg) rotateX(${rotX.toFixed(3)}deg) scale(1.02)`
 
         // Ambient light follows mouse — warm light from the direction of gaze
         if (lightRef.current) {
@@ -99,11 +108,18 @@ export default function Room() {
       nx: (e.clientX - r.left) / r.width  - 0.5,
       ny: (e.clientY - r.top)  / r.height - 0.5,
     }
+    if (spotlightRef.current) {
+      spotlightRef.current.style.background =
+        `radial-gradient(circle 380px at ${e.clientX}px ${e.clientY}px, rgba(255,200,120,0.08) 0%, transparent 70%)`
+    }
+    if (!hintDismissed.current) {
+      hintDismissed.current = true
+      setShowHint(false)
+    }
   }, [])
 
   const onMouseLeave = useCallback(() => {
     targetMouse.current = { nx: 0, ny: 0 }
-    setHovered(null)
   }, [])
 
   useEffect(() => {
@@ -247,10 +263,7 @@ export default function Room() {
           {phase === 'home' && HOTSPOTS.map(z => (
             <div
               key={z.frame}
-              title={z.label}
               onClick={() => handleHotspotClick(z)}
-              onMouseEnter={() => setHovered(z.frame)}
-              onMouseLeave={() => setHovered(null)}
               style={{
                 position: 'absolute',
                 left:   `${z.left}%`,
@@ -258,19 +271,42 @@ export default function Room() {
                 width:  `${z.width}%`,
                 height: `${z.height}%`,
                 cursor: 'pointer',
-                borderRadius: 6,
-                background: hovered === z.frame
-                  ? `radial-gradient(ellipse at center, rgba(${z.color}, 0.22) 0%, rgba(${z.color}, 0.06) 50%, transparent 75%)`
-                  : 'transparent',
-                boxShadow: hovered === z.frame
-                  ? `inset 0 0 30px rgba(${z.color}, 0.12)`
-                  : 'none',
-                transition: 'background 0.35s ease, box-shadow 0.35s ease',
               }}
             />
           ))}
         </div>
       </div>
+
+      {/* Explore hint */}
+      {showHint && phase === 'home' && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: 32,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: '0.75rem',
+            color: 'rgba(255,255,255,0.4)',
+            pointerEvents: 'none',
+            zIndex: 20,
+            animation: 'exploreHintPulse 2s ease-in-out infinite',
+          }}
+        >
+          Click on objects to explore
+        </div>
+      )}
+
+      {/* Cursor spotlight — warm glow following mouse */}
+      <div
+        ref={spotlightRef}
+        style={{
+          position: 'fixed', inset: 0,
+          pointerEvents: 'none',
+          mixBlendMode: 'screen',
+          zIndex: 11,
+        }}
+      />
 
       {/* Frame content — shown while zoomed in */}
       {activeFrame !== 'home' && <FrameOverlay onBack={handleBack} />}
