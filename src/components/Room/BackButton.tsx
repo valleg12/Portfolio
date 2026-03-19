@@ -1,8 +1,9 @@
 interface BackButtonProps {
   onBack: () => void
+  visible?: boolean
 }
 
-export default function BackButton({ onBack }: BackButtonProps) {
+export default function BackButton({ onBack, visible = true }: BackButtonProps) {
   return (
     <button
       onClick={onBack}
@@ -12,6 +13,10 @@ export default function BackButton({ onBack }: BackButtonProps) {
         top: 20,
         left: 20,
         zIndex: 200,
+        transition: 'opacity 0.3s ease, transform 0.3s ease',
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'scale(1)' : 'scale(0.8)',
+        pointerEvents: visible ? 'auto' : 'none',
         width: 44,
         height: 44,
         borderRadius: '50%',

@@ -1,6 +1,4 @@
-import { useEffect, useRef, ReactElement } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
+import { useEffect, useState, ReactElement } from 'react'
 import { useRoom } from '../../context/RoomContext'
 import type { FrameId } from '../../context/RoomContext'
 import BackButton from './BackButton'
@@ -24,14 +22,19 @@ const FRAME_COMPONENTS: Record<Exclude<FrameId, 'home'>, ReactElement> = {
   hobbies:      <FrameHobbies />,
 }
 
-interface FrameOverlayProps {
+interface Props {
   onBack: () => void
 }
 
-export default function FrameOverlay({ onBack }: FrameOverlayProps) {
+export default function FrameOverlay({ onBack }: Props) {
   const { activeFrame } = useRoom()
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  // Fade in on mount
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setVisible(true))
+    return () => cancelAnimationFrame(t)
+  }, [])
 
   // Escape key
   useEffect(() => {
@@ -40,56 +43,42 @@ export default function FrameOverlay({ onBack }: FrameOverlayProps) {
     return () => window.removeEventListener('keydown', handler)
   }, [])
 
-  // Animate in
-  useGSAP(() => {
-    if (!overlayRef.current) return
-    gsap.fromTo(
-      overlayRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.35, ease: 'power2.out' }
-    )
-    if (contentRef.current) {
-      gsap.fromTo(
-        contentRef.current,
-        { opacity: 0, y: 20, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'power2.out', delay: 0.1 }
-      )
-    }
-  }, { dependencies: [activeFrame] })
-
   function handleBack() {
-    onBack()
+    // Fade out this overlay, then trigger Room's zoom-out
+    setVisible(false)
+    setTimeout(() => onBack(), 250)
   }
+
+  if (!activeFrame || activeFrame === 'home') return null
 
   return (
     <>
-      <BackButton onBack={handleBack} />
-      <div
-        ref={overlayRef}
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 50,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          overflowY: 'auto',
-          padding: '80px 24px 40px',
-        }}
-      >
-        {/* Blurred room background */}
-        <div style={{
-          position: 'fixed',
-          inset: 0,
-          backgroundImage: `url(${BASE}ROOM.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'blur(16px) brightness(0.35)',
-          transform: 'scale(1.04)',
-          zIndex: -1,
-        }} />
-        <div ref={contentRef} style={{ width: '100%', maxWidth: 800, position: 'relative' }}>
-          {FRAME_COMPONENTS[activeFrame as Exclude<FrameId, 'home'>]}
+      <BackButton onBack={handleBack} visible={visible} />
+
+      {/* Blurred zoomed-room backdrop */}
+      <div style={{
+        position: 'fixed', inset: 0, zIndex: 50,
+        backgroundImage: `url(${BASE}ROOM.png)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        filter: 'blur(24px) brightness(0.2)',
+        transform: 'scale(1.1)',
+        transition: 'opacity 0.35s ease',
+        opacity: visible ? 1 : 0,
+      }} />
+
+      {/* Frame content */}
+      <div style={{
+        position: 'fixed', inset: 0, zIndex: 51,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        overflowY: 'auto',
+        padding: '80px 24px 40px',
+        transition: 'opacity 0.35s ease, transform 0.35s ease',
+        opacity:   visible ? 1 : 0,
+        transform: visible ? 'translateY(0) scale(1)' : 'translateY(24px) scale(0.97)',
+      }}>
+        <div style={{ width: '100%', maxWidth: 860 }}>
+          {FRAME_COMPONENTS[activeFrame]}
         </div>
       </div>
     </>

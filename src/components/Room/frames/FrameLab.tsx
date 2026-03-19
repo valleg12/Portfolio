@@ -1,47 +1,113 @@
-import SpotlightCard from './SpotlightCard'
+// Whiteboard frame — 6 freelance offers written in Caveat (handwriting font)
 
 const SERVICES = [
-  { emoji: '🧠', title: 'AI Architect', desc: 'Design and deploy autonomous AI agents, LLM pipelines, and API integrations at scale.' },
-  { emoji: '📊', title: 'Business & Data Analyst', desc: 'Transform raw data into strategic decisions — dashboards, KPIs, Power BI, Tableau.' },
-  { emoji: '⚽', title: 'Sport Analytics', desc: 'AI-driven athlete performance, injury prevention, scouting, and fan engagement systems.' },
-  { emoji: '🤖', title: 'AI Automation', desc: 'Automate workflows with AI — email, document processing, CRM, scheduling agents.' },
-  { emoji: '🔮', title: 'Predictive Modeling', desc: 'ML models for forecasting, classification, and anomaly detection in sports and business.' },
-  { emoji: '🎯', title: 'AI Strategy', desc: 'Advise on AI adoption, tooling selection, and data-driven product roadmaps.' },
+  {
+    title: 'AI Architect',
+    desc: 'Agents autonomes, pipelines LLM, intégrations API — de l\'idée au déploiement.',
+    color: '#4ade80',
+    underline: '#166534',
+  },
+  {
+    title: 'Business & Data Analyst',
+    desc: 'Transformer la donnée brute en décisions stratégiques — dashboards, KPIs, Power BI.',
+    color: '#60a5fa',
+    underline: '#1e3a5f',
+  },
+  {
+    title: 'Sport Analytics',
+    desc: 'Performance athlète, détection de talents, scouting et engagement supporter par l\'IA.',
+    color: '#f97316',
+    underline: '#7c2d12',
+  },
+  {
+    title: 'AI Automation',
+    desc: 'Automatiser les workflows : email, documents, CRM, planification — agents IA sur-mesure.',
+    color: '#a78bfa',
+    underline: '#3b0764',
+  },
+  {
+    title: 'Predictive Modeling',
+    desc: 'Modèles ML pour la prévision, classification et détection d\'anomalies business & sport.',
+    color: '#fb7185',
+    underline: '#881337',
+  },
+  {
+    title: 'AI Strategy & Advisory',
+    desc: 'Accompagnement à l\'adoption IA, choix d\'outils, roadmap produit data-driven.',
+    color: '#fbbf24',
+    underline: '#78350f',
+  },
 ]
 
 export default function FrameLab() {
   return (
-    <div style={{ width: '100%', maxWidth: 720 }}>
+    <div style={{
+      width: '100%',
+      maxWidth: 780,
+      background: 'rgba(248, 250, 252, 0.06)',
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      border: '1px solid rgba(255,255,255,0.12)',
+      borderRadius: 18,
+      padding: '2.5rem 2rem',
+    }}>
+      {/* Whiteboard header */}
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <p style={{ color: '#22c55e', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-          🧪 What I Build
-        </p>
-        <h2 style={{ color: 'white', fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 700 }}>Lab</h2>
+        <h2 style={{
+          fontFamily: "'Caveat', cursive",
+          fontSize: '2.4rem',
+          fontWeight: 600,
+          color: '#f8fafc',
+          letterSpacing: '0.02em',
+        }}>
+          Victorien Alleg — Freelance
+        </h2>
+        <div style={{ height: 2, background: 'rgba(255,255,255,0.15)', borderRadius: 1, margin: '0.75rem 0 0' }} />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.875rem' }}>
-        {SERVICES.map(service => (
-          <SpotlightCard
-            key={service.title}
-            color="#22c55e"
-            style={{
-              background: 'rgba(0,15,8,0.75)',
-              border: '1px solid rgba(34,197,94,0.2)',
-              borderRadius: 14,
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              padding: '1.25rem',
-            }}
-          >
-            <span style={{ fontSize: '1.8rem', lineHeight: 1, display: 'block', marginBottom: '0.75rem' }}>{service.emoji}</span>
-            <h3 style={{ color: 'white', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.5rem' }}>
-              {service.title}
+      {/* Service cards — handwriting style */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem 2rem' }}>
+        {SERVICES.map((s) => (
+          <div key={s.title} style={{ padding: '0.25rem 0' }}>
+            <h3 style={{
+              fontFamily: "'Caveat', cursive",
+              fontSize: '1.35rem',
+              fontWeight: 600,
+              color: s.color,
+              marginBottom: '0.3rem',
+              borderBottom: `2px solid ${s.underline}`,
+              paddingBottom: '0.2rem',
+              letterSpacing: '0.01em',
+            }}>
+              {s.title}
             </h3>
-            <p style={{ color: '#86efac', fontSize: '0.8rem', lineHeight: 1.65, fontFamily: 'var(--font-body)' }}>
-              {service.desc}
+            <p style={{
+              fontFamily: "'Caveat', cursive",
+              fontSize: '1.05rem',
+              color: 'rgba(255,255,255,0.72)',
+              lineHeight: 1.55,
+            }}>
+              {s.desc}
             </p>
-          </SpotlightCard>
+          </div>
         ))}
+      </div>
+
+      {/* Footer */}
+      <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+        <a
+          href="mailto:victorienalleg@gmail.com"
+          style={{
+            fontFamily: "'Caveat', cursive",
+            fontSize: '1.15rem',
+            color: '#4ade80',
+            textDecoration: 'none',
+            borderBottom: '1px dashed #4ade80',
+            paddingBottom: 2,
+          }}
+        >
+          victorienalleg@gmail.com
+        </a>
       </div>
     </div>
   )
