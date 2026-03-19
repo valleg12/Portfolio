@@ -15,7 +15,7 @@ const HOTSPOTS: {
   color: string; label: string
   zoom?: number  // optional per-zone scale factor
 }[] = [
-  { frame: 'neon',         left:  1, top: 20, width: 15, height: 40, color: '99, 102, 241',  label: 'Skills',    zoom: 4   },
+  { frame: 'neon',         left:  2, top: 20, width: 14, height: 40, color: '99, 102, 241',  label: 'Skills',    zoom: 4   },
   { frame: 'bernabeu',     left: 19, top:  7, width: 40, height: 80, color: '59, 130, 246',  label: 'Sport',     zoom: 3.5 },
   { frame: 'lab',          left: 59, top: 14, width: 22, height: 52, color: '34, 197, 94',   label: 'Freelance', zoom: 4   },
   { frame: 'buste',        left: 60, top: 50, width:  8, height: 20, color: '245, 158, 11',  label: 'Contact',   zoom: 5   },
@@ -186,8 +186,8 @@ export default function Room() {
           ref={sceneRef}
           style={{
             position: 'relative',
-            width:  `min(100vw, calc(100vh * ${ASPECT}))`,
-            height: `min(100vh, calc(100vw / ${ASPECT}))`,
+            width:  `max(100vw, calc(100vh * ${ASPECT}))`,
+            height: `max(100vh, calc(100vw / ${ASPECT}))`,
             transformStyle: 'preserve-3d',
             willChange: 'transform',
             // Enable CSS transition only during zoom animations
