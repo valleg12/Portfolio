@@ -21,7 +21,16 @@ export default function FrameBernabeu() {
   const projects = allProjects.filter(p => SPORT_IDS.includes(p.id))
 
   return (
-    <div style={{ width: '100%', maxWidth: 680 }}>
+    <div style={{
+      width: '100%', maxWidth: 680,
+      background: 'rgba(8,8,20,0.92)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: 16,
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      padding: '40px 48px',
+      fontFamily: "'Space Grotesk', sans-serif",
+    }}>
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <p style={{ color: '#3b82f6', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
           🏟️ Sport Business

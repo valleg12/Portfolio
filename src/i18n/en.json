@@ -104,15 +104,16 @@
     "github": "github.com/victorienalleg"
   },
   "lab": {
-    "title": "Lab",
-    "subtitle": "What I build",
+    "title": "Freelance",
+    "subtitle": "What I offer",
+    "cta": "Let's talk →",
     "items": [
-      { "icon": "🧠", "title": "AI Architect", "desc": "Design and deploy autonomous AI agents, LLM pipelines, and API integrations at scale." },
-      { "icon": "📊", "title": "Business & Data Analyst", "desc": "Transform raw data into strategic decisions — dashboards, KPIs, Power BI, Tableau." },
-      { "icon": "⚽", "title": "Sport Analytics", "desc": "AI-driven athlete performance, injury prevention, scouting, and fan engagement systems." },
-      { "icon": "🤖", "title": "AI Automation", "desc": "Automate workflows with AI — email, document processing, CRM, scheduling agents." },
-      { "icon": "🔮", "title": "Predictive Modeling", "desc": "Forecasting, recommendation systems, and classification models tailored to your business." },
-      { "icon": "🗺️", "title": "AI Strategy", "desc": "Roadmaps, AI audits, and digital transformation consulting for startups and SMBs." }
+      { "icon": "🧠", "title": "AI Strategy & Integration", "desc": "From data audit to production deployment." },
+      { "icon": "📈", "title": "Predictive Analytics", "desc": "Custom ML models for business forecasting." },
+      { "icon": "⚙️", "title": "Process Automation", "desc": "n8n / Make / custom pipelines." },
+      { "icon": "⚽", "title": "Sports Data & Performance", "desc": "Statistical models for clubs & agencies." },
+      { "icon": "💡", "title": "Product Design (AI-first)", "desc": "Wireframes to prototype with AI embedded." },
+      { "icon": "🎓", "title": "Training & Workshops", "desc": "Hands-on AI for non-technical teams." }
     ]
   },
   "room": {

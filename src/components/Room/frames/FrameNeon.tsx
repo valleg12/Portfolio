@@ -17,7 +17,16 @@ const SKILLS = [
 
 export default function FrameNeon() {
   return (
-    <div style={{ width: '100%', maxWidth: 720 }}>
+    <div style={{
+      width: '100%', maxWidth: 720,
+      background: 'rgba(8,8,20,0.92)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: 16,
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      padding: '40px 48px',
+      fontFamily: "'Space Grotesk', sans-serif",
+    }}>
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <p style={{ color: '#6366f1', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
           ✦ Tools & Technologies
