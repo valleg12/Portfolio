@@ -36,6 +36,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Worktrees
+.worktrees/
+
 # Large 3D assets (stored locally, not in git)
 public/desk.glb
 public/bust.glb
