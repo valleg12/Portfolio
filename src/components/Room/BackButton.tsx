@@ -13,7 +13,7 @@ export default function BackButton({ onBack, visible = true }: BackButtonProps) 
         top: 20,
         left: 20,
         zIndex: 200,
-        transition: 'opacity 0.3s ease, transform 0.3s ease',
+        transition: 'opacity 0.3s ease, transform 0.3s ease, border-color 0.2s, background 0.2s',
         opacity: visible ? 1 : 0,
         transform: visible ? 'scale(1)' : 'scale(0.8)',
         pointerEvents: visible ? 'auto' : 'none',
@@ -30,7 +30,6 @@ export default function BackButton({ onBack, visible = true }: BackButtonProps) 
         justifyContent: 'center',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        transition: 'border-color 0.2s, background 0.2s',
         lineHeight: 1,
       }}
       onMouseEnter={e => {

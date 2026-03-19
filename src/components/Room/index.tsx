@@ -33,7 +33,6 @@ export default function Room() {
   const wrapperRef  = useRef<HTMLDivElement>(null)
   const sceneRef    = useRef<HTMLDivElement>(null)
   const rafRef      = useRef<number>(0)
-  const targetRot   = useRef({ x: 0, y: 0 })
   const currentRot  = useRef({ x: 0, y: 0 })
 
   // Zoom state
@@ -46,18 +45,44 @@ export default function Room() {
   // Keep phaseRef in sync
   useEffect(() => { phaseRef.current = phase }, [phase])
 
-  // RAF loop — tilt only when phase is 'home'
+  // Ambient light & mouse refs
+  const lightRef       = useRef<HTMLDivElement>(null)
+  const targetMouse    = useRef({ nx: 0, ny: 0 })
+  const currentMouse   = useRef({ nx: 0, ny: 0 })
+
+  // RAF loop — tilt + parallax + ambient light
   useEffect(() => {
     let alive = true
     function tick() {
       if (!alive || !sceneRef.current) return
       if (phaseRef.current === 'home') {
-        const cur = currentRot.current
-        const tgt = targetRot.current
-        cur.x += (tgt.x - cur.x) * 0.06
-        cur.y += (tgt.y - cur.y) * 0.06
+        const cm = currentMouse.current
+        const tm = targetMouse.current
+        // Smooth lerp mouse position
+        cm.nx += (tm.nx - cm.nx) * 0.05
+        cm.ny += (tm.ny - cm.ny) * 0.05
+
+        const { nx, ny } = cm
+        const rotY = nx * 12
+        const rotX = -ny * 8
+
+        // 3D perspective tilt on the whole scene
         sceneRef.current.style.transform =
-          `perspective(1200px) rotateY(${cur.y.toFixed(3)}deg) rotateX(${cur.x.toFixed(3)}deg) scale(1.02)`
+          `perspective(900px) rotateY(${rotY.toFixed(3)}deg) rotateX(${rotX.toFixed(3)}deg) scale(1.04)`
+
+        // Ambient light follows mouse — warm light from the direction of gaze
+        if (lightRef.current) {
+          const lx = 50 + nx * 40   // 10% → 90%
+          const ly = 50 + ny * 30
+          lightRef.current.style.background =
+            `radial-gradient(ellipse 55% 45% at ${lx.toFixed(1)}% ${ly.toFixed(1)}%,
+              rgba(255,210,140,0.07) 0%,
+              rgba(120,160,255,0.04) 40%,
+              transparent 70%)`
+        }
+
+        // Mirror tilt values into currentRot for zoom reset continuity
+        currentRot.current = { x: rotX, y: rotY }
       }
       rafRef.current = requestAnimationFrame(tick)
     }
@@ -70,13 +95,14 @@ export default function Room() {
     const el = wrapperRef.current
     if (!el) return
     const r  = el.getBoundingClientRect()
-    const nx = (e.clientX - r.left) / r.width  - 0.5
-    const ny = (e.clientY - r.top)  / r.height - 0.5
-    targetRot.current = { x: -ny * 8, y: nx * 10 }
+    targetMouse.current = {
+      nx: (e.clientX - r.left) / r.width  - 0.5,
+      ny: (e.clientY - r.top)  / r.height - 0.5,
+    }
   }, [])
 
   const onMouseLeave = useCallback(() => {
-    targetRot.current = { x: 0, y: 0 }
+    targetMouse.current = { nx: 0, ny: 0 }
     setHovered(null)
   }, [])
 
@@ -119,7 +145,7 @@ export default function Room() {
     const cy = z.top   + z.height / 2
     setZoomOrigin({ x: cx, y: cy })
     setZoomScale(z.zoom ?? 4)
-    targetRot.current = { x: 0, y: 0 }   // reset tilt smoothly
+    targetMouse.current = { nx: 0, ny: 0 }   // reset tilt smoothly
     setPhase('zooming-in')
     // After zoom-in animation (650ms): reveal frame
     setTimeout(() => {
@@ -134,7 +160,9 @@ export default function Room() {
     goHome()                           // unmount FrameOverlay
     setPhase('zooming-out')
     setTimeout(() => {
-      currentRot.current = { x: 0, y: 0 }
+      currentRot.current  = { x: 0, y: 0 }
+      targetMouse.current = { nx: 0, ny: 0 }
+      currentMouse.current = { nx: 0, ny: 0 }
       setPhase('home')
     }, 650)
   }
@@ -172,7 +200,7 @@ export default function Room() {
               : '50% 50%',
           }}
         >
-          {/* Room image */}
+          {/* Room image — background layer */}
           <div
             style={{
               position: 'absolute', inset: 0,
@@ -182,24 +210,34 @@ export default function Room() {
             }}
           />
 
-          {/* Vignette */}
+          {/* Cover Gemini ✦ watermark (bottom-right of image) */}
           <div
             style={{
-              position: 'absolute', inset: 0,
-              background: `radial-gradient(ellipse 85% 80% at 50% 55%,
-                transparent 40%,
-                rgba(5,5,16,0.45) 75%,
-                rgba(5,5,16,0.75) 100%)`,
+              position: 'absolute', right: 0, bottom: 0,
+              width: '12%', height: '15%',
+              background: 'radial-gradient(ellipse at 80% 80%, rgba(5,5,16,0.99) 25%, rgba(5,5,16,0.6) 55%, transparent 80%)',
               pointerEvents: 'none',
             }}
           />
 
-          {/* Cover Gemini ✦ watermark */}
+          {/* Ambient light — follows mouse for depth illusion */}
+          <div
+            ref={lightRef}
+            style={{
+              position: 'absolute', inset: 0,
+              pointerEvents: 'none',
+              mixBlendMode: 'screen',
+            }}
+          />
+
+          {/* Vignette */}
           <div
             style={{
-              position: 'absolute', right: 0, bottom: 0,
-              width: '14%', height: '18%',
-              background: 'radial-gradient(ellipse at 85% 85%, rgba(8,8,20,0.98) 20%, rgba(8,8,20,0.7) 55%, transparent 80%)',
+              position: 'absolute', inset: 0,
+              background: `radial-gradient(ellipse 80% 75% at 50% 52%,
+                transparent 35%,
+                rgba(5,5,16,0.5) 70%,
+                rgba(5,5,16,0.85) 100%)`,
               pointerEvents: 'none',
             }}
           />
