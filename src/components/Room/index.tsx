@@ -204,7 +204,7 @@ export default function Room() {
           <div
             style={{
               position: 'absolute', inset: 0,
-              backgroundImage: `url(${BASE}ROOM.png)`,
+              backgroundImage: `url(${BASE}ROOM.png?v=2)`,
               backgroundSize: '100% 100%',
               backgroundRepeat: 'no-repeat',
             }}
