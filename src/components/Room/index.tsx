@@ -207,6 +207,7 @@ export default function Room() {
               backgroundImage: `url(${BASE}ROOM.png?v=2)`,
               backgroundSize: '100% 100%',
               backgroundRepeat: 'no-repeat',
+              filter: 'brightness(1.18) contrast(1.06) saturate(1.12)',
             }}
           />
 
