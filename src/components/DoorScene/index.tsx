@@ -67,6 +67,7 @@ export default function DoorScene({ onEnter }: Props) {
       style={{
         position: 'fixed', inset: 0,
         overflow: 'hidden',
+        background: '#0d0905',
         perspective: '1400px',
         perspectiveOrigin: `${perspX}px ${perspY}px`,
         opacity: !mounted ? 0 : fading ? 0 : 1,
@@ -83,6 +84,7 @@ export default function DoorScene({ onEnter }: Props) {
         onLoad={recalc}
         draggable={false}
         style={{
+          display: 'block',
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
           objectFit: 'cover',
