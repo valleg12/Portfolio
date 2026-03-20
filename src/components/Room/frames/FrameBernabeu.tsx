@@ -1,20 +1,16 @@
 import { useTranslation } from 'react-i18next'
 import SpotlightCard from './SpotlightCard'
 
-const SPORT_IDS = ['sportech', 'getstaty', 'novarena', 'fbref']
+const SPORT_IDS = ['novarena', 'fbref']
 
 const EMOJI_MAP: Record<string, string> = {
-  sportech: '🏃',
-  getstaty: '⚽',
   novarena: '🏟️',
   fbref: '📊',
 }
 
 const COLOR_MAP: Record<string, string> = {
-  sportech: '#3b82f6',
-  getstaty: '#60a5fa',
-  novarena: '#93c5fd',
-  fbref: '#38bdf8',
+  novarena: '#3b82f6',
+  fbref: '#60a5fa',
 }
 
 export default function FrameBernabeu() {
