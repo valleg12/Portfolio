@@ -10,9 +10,15 @@ const SKILLS = [
   { name: 'Power BI',     icon: '📊', color: '#f59e0b', category: 'Business',  level: 85 },
   { name: 'Tableau',      icon: '📈', color: '#22d3ee', category: 'Business',  level: 80 },
   { name: 'Excel/Sheets', icon: '📋', color: '#22c55e', category: 'Business',  level: 90 },
-  { name: 'Streamlit',    icon: '⚡', color: '#f43f5e', category: 'Tools',     level: 80 },
-  { name: 'Git',          icon: '🔀', color: '#f97316', category: 'Tools',     level: 85 },
-  { name: 'Notion',       icon: '📝', color: '#ffffff', category: 'Tools',     level: 90 },
+  { name: 'Streamlit',    icon: '⚡', color: '#f43f5e', category: 'Tools',       level: 80 },
+  { name: 'Git',          icon: '🔀', color: '#f97316', category: 'Tools',       level: 85 },
+  { name: 'Notion',       icon: '📝', color: '#ffffff', category: 'Tools',       level: 90 },
+  { name: 'N8N',          icon: '🔁', color: '#ea580c', category: 'Automation',  level: 80 },
+  { name: 'Make',         icon: '🔧', color: '#a855f7', category: 'Automation',  level: 75 },
+  { name: 'Embeddings',   icon: '🧬', color: '#ec4899', category: 'AI',          level: 75 },
+  { name: 'FastAPI',      icon: '🚀', color: '#10b981', category: 'Tools',       level: 75 },
+  { name: 'React',        icon: '⚛️', color: '#38bdf8', category: 'Frontend',    level: 70 },
+  { name: 'Hugging Face', icon: '🤗', color: '#fbbf24', category: 'AI',          level: 70 },
 ]
 
 export default function FrameNeon() {
