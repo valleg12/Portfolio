@@ -70,6 +70,24 @@
         "title": "Payfit AI Pipeline",
         "tags": ["AI Agents", "LLM", "SEO Automation", "DUST", "Python"],
         "description": "Multi-agent AI pipeline built for Payfit: automated SEO content production (competitor analysis, legal compliance check, EEAT optimization, DatoCMS publishing) + HR cost calculators for lead gen + GEO brand scoring across GPT-4, Claude, Gemini, Llama and Copilot."
+      },
+      {
+        "id": "nara",
+        "title": "NARA",
+        "tags": ["React", "TypeScript", "Supabase", "N8N", "DUST"],
+        "description": "All-in-one platform for content creators: AI contract analysis (Guardians), automated invoicing & revenue dashboards (Flow), intelligent email classification by collaboration type (Orbit). Built with React/TypeScript, Supabase and N8N + Dust AI agents."
+      },
+      {
+        "id": "aimobbilier",
+        "title": "AImobbilier",
+        "tags": ["AI Agents", "DUST", "React", "Netlify"],
+        "description": "3-day project building multi-sector AI agent systems on Dust. Real estate focus: property evaluation, market comparison and ROI agents. Scored and ranked 6 industry verticals (real estate, luxury, agtech, sports) by impact and feasibility."
+      },
+      {
+        "id": "binko",
+        "title": "BINKO",
+        "tags": ["Python", "Stable Diffusion", "FLUX", "Computer Vision", "asyncio"],
+        "description": "Synthetic image dataset generator for waste classification ML training. Parametric prompt engine simulating real user photos (lighting, camera, perspective). 3-phase async pipeline: FLUX Schnell testing → FLEX 1.1 Pro production → augmentation. Cost optimizer built-in."
       }
     ]
   },

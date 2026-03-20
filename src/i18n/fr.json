@@ -70,6 +70,24 @@
         "title": "Payfit AI Pipeline",
         "tags": ["AI Agents", "LLM", "SEO Automation", "DUST", "Python"],
         "description": "Pipeline multi-agents IA construit pour Payfit : production éditoriale automatisée (veille concurrentielle, conformité légale, optimisation EEAT, publication DatoCMS) + simulateurs RH pour génération de leads + scoring GEO de la marque sur 5 LLMs (GPT-4, Claude, Gemini, Llama, Copilot)."
+      },
+      {
+        "id": "nara",
+        "title": "NARA",
+        "tags": ["React", "TypeScript", "Supabase", "N8N", "DUST"],
+        "description": "Plateforme tout-en-un pour créateurs de contenu : analyse de contrats IA (Guardians), facturation & dashboards revenus automatisés (Flow), classification intelligente des emails par type de collaboration (Orbit). React/TypeScript, Supabase, N8N + agents Dust AI."
+      },
+      {
+        "id": "aimobbilier",
+        "title": "AImobbilier",
+        "tags": ["AI Agents", "DUST", "React", "Netlify"],
+        "description": "Projet 3 jours de conception de systèmes multi-agents IA sur Dust. Focus immobilier : agents d'évaluation, comparaison marché et calcul ROI. Scoring et classement de 6 secteurs verticaux (immobilier, luxe, agtech, sport) par impact et faisabilité."
+      },
+      {
+        "id": "binko",
+        "title": "BINKO",
+        "tags": ["Python", "Stable Diffusion", "FLUX", "Computer Vision", "asyncio"],
+        "description": "Générateur de dataset synthétique d'images pour l'entraînement de modèles ML de classification des déchets. Moteur de prompts paramétriques simulant de vraies photos utilisateur. Pipeline async 3 phases : test FLUX Schnell → production FLEX 1.1 Pro → augmentation. Optimiseur de coûts intégré."
       }
     ]
   },

@@ -19,6 +19,9 @@ const SKILLS = [
   { name: 'FastAPI',      icon: '🚀', color: '#10b981', category: 'Tools',       level: 75 },
   { name: 'React',        icon: '⚛️', color: '#38bdf8', category: 'Frontend',    level: 70 },
   { name: 'Hugging Face', icon: '🤗', color: '#fbbf24', category: 'AI',          level: 70 },
+  { name: 'TypeScript',   icon: '🔷', color: '#3178c6', category: 'Frontend',    level: 80 },
+  { name: 'Supabase',     icon: '🗃️', color: '#3ecf8e', category: 'Tools',       level: 75 },
+  { name: 'Stable Diff.', icon: '🎨', color: '#e879f9', category: 'AI',          level: 70 },
 ]
 
 export default function FrameNeon() {
