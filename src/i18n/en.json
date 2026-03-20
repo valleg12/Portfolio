@@ -54,18 +54,6 @@
         "description": "Sophisticated trademark ownership verification system using AI to analyze and validate brand-owner relationships. Confidence score computation and parallel processing."
       },
       {
-        "id": "sportech",
-        "title": "Sportech",
-        "tags": ["Data Science", "ML", "Sport Analytics"],
-        "description": "AI solution to optimize athletic performance, prevent injuries and facilitate recruitment. Decision dashboards and data-science-based predictions."
-      },
-      {
-        "id": "getstaty",
-        "title": "GetStaty",
-        "tags": ["API", "Python", "Football Analytics"],
-        "description": "Dynamic match and player analysis for football leagues. Sports API integration, top performer rankings and detailed statistics."
-      },
-      {
         "id": "novarena",
         "title": "Novarena",
         "tags": ["SaaS", "Cloud", "Stadium Management"],
@@ -74,8 +62,8 @@
       {
         "id": "fbref",
         "title": "Pythia",
-        "tags": ["Python", "Web Scraping", "Pandas", "Football Analytics"],
-        "description": "Automated scraping and analysis of football statistics from FBref. Player performance metrics, league comparisons and custom KPIs extracted, processed and visualized with interactive dashboards."
+        "tags": ["Python", "Web Scraping", "Pandas", "Scikit-learn", "Football Analytics"],
+        "description": "Football analytics platform scraping FBref data. Player performance metrics, injury risk prediction, league comparisons and recruitment scoring — interactive dashboards built from multiple project iterations."
       },
       {
         "id": "payfit",

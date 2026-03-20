@@ -54,18 +54,6 @@
         "description": "Système sophistiqué de vérification de propriété de marques utilisant l'IA pour analyser et valider les relations entre marques et propriétaires. Calcul de score de confiance et traitement parallèle."
       },
       {
-        "id": "sportech",
-        "title": "Sportech",
-        "tags": ["Data Science", "ML", "Sport Analytics"],
-        "description": "Solution IA pour optimiser la performance sportive, prévenir les blessures et faciliter le recrutement. Tableaux de bord décisionnels et prédictions basées sur la data science."
-      },
-      {
-        "id": "getstaty",
-        "title": "GetStaty",
-        "tags": ["API", "Python", "Football Analytics"],
-        "description": "Analyse dynamique de matchs et de joueurs pour les championnats de football. Intégration d'API sportives, classement des top performers et statistiques détaillées."
-      },
-      {
         "id": "novarena",
         "title": "Novarena",
         "tags": ["SaaS", "Cloud", "Stadium Management"],
@@ -74,8 +62,8 @@
       {
         "id": "fbref",
         "title": "Pythia",
-        "tags": ["Python", "Web Scraping", "Pandas", "Football Analytics"],
-        "description": "Scraping et analyse automatisés de statistiques football depuis FBref. Métriques de performance joueurs, comparatifs de championnats et KPIs personnalisés extraits, traités et visualisés sous forme de dashboards interactifs."
+        "tags": ["Python", "Web Scraping", "Pandas", "Scikit-learn", "Football Analytics"],
+        "description": "Plateforme d'analytics football scrappant les données FBref. Métriques de performance joueurs, prédiction de risque blessure, comparatifs de championnats et scoring recrutement — dashboards interactifs issus de plusieurs itérations de projets."
       },
       {
         "id": "payfit",
