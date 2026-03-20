@@ -70,6 +70,18 @@
         "title": "Novarena",
         "tags": ["SaaS", "Cloud", "Stadium Management"],
         "description": "Suite intégrée de gestion intelligente pour stades modernes : performance & analytics, gestion des spectateurs, des talents et business & sponsoring. Architecture cloud-native multi-région."
+      },
+      {
+        "id": "fbref",
+        "title": "Pythia",
+        "tags": ["Python", "Web Scraping", "Pandas", "Football Analytics"],
+        "description": "Scraping et analyse automatisés de statistiques football depuis FBref. Métriques de performance joueurs, comparatifs de championnats et KPIs personnalisés extraits, traités et visualisés sous forme de dashboards interactifs."
+      },
+      {
+        "id": "payfit",
+        "title": "Payfit AI Pipeline",
+        "tags": ["AI Agents", "LLM", "SEO Automation", "DUST", "Python"],
+        "description": "Pipeline multi-agents IA construit pour Payfit : production éditoriale automatisée (veille concurrentielle, conformité légale, optimisation EEAT, publication DatoCMS) + simulateurs RH pour génération de leads + scoring GEO de la marque sur 5 LLMs (GPT-4, Claude, Gemini, Llama, Copilot)."
       }
     ]
   },

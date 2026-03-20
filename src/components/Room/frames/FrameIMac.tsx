@@ -1,16 +1,18 @@
 import { useTranslation } from 'react-i18next'
 import SpotlightCard from './SpotlightCard'
 
-const TECH_IDS = ['jungle-gather', 'carrefour']
+const TECH_IDS = ['jungle-gather', 'carrefour', 'payfit']
 
 const EMOJI_MAP: Record<string, string> = {
   'jungle-gather': '🌿',
   'carrefour': '🔍',
+  'payfit': '🏢',
 }
 
 const COLOR_MAP: Record<string, string> = {
   'jungle-gather': '#22d3ee',
   'carrefour': '#06b6d4',
+  'payfit': '#10b981',
 }
 
 export default function FrameIMac() {
