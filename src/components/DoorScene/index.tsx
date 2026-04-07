@@ -1,4 +1,7 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, Suspense, lazy } from 'react'
+
+const Spline = lazy(() => import('@splinetool/react-spline'))
+const SPLINE_SCENE = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode'
 
 interface Props {
   onEnter: () => void
@@ -55,7 +58,7 @@ export default function DoorScene({ onEnter }: Props) {
     setTimeout(() => {
       setFading(true)
       setTimeout(() => onEnter(), 700)
-    }, 820)
+    }, 1400)
   }
 
   const { left, top, width, height, perspX, perspY, bgSize, bgPos } = rect
@@ -110,15 +113,32 @@ export default function DoorScene({ onEnter }: Props) {
         zIndex: 2,
       }} />
 
-      {/* Warm light revealed when door opens */}
+      {/* Spline 3D scene revealed through doorway when door opens */}
       <div style={{
         position: 'absolute',
         left, top, width, height,
-        background: 'radial-gradient(ellipse at 50% 40%, rgba(255,220,100,0.4) 0%, rgba(200,140,50,0.15) 50%, transparent 80%)',
+        overflow: 'hidden',
+        opacity: opening ? 1 : 0,
+        transition: 'opacity 0.5s ease 0.25s',
+        pointerEvents: 'none',
+        zIndex: 3,
+        background: '#000',
+      }}>
+        <Suspense fallback={<div style={{ width: '100%', height: '100%', background: 'radial-gradient(ellipse at 50% 40%, rgba(255,220,100,0.4) 0%, rgba(200,140,50,0.15) 50%, transparent 80%)' }} />}>
+          <Spline scene={SPLINE_SCENE} style={{ width: '100%', height: '100%' }} />
+        </Suspense>
+      </div>
+
+      {/* Warm light overlay on top of Spline for atmosphere */}
+      <div style={{
+        position: 'absolute',
+        left, top, width, height,
+        background: 'radial-gradient(ellipse at 50% 40%, rgba(255,220,100,0.25) 0%, rgba(200,140,50,0.08) 50%, transparent 80%)',
         opacity: opening ? 1 : 0,
         transition: 'opacity 0.4s ease 0.3s',
         pointerEvents: 'none',
-        zIndex: 3,
+        mixBlendMode: 'screen',
+        zIndex: 3.5,
       }} />
 
       {/* Door panel — pixel-accurate slice of DOOR.png, rotates open */}
