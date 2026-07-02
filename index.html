@@ -90,13 +90,13 @@
   #cur.hot{width:60px;height:60px;margin:-30px 0 0 -30px;border-color:var(--amber);background:rgba(216,165,106,.08)}
   #dot{position:fixed;top:0;left:0;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--gold);z-index:21;pointer-events:none}
 
-  #boot{position:fixed;inset:0;z-index:40;background:#000;display:flex;align-items:center;justify-content:center;font-family:var(--mono);color:#fff;transition:opacity .7s ease}
+  #boot{position:fixed;inset:0;z-index:40;background:#000;display:flex;align-items:center;justify-content:center;font-family:var(--mono);color:#fff;transition:opacity .7s ease;cursor:auto}
   #boot .bootlog{position:absolute;top:8%;left:8%;font-size:13px;line-height:1.9;color:#e8e8e8;white-space:pre}
   #boot .bootbox{opacity:0;transform:translateY(8px);transition:opacity .5s var(--exp),transform .5s var(--exp);border:3px solid #fff;padding:40px 56px;min-width:min(560px,86vw)}
   #boot .bootbox.show{opacity:1;transform:none}
   #boot .bootbox p{font-size:clamp(15px,1.6vw,20px);line-height:1.65;letter-spacing:.02em}
   #boot .cur{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
-  #boot .startbtn{display:block;margin:24px auto 0;background:#000;color:#fff;border:3px solid #fff;font-family:var(--mono);font-size:20px;letter-spacing:.06em;padding:9px 26px;cursor:none;transition:background .2s,color .2s}
+  #boot .startbtn{display:block;margin:24px auto 0;background:#000;color:#fff;border:3px solid #fff;font-family:var(--mono);font-size:20px;letter-spacing:.06em;padding:9px 26px;cursor:pointer;transition:background .2s,color .2s}
   #boot .startbtn:hover{background:#fff;color:#000}
 
   /* hero specifics */
