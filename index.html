@@ -90,10 +90,14 @@
   #cur.hot{width:60px;height:60px;margin:-30px 0 0 -30px;border-color:var(--amber);background:rgba(216,165,106,.08)}
   #dot{position:fixed;top:0;left:0;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--gold);z-index:21;pointer-events:none}
 
-  .loader{position:fixed;inset:0;z-index:30;background:#070503;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
-  .loader .ln{font-family:var(--serif);font-weight:300;font-size:clamp(24px,3.6vw,40px);letter-spacing:.04em}.loader .ln em{font-style:italic;color:var(--amber)}
-  .loader .lb{width:200px;height:1px;background:rgba(255,255,255,.1);overflow:hidden}.loader .lb i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--gold))}
-  .loader .lp{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--muted)}
+  #boot{position:fixed;inset:0;z-index:40;background:#000;display:flex;align-items:center;justify-content:center;font-family:var(--mono);color:#fff;transition:opacity .7s ease}
+  #boot .bootlog{position:absolute;top:8%;left:8%;font-size:13px;line-height:1.9;color:#e8e8e8;white-space:pre}
+  #boot .bootbox{opacity:0;transform:translateY(8px);transition:opacity .5s var(--exp),transform .5s var(--exp);border:3px solid #fff;padding:40px 56px;min-width:min(560px,86vw)}
+  #boot .bootbox.show{opacity:1;transform:none}
+  #boot .bootbox p{font-size:clamp(15px,1.6vw,20px);line-height:1.65;letter-spacing:.02em}
+  #boot .cur{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+  #boot .startbtn{display:block;margin:24px auto 0;background:#000;color:#fff;border:3px solid #fff;font-family:var(--mono);font-size:20px;letter-spacing:.06em;padding:9px 26px;cursor:none;transition:background .2s,color .2s}
+  #boot .startbtn:hover{background:#fff;color:#000}
 
   /* hero specifics */
   #hero .panel{max-width:none}
@@ -149,6 +153,34 @@
   .dock{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:12px;padding:10px 14px;background:rgba(255,255,255,.1);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.16);border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
   .dock i{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:none;transition:transform .3s var(--exp)}
   .dock i:hover{transform:translateY(-9px) scale(1.12)}
+  /* Univers "À propos" — galerie (désactivé : à refaire avec une vraie image rendue) */
+  #uAbout{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;overflow:hidden;clip-path:inset(40% 38% 40% 38% round 8px);
+    background:radial-gradient(120% 95% at 50% 2%,#241d18,#150f0c 52%,#0a0706)}
+  #uAbout.active{pointer-events:auto}
+  #uAbout .spot{position:absolute;top:-16%;width:44vw;height:88vh;background:radial-gradient(closest-side,rgba(255,238,214,.13),transparent);filter:blur(28px);pointer-events:none;z-index:1}
+  #uAbout .spot.s1{left:-2%}#uAbout .spot.s2{left:50%;transform:translateX(-50%)}#uAbout .spot.s3{right:-2%}
+  #uAbout .veins{position:absolute;inset:0;z-index:1;opacity:.05;pointer-events:none;background:radial-gradient(38% 26% at 22% 28%,transparent 39%,rgba(255,255,255,.6) 40%,transparent 41%),radial-gradient(46% 34% at 78% 62%,transparent 39%,rgba(255,255,255,.5) 40%,transparent 41%)}
+  #uAbout .gfloor{position:absolute;left:0;right:0;bottom:0;height:28%;z-index:1;background:linear-gradient(#0c0908,#050303);border-top:1px solid rgba(216,165,106,.14)}
+  #uAbout .gtitle{position:absolute;top:11%;left:50%;transform:translateX(-50%);text-align:center;z-index:2}
+  #uAbout .gtitle .k{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  #uAbout .gtitle h3{font-family:var(--serif);font-weight:300;font-size:clamp(38px,6vw,84px);line-height:.95}#uAbout .gtitle h3 em{font-style:italic;color:var(--amber)}
+  #uAbout .plinthw{position:absolute;left:50%;bottom:25%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center}
+  #uAbout .bustsvg{width:132px;filter:drop-shadow(0 22px 44px rgba(0,0,0,.65))}
+  #uAbout .plinth{width:98px;height:120px;background:linear-gradient(160deg,#2a231d,#151009);border:1px solid rgba(216,165,106,.18);border-bottom:none;margin-top:-6px}
+  #uAbout .plinth .pl{padding:16px 8px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.8}
+  #uAbout .cartel{position:absolute;max-width:238px;z-index:2;padding-left:16px;border-left:2px solid rgba(216,165,106,.6)}
+  #uAbout .cartel .k{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  #uAbout .cartel h5{font-family:var(--serif);font-weight:400;font-size:20px;color:var(--cream);margin-bottom:8px}
+  #uAbout .cartel p{font-size:12.5px;line-height:1.6;color:#C6B7A6}
+  #uAbout .cartel.c-bio{left:6%;top:40%}#uAbout .cartel.c-form{right:6%;top:36%;text-align:right;padding-left:0;padding-right:16px;border-left:none;border-right:2px solid rgba(216,165,106,.6)}
+  #uAbout .cartel.c-lvmh{left:50%;transform:translateX(-50%);bottom:8%;max-width:440px;text-align:center;border-left:none;padding-left:0}
+  #uAbout .cartel.c-lvmh h5{font-size:22px}#uAbout .cartel.c-lvmh .lv{font-style:italic;color:var(--gold)}
+  #uAbout .rack{position:absolute;bottom:23%;z-index:1;height:130px}
+  #uAbout .rack .bar{width:150px;height:4px;background:linear-gradient(90deg,#3a2f26,#6a5a48,#3a2f26);border-radius:2px}
+  #uAbout .rack .leg{position:absolute;top:2px;width:2px;height:122px;background:#4a3f34}#uAbout .rack .leg.a{left:10px}#uAbout .rack .leg.b{right:10px}
+  #uAbout .rack .g{position:absolute;top:8px;width:34px;height:76px;border-radius:6px 6px 4px 4px;box-shadow:0 10px 24px rgba(0,0,0,.4)}
+  #uAbout .rack.left{left:3%}#uAbout .rack.right{right:3%}
+  #uAbout .ghint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8a7b6c}
   #uProjets .uhint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8a7b6c}
   @media(max-width:820px){.znav{display:none}.chapter{padding:0 22px}.plist{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr;overflow:auto}}
 </style>
@@ -207,12 +239,7 @@
   <section class="chapter" id="c3"><div class="panel">
     <div class="eyebrow"><i></i>03 — Projets tech</div>
     <div class="ptitle">Ce que je<br><em>construis</em></div>
-    <div class="cards">
-      <div class="card"><span class="cn">Jungle Gather</span><span class="ct">React · Pixel</span></div>
-      <div class="card"><span class="cn">NARA</span><span class="ct">Supabase · Dust</span></div>
-      <div class="card"><span class="cn">Payfit AI Pipeline</span><span class="ct">Multi-agents · LLM</span></div>
-      <div class="card"><span class="cn">BINKO</span><span class="ct">Stable Diffusion · CV</span></div>
-    </div>
+    <div class="pbody">Entre dans l'ordinateur pour explorer mes projets.</div>
   </div></section>
 
   <section class="chapter right" id="c4"><div class="panel">
@@ -291,8 +318,42 @@
     <i style="background:linear-gradient(160deg,#e0b34a,#b8862a)">📷</i>
   </div>
 </div>
+<div id="uAbout">
+  <div class="spot s1"></div><div class="spot s2"></div><div class="spot s3"></div>
+  <div class="veins"></div><div class="gfloor"></div>
+  <div class="gtitle"><div class="k">Galerie · à propos</div><h3>Le <em>parcours</em></h3></div>
+  <div class="rack left"><div class="bar"></div><span class="leg a"></span><span class="leg b"></span>
+    <span class="g" style="left:18px;background:linear-gradient(160deg,#2a2a2e,#101013)"></span>
+    <span class="g" style="left:58px;background:linear-gradient(160deg,#c9a36a,#8a6a3a)"></span>
+    <span class="g" style="left:98px;background:linear-gradient(160deg,#ece5d9,#b6ab9b)"></span>
+  </div>
+  <div class="rack right"><div class="bar"></div><span class="leg a"></span><span class="leg b"></span>
+    <span class="g" style="left:18px;background:linear-gradient(160deg,#1b1b21,#09090c)"></span>
+    <span class="g" style="left:58px;background:linear-gradient(160deg,#7a2233,#471320)"></span>
+    <span class="g" style="left:98px;background:linear-gradient(160deg,#3a4a6a,#212f49)"></span>
+  </div>
+  <div class="plinthw">
+    <svg class="bustsvg" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="mb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3ede2"/><stop offset="1" stop-color="#afa495"/></linearGradient></defs>
+      <path d="M60 6 C74 6 82 18 82 32 C82 45 75 53 67 57 L73 65 C92 71 104 87 104 112 L16 112 C16 87 28 71 47 65 L53 57 C45 53 38 45 38 32 C38 18 46 6 60 6 Z" fill="url(#mb)"/>
+      <path d="M60 6 C74 6 82 18 82 32" fill="none" stroke="#fff8ee" stroke-width="1.5" opacity="0.55" stroke-linecap="round"/>
+    </svg>
+    <div class="plinth"><div class="pl">Victorien<br>Alleg</div></div>
+  </div>
+  <div class="cartel c-bio"><div class="k">Profil</div><h5>IA × Data × Sport</h5><p>Architecte IA. Je transforme la donnée en décisions, à la croisée de l'intelligence artificielle et du business.</p></div>
+  <div class="cartel c-form"><div class="k">Formation</div><h5>Eugenia · AMOS</h5><p>MSc AI Applied to Business — Eugenia School, Paris. Master Management des Organisations Sportives — AMOS, Lille.</p></div>
+  <div class="cartel c-lvmh"><div class="k">Expérience</div><h5>Data &amp; CRM chez <span class="lv">LVMH</span></h5><p>L'exigence du luxe et une passion pour la mode — la donnée au service de la marque.</p></div>
+  <div class="ghint">Scrolle pour ressortir</div>
+</div>
 <div id="cur"></div><div id="dot"></div>
-<div class="loader" id="loader"><div class="ln">Victorien <em>Alleg</em></div><div class="lb"><i id="lfill"></i></div><div class="lp" id="lpct">0%</div></div>
+<div id="boot">
+  <div class="bootlog" id="bootlog"></div>
+  <div class="bootbox" id="bootbox">
+    <p>Victorien Alleg — Portfolio Showcase 2026</p>
+    <p>Click start to begin <span class="cur">_</span></p>
+    <button class="startbtn" id="startbtn">START</button>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -306,9 +367,8 @@ renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setSize(innerWid
 const scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 
 const lm=new THREE.LoadingManager();
-const lfill=document.getElementById('lfill'),lpct=document.getElementById('lpct');
-lm.onProgress=(u,l,t)=>{const p=Math.round(l/t*100);lfill.style.width=p+'%';lpct.textContent=p+'%';};
-let _assets=false,_boot=false;lm.onLoad=()=>{_assets=true;tryStart();};
+lm.onProgress=()=>{};
+let _assets=false,_boot=false;lm.onLoad=()=>{_assets=true;};
 const tex=new THREE.TextureLoader(lm);
 const room=tex.load('ROOM.png'),depthTex=tex.load('depth.png');
 [room,depthTex].forEach(t=>{t.minFilter=THREE.LinearFilter;t.magFilter=THREE.LinearFilter;t.generateMipmaps=false;t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;});
@@ -394,6 +454,7 @@ const chapters=[...document.querySelectorAll('.chapter')];
 const znavA=[...document.querySelectorAll('.znav a')];
 function sm(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);}
 const uni=document.getElementById('uProjets');
+const uAbout=document.getElementById('uAbout');
 document.querySelectorAll('#uProjets .folder').forEach(f=>f.addEventListener('click',()=>{document.querySelectorAll('#uProjets .win').forEach(w=>w.classList.remove('open'));const t=document.getElementById(f.dataset.win);if(t)t.classList.add('open');}));
 document.querySelectorAll('#uProjets .win .r').forEach(c=>c.addEventListener('click',()=>c.closest('.win').classList.remove('open')));
 document.querySelectorAll('.osbar .l a').forEach(a=>a.addEventListener('click',()=>{const t=document.querySelector(a.dataset.goto);if(t)window.lenis.scrollTo(t);}));
@@ -442,8 +503,7 @@ function runEntrance(){
   gsap.set('#hero .hd',{'--bl':'12px',opacity:0,y:20});
   gsap.set('#hero .eyebrow',{opacity:0,y:16});
   const tl=gsap.timeline({defaults:{ease:'expo.out'}});
-  tl.to('#loader',{opacity:0,duration:.7,ease:'power2.inOut',onComplete:()=>{const l=document.getElementById('loader');if(l)l.remove();}},0)
-    .to(U.uReveal,{value:1,duration:1.9,ease:'power2.out'},.15)
+  tl.to(U.uReveal,{value:1,duration:1.9,ease:'power2.out'},.15)
     .to(U.uZoom,{value:1.0,duration:2.8,ease:'expo.out'},.15)
     .to('#hero .eyebrow',{opacity:1,y:0,duration:.9},.7)
     .to('#hero h1 .rev',{yPercent:0,'--bl':'0px',duration:1.25,stagger:.11},.9)
@@ -452,9 +512,18 @@ function runEntrance(){
     .to('#foot',{opacity:1,duration:1},1.7)
     .call(()=>{entered=true;window.__ent=1;},null,2.9);
 }
-function tryStart(){if(_assets&&_boot)runEntrance();}
-window.U=U;window.lenis=lenis;_boot=true;tryStart();
-setTimeout(()=>runEntrance(),1800);
+window.U=U;window.lenis=lenis;_boot=true;
+// boot / start gate (henry heffernan style)
+(function(){
+  const bootlog=document.getElementById('bootlog');
+  const lines=['> booting victorien_os · v2.6','> mounting /portfolio','> loading room assets','> init webgl renderer','> depth engine · midas','> ready.'];
+  let i=0;(function type(){if(i<lines.length){bootlog.innerHTML+=lines[i]+(i<lines.length-1?' ... ok\n':'\n');i++;setTimeout(type,240);}else{document.getElementById('bootbox').classList.add('show');}})();
+  document.getElementById('startbtn').addEventListener('click',()=>{
+    const b=document.getElementById('boot');b.style.opacity='0';b.style.pointerEvents='none';setTimeout(()=>{if(b)b.remove();},750);
+    try{if(!actx)initSound();if(actx.state==='suspended')actx.resume();on=true;document.getElementById('snd').classList.add('on');mg.gain.linearRampToValueAtTime(0.9,actx.currentTime+0.6);}catch(e){}
+    runEntrance();
+  });
+})();
 </script>
 </body>
 </html>
