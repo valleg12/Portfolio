@@ -1,4 +1,5 @@
-# Static site — no build step. Publish the repo root as-is.
+# Static site. Netlify expects a "dist" folder — we just assemble it from the
+# repo files (no real build). Guarantees the publish dir exists.
 [build]
-  command = "true"
-  publish = "."
+  command = "mkdir -p dist && cp -a index.html ROOM.png depth.png bernabeu.png dist/"
+  publish = "dist"
