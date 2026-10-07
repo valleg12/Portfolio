@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -383,10 +383,6 @@ const material=new THREE.ShaderMaterial({uniforms:U,
       col*=mix(vec3(0.85,0.94,1.07),vec3(1.07,1.0,0.88),smoothstep(0.15,0.85,lum));
       float nd=distance(suv,vec2(0.10,0.585));
       col+=vec3(0.18,0.42,0.95)*smoothstep(0.12,0.0,nd)*(0.6+0.4*sin(uTime*6.5))*0.13;
-      if(suv.x>0.30&&suv.x<0.50&&suv.y>0.30&&suv.y<0.80){
-        float tw=step(0.9975,hash(floor(suv*vec2(220.0,150.0))+floor(uTime*6.0)));col+=vec3(0.7,0.85,1.0)*tw*0.4;}
-      float dm=hash(floor(suv*vec2(80.0,80.0))+vec2(0.0,floor(uTime*0.6)));
-      col+=vec3(1.0,0.85,0.6)*smoothstep(0.9965,1.0,dm)*0.28;
       float vg=smoothstep(1.12,0.26,distance(vUv,vec2(0.5))*1.32);col*=mix(0.36,1.0,vg);
       col+=(hash(vUv*uRes.xy+uTime)-0.5)*0.02;
       col*=uReveal;gl_FragColor=vec4(col,1.0);}`
@@ -409,7 +405,16 @@ function initSound(){actx=new(window.AudioContext||window.webkitAudioContext)();
   const buf=actx.createBuffer(1,actx.sampleRate*2,actx.sampleRate),d=buf.getChannelData(0);let last=0;
   for(let i=0;i<d.length;i++){const w=Math.random()*2-1;last=(last+0.02*w)/1.02;d[i]=last*3;}
   const n=actx.createBufferSource();n.buffer=buf;n.loop=true;const lp=actx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=520;const ng=actx.createGain();ng.gain.value=0.05;n.connect(lp).connect(ng).connect(mg);n.start();}
-document.getElementById('snd').addEventListener('click',function(){if(!actx)initSound();if(actx.state==='suspended')actx.resume();on=!on;this.classList.toggle('on',on);mg.gain.linearRampToValueAtTime(on?.9:0,actx.currentTime+.6);});
+// music.mp3 is the soundtrack when the file is there; the synth drone above is the fallback
+const track=new Audio();track.src='music.mp3';track.loop=true;track.volume=0;track.preload='none';let trackOK=true;
+function synthSound(){if(!actx)initSound();if(actx.state==='suspended')actx.resume();mg.gain.linearRampToValueAtTime(on?.9:0,actx.currentTime+.6);}
+function setSound(v){
+  on=v;document.getElementById('snd').classList.toggle('on',on);
+  if(!trackOK){synthSound();return;}
+  if(on)track.play().catch(()=>{trackOK=false;synthSound();});
+  gsap.to(track,{volume:on?0.45:0,duration:.9,ease:'power1.out',onComplete:()=>{if(!on)track.pause();}});
+}
+document.getElementById('snd').addEventListener('click',()=>setSound(!on));
 
 // ── scroll engine ───────────────────────────────────────────
 const lenis=new Lenis({lerp:0.09,smoothWheel:true});
@@ -497,6 +502,101 @@ const UNI={
     {x:77,y:52,l:'Cinéma',k:'Le projecteur',h:'Cinéma',p:'De préférence sur grand écran.'},
     {x:68,y:40,l:'Histoire',k:'L\'étagère',h:'Histoire',p:'Des livres d\'histoire entre deux projets.'}]}
 };
+// ── Langue : anglais par défaut, FR via le bouton. Le français est le texte écrit dans la page et dans UNI ;
+// EN ci-dessous le recouvre, champ par champ (même ordre de spots que UNI). ──
+const EN={
+  c1:{k:'Gallery · About',t:'The <em>journey</em>',spots:[
+    {l:'The bust',k:'Portrait',p:'CRM Business Analyst and AI architect. I turn data into decisions, across artificial intelligence, client intelligence and sport business.'},
+    {l:'Profile',k:'Artwork no. 1',h:'A hybrid profile',p:'Five years of sports management at AMOS, then an MSc in AI applied to business at Eugenia School. One foot in the business, one foot in the tech.'},
+    {l:'Next',k:'Artwork no. 2',h:'What I am looking for',p:'A permanent position, open to VIE, around CRM, client intelligence and data.',g:['Permanent role','Open to VIE']},
+    {l:'In numbers',k:'Artwork no. 3',h:'In numbers',b:['3 roles in companies, including one year at LVMH','8 AI and data projects built end to end','TOEIC 936 · 2 Dataiku certifications']},
+    {l:'The Senate',k:'Sculpture',p:'A 2025 programme: workshops, then a pitch at an event at the French Senate.'},
+    {l:'Contact',k:'A piece to take away',h:'Let\'s work together'}]},
+  cx:{k:'Dressing room · Experience',t:'In the <em>field</em>',spots:[
+    {k:'2025 — 2026 · 1 year',r:'CRM Business Analyst · Client Intelligence & Programs',b:['Analysis of multi-brand CRM asset performance (playbooks, decks) and consultation tracking','Analytical dashboards and 5+ KPIs to monitor Client Development performance','Usage analysis by sector: Fashion & Leather Goods, Perfumes & Cosmetics, Watches & Jewelry','Internal knowledge repository centralising 50+ strategic assets, with automated features']},
+    {b:['Multi-channel, data-driven customer acquisition strategy, with conversion KPIs in Power BI','8+ marketing processes automated with n8n and Supabase','Lead scoring model in HubSpot','Acquisition and retention newsletters on Salesforce']},
+    {k:'2022 — 2023 · 1 year',b:['CRM segmentation built on customer behavioural data','Commercial performance dashboard: 37% conversion rate','Growth strategy: 150 new members','Customer file and revenue management in Resamania and Uptivo']},
+    {l:'The thread',k:'The island',h:'Client data',p:'From a sports club to a luxury house, the same job: understand clients through data, then give teams what they need to decide.'},
+    {l:'Tools',k:'The shelf',h:'Everyday tools'}]},
+  c2:{k:'Data room · Skills',t:'<em>Nothing</em> left to chance',spots:[
+    {k:'The wall of screens',p:'Dashboards that teams actually open: KPIs, performance tracking, visualisations for decision-makers.'},
+    {l:'Predictive',k:'The holographic table',h:'Predictive models',p:'Scoring, segmentation, recommendation and forecasting, from prototype to deployed model.'},
+    {l:'Automation',k:'The server rack',h:'AI automation',p:'Pipelines that take away repetitive work: collection, enrichment, syncing, alerts.'},
+    {k:'The desk',h:'LLMs, RAG & agents',p:'RAG architectures, multi-agent systems and prompt engineering applied to business cases.'},
+    {k:'The wall of cards',h:'CRM & text analysis',p:'Client segmentation, lead scoring, sentiment analysis and analytical marketing.'}]},
+  c4:{k:'The box · Sport projects',t:'A view of the <em>pitch</em>',spots:[
+    {k:'The tactics board',p:'Football scouting platform: player performance metrics, league comparisons and recruitment scoring, with interactive dashboards.'},
+    {k:'The screen',p:'Smart management suite for modern stadiums: performance and analytics, spectator and talent management, business and sponsorship.'},
+    {k:'The display case',h:'AI for sport business',b:['Athlete performance and injury prevention','AI-augmented scouting','Dynamic pricing and ticketing','Fan marketing and business intelligence']},
+    {l:'The pitch',k:'The ball',h:'The pitch first',p:'Five years at AMOS in sports management and a year at Le Five: I practised sport business before I modelled it.'},
+    {l:'The view',k:'Behind the glass',p:'The stadium you can see from the office window is not there by chance.'}]},
+  c5:{k:'Workshop · Freelance',t:'The <em>Lab</em>',spots:[
+    {l:'AI strategy',k:'The whiteboard',h:'AI strategy & integration',p:'From data audit to production deployment.'},
+    {l:'Automation',k:'The workbench',h:'Process automation',p:'n8n, Make and custom pipelines.'},
+    {k:'The sketch wall',h:'AI-first product design',p:'From wireframe to prototype, with AI built in from the start.'},
+    {l:'Predictive',k:'The archives',h:'Predictive analytics',p:'Custom machine learning models for business forecasting.'},
+    {k:'The shelf',p:'Statistical models for clubs and agencies.'},
+    {l:'Training',k:'The table',h:'Training & workshops',p:'Practical AI for non-technical teams.'},
+    {l:'Let\'s talk',k:'The coffee',h:'Let\'s talk',p:'A project, an idea, a doubt? '+MAIL}]},
+  c6:{k:'Library · Education',t:'The <em>library</em>',spots:[
+    {p:'Business Analytics, Data Visualisation, CRM, Machine Learning, RAG / LLM architecture, NLP, AI ethics and governance.'},
+    {l:'Sport Master\'s',r:'Master in Sports Organisation Management',p:'Preceded by a Bachelor in Sports Event & Marketing Management (2018 — 2021). Strategy, sports marketing, law, sponsorship.'},
+    {k:'The display case',h:'Dataiku certifications',b:['ML Practitioner · January 2026','Core Designer · March 2025']},
+    {k:'The lectern',p:'Four months of Python, data management and machine learning.'},
+    {l:'Languages',k:'The globe',h:'Languages',b:['French: native','English: fluent (TOEIC 936)','Spanish: intermediate']},
+    {l:'Tools',k:'The study table',h:'Languages & tools'}]},
+  c7:{k:'Lounge · Off work',spots:[
+    {l:'Chess',k:'The table',h:'Chess',p:'Note to self: revise the Sicilian opening.'},
+    {l:'Boxing',k:'The bag',h:'Boxing',p:'For the head as much as the legs.'},
+    {l:'Skiing',k:'On the wall',h:'Skiing',p:'Whenever there is snow.'},
+    {k:'The ball',p:'Player, supporter, and madridista.'},
+    {l:'Sailing',k:'The model',h:'Sailing',p:'Boat licence in hand, skipper in Corsica.'},
+    {l:'Cinema',k:'The projector',h:'Cinema',p:'Preferably on a big screen.'},
+    {l:'History',k:'The shelf',h:'History',p:'History books between two projects.'}]}
+};
+// texte fixe de la page : sélecteur → anglais (le français est lu dans le HTML au chargement)
+const EB=t=>'<i></i>'+t;
+const EN_PAGE={
+  '#snd':'<span class="eq"><i></i><i></i><i></i></span> Sound',
+  '.cue':'<div class="rail"></div>Scroll',
+  '.znav a[href="#c1"] .zl':'About','.znav a[href="#cx"] .zl':'Experience','.znav a[href="#c2"] .zl':'Skills','.znav a[href="#c3"] .zl':'Tech projects','.znav a[href="#c4"] .zl':'Sport projects','.znav a[href="#c6"] .zl':'Education','.znav a[href="#c7"] .zl':'Off work',
+  '.osbar a[data-goto="#c1"]':'About','.osbar a[data-goto="#cx"]':'Experience','.osbar a[data-goto="#c2"]':'Skills','.osbar a[data-goto="#c3"]':'Tech projects','.osbar a[data-goto="#c4"]':'Sport projects','.osbar a[data-goto="#c6"]':'Education','.osbar a[data-goto="#c7"]':'Off work',
+  '#hero .eyebrow':EB('Portfolio — AI &amp; Sport Business'),
+  '#hero .hd':'AI Architect. I turn <b>data</b> into <b>decisions</b>, between artificial intelligence and sport business.',
+  '#c1 .eyebrow':EB('01 — About'),'#c1 .ptitle':'The <em>journey</em>','#c1 .pbody':'Step into the gallery: every piece on display tells part of the story.',
+  '#cx .eyebrow':EB('02 — Experience'),'#cx .ptitle':'In the <em>field</em>','#cx .pbody':'Step into the dressing room: three houses, one thread, <b>client data</b>.',
+  '#c2 .eyebrow':EB('03 — Skills'),'#c2 .ptitle':'<em>Nothing</em> left<br>to chance','#c2 .pbody':'Step into the data room to see what I can do.',
+  '#c3 .eyebrow':EB('04 — Tech projects'),'#c3 .ptitle':'What I<br><em>build</em>','#c3 .pbody':'Step into the computer to explore my projects.',
+  '#c4 .eyebrow':EB('05 — Sport projects'),'#c4 .ptitle':'A view of the<br><em>Bernabéu</em>','#c4 .pbody':'Head down to the box: my sport projects are on display, facing the pitch.',
+  '#c5 .eyebrow':EB('06 — Freelance'),'#c5 .ptitle':'The <em>Lab</em>','#c5 .pbody':'Step into the workshop: what I offer on assignment.',
+  '#c6 .eyebrow':EB('07 — Education'),'#c6 .ptitle':'The <em>library</em>','#c6 .pbody':'Step into the library: degrees, certifications and languages.',
+  '#c7 .eyebrow':EB('08 — Off work'),'#c7 .pbody':'Step into the lounge: what keeps me busy when the screen is off.',
+  '#c8 .ptitle':'Let\'s work<br><em>together</em>',
+  '.egg.sticky':'Note to self:<br><b>revise the Sicilian opening</b> ♟️',
+  '.egg.wgt .k':'Weather · Madrid',
+  '.egg.term':'<b>victorien@mac</b> ~ %<br>cat passions.txt<br>⚽ Real Madrid · ♟ chess<br>🎿 skiing · 🥊 boxing · 🎬 cinema<br><b>victorien@mac</b> ~ % _',
+  '.osbar .r span:last-child':'Tue 2 Jul · 22:47',
+  '#w1 .wc .k':'AI · SaaS · React','#w1 .wc p':'Immersive web app inspired by Gather: social dynamics and scheduling for multi-site companies. Pixel-art interface, interactive calendar, on-site / remote management.',
+  '#w2 .wc .k':'Creator platform','#w2 .wc p':'All-in-one for creators: AI contract analysis (Guardians), invoicing &amp; revenue dashboards (Flow), email classification by type of collaboration (Orbit).',
+  '#w3 .wc .k':'Multi-agent · LLM','#w3 .wc p':'Multi-agent pipeline: automated editorial production (monitoring, compliance, EEAT, DatoCMS publishing), HR simulators for lead generation, and GEO brand scoring across 5 LLMs.',
+  '#w4 .wc p':'Synthetic image dataset generator for training waste-sorting models. 3-phase async pipeline (FLUX Schnell → FLEX 1.1 Pro → augmentation) plus a cost optimiser.',
+  '#w5 .wc p':'AI brand ownership verification system: brand / owner relationship analysis, confidence score, parallel processing.',
+  '#w6 .wc .k':'Multi-agent · Real estate','#w6 .wc p':'Multi-agent systems on Dust for real estate: valuation agents, market comparison, ROI calculation. Scoring of 6 sectors by impact and feasibility.'
+};
+const UI={en:{found:'discovered',hint:'Click the objects · scroll to leave',close:'Close'},fr:{found:'découverts',hint:'Clique sur les objets · scrolle pour ressortir',close:'Fermer'}};
+let LANG='en';try{if(localStorage.getItem('lang')==='fr')LANG='fr';}catch(e){}
+const FR_PAGE={};
+// tx : champ d'un univers ou d'un spot dans la langue courante
+const tx=(id,key,i)=>{const e=LANG==='en'&&EN[id]&&(i===undefined?EN[id]:EN[id].spots[i]);const v=e?e[key]:undefined;return v!==undefined?v:(i===undefined?UNI[id][key]:UNI[id].spots[i][key]);};
+function applyLang(){
+  document.documentElement.lang=LANG;
+  for(const sel in EN_PAGE){const el=document.querySelector(sel);if(!el)continue;if(!(sel in FR_PAGE))FR_PAGE[sel]=el.innerHTML;el.innerHTML=LANG==='en'?EN_PAGE[sel]:FR_PAGE[sel];}
+  document.querySelector('.lang').innerHTML=LANG==='en'?'<b>EN</b> <span>· FR</span>':'<b>FR</b> <span>· EN</span>';
+  for(const id in UNI){const u=UNI[id];if(!u.el)continue;closeCard(u);
+    u.el.querySelector('.utop .k').innerHTML=tx(id,'k');u.el.querySelector('.utop h3').innerHTML=tx(id,'t');
+    u.el.querySelector('.cnt span').textContent=UI[LANG].found;u.el.querySelector('.uhint').textContent=UI[LANG].hint;u.el.querySelector('.ucard .x').setAttribute('aria-label',UI[LANG].close);
+    u.hs.forEach((h,i)=>{const l=tx(id,'l',i);h.setAttribute('aria-label',l);h.querySelector('span').textContent=l;});}
+}
 const UAR=2400/1340,dzOf={},uniOn={};
 const dzSum=()=>{let t=0;for(const k in dzOf)t+=dzOf[k];return t;};
 const syncUni=()=>setUni(Object.values(uniOn).some(Boolean));
@@ -504,21 +604,24 @@ function loadUni(u){if(!u.loaded){u.loaded=1;u.el.querySelector('img').src=u.img
 function closeCard(u){u.card.classList.remove('open');u.el.querySelectorAll('.hs.on').forEach(h=>h.classList.remove('on'));}
 function openCard(u,i){
   const s=u.spots[i],c=u.card;
-  c.querySelector('.body').innerHTML='<div class="k">'+s.k+'</div><h4>'+s.h+'</h4>'+(s.r?'<div class="r">'+s.r+'</div>':'')+(s.p?'<p>'+s.p+'</p>':'')+(s.b?'<ul>'+s.b.map(x=>'<li>'+x+'</li>').join('')+'</ul>':'')+(s.g?'<div class="g">'+s.g.map(x=>'<span>'+x+'</span>').join('')+'</div>':'');
+  const f=k=>tx(u.id,k,i),r=f('r'),p=f('p'),b=f('b'),g=f('g');
+  c.querySelector('.body').innerHTML='<div class="k">'+f('k')+'</div><h4>'+f('h')+'</h4>'+(r?'<div class="r">'+r+'</div>':'')+(p?'<p>'+p+'</p>':'')+(b?'<ul>'+b.map(x=>'<li>'+x+'</li>').join('')+'</ul>':'')+(g?'<div class="g">'+g.map(x=>'<span>'+x+'</span>').join('')+'</div>':'');
   c.classList.toggle('left',s.x>52);c.classList.add('open');c.scrollTop=0;
   u.hs.forEach((h,j)=>{h.classList.toggle('on',j===i);if(j===i)h.classList.add('seen');});
   u.el.querySelector('.cnt b').textContent=u.el.querySelectorAll('.hs.seen').length;
 }
 for(const id in UNI){
-  const u=UNI[id],el=document.createElement('div');el.className='uni';el.id='u_'+id;
+  const u=UNI[id],el=document.createElement('div');el.className='uni';el.id='u_'+id;u.id=id;
   el.innerHTML='<div class="uscroll"><div class="ustage"><img alt="" decoding="async">'+u.spots.map((s,i)=>'<button class="hs" data-hover data-i="'+i+'" style="left:'+s.x+'%;top:'+s.y+'%" aria-label="'+s.l+'"><i></i><span>'+s.l+'</span></button>').join('')+'</div></div>'+
-    '<div class="ushade"></div><div class="utop"><div><div class="k">'+u.k+'</div><h3>'+u.t+'</h3></div><div class="cnt"><b>0</b> / '+u.spots.length+'<br>découverts</div></div>'+
-    '<div class="ucard"><button class="x" data-hover aria-label="Fermer">×</button><div class="body"></div></div><div class="uhint">Clique sur les objets · scrolle pour ressortir</div>';
+    '<div class="ushade"></div><div class="utop"><div><div class="k">'+u.k+'</div><h3>'+u.t+'</h3></div><div class="cnt"><b>0</b> / '+u.spots.length+'<br><span></span></div></div>'+
+    '<div class="ucard"><button class="x" data-hover aria-label="">×</button><div class="body"></div></div><div class="uhint"></div>';
   document.body.insertBefore(el,document.getElementById('cur'));
   u.el=el;u.card=el.querySelector('.ucard');u.stage=el.querySelector('.ustage');u.hs=[...el.querySelectorAll('.hs')];
   el.addEventListener('click',e=>{const h=e.target.closest('.hs');if(h)openCard(u,+h.dataset.i);else if(!e.target.closest('.ucard')||e.target.closest('.x'))closeCard(u);});
 }
 addEventListener('keydown',e=>{if(e.key==='Escape')for(const id in UNI)closeCard(UNI[id]);});
+applyLang();
+document.querySelector('.lang').addEventListener('click',()=>{LANG=LANG==='en'?'fr':'en';try{localStorage.setItem('lang',LANG);}catch(e){}applyLang();});
 // the image covers the viewport; on narrow screens it keeps full height and pans sideways instead
 let uniPan=false;
 function sizeStages(){
@@ -616,7 +719,7 @@ window.U=U;window.lenis=lenis;_boot=true;
   let i=0;(function type(){if(i<lines.length){bootlog.innerHTML+=lines[i]+(i<lines.length-1?' ... ok\n':'\n');i++;setTimeout(type,240);}else{document.getElementById('bootbox').classList.add('show');}})();
   document.getElementById('startbtn').addEventListener('click',()=>{
     const b=document.getElementById('boot');b.style.opacity='0';b.style.pointerEvents='none';setTimeout(()=>{if(b)b.remove();},750);
-    try{if(!actx)initSound();if(actx.state==='suspended')actx.resume();on=true;document.getElementById('snd').classList.add('on');mg.gain.linearRampToValueAtTime(0.9,actx.currentTime+0.6);}catch(e){}
+    try{setSound(true);}catch(e){}
     runEntrance();
   });
 })();
