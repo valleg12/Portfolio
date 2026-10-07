@@ -165,6 +165,8 @@
   .chapter.deep{display:block;height:320vh}
   .chapter.deep .panel{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:460px}
   .chapter.deep.right .panel{margin-left:auto;align-items:flex-end}
+  .chapter.deep .cards,.chapter.deep .plist{width:100%}
+  .chapter.deep .pbody{max-width:440px}.chapter.deep .plist,.chapter.deep .cards,.chapter.deep .tags{margin-top:22px}
   .uni{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;overflow:hidden;background:#050403;clip-path:inset(42% 40% 42% 40% round 6px)}
   .uni.active{pointer-events:auto}
   .uni .ustage{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);will-change:transform}
@@ -238,27 +240,30 @@
 
 <div id="scroller">
   <section class="chapter" id="hero"><div class="panel">
-    <div class="eyebrow"><i></i>Portfolio — IA &amp; Sport Business</div>
+    <div class="eyebrow"><i></i>Portfolio — IA, Data &amp; CRM</div>
     <h1><span class="line"><span class="rev">Victorien</span></span><span class="line"><span class="rev"><em>Alleg</em></span></span></h1>
-    <div class="hd">Architecte IA. Je transforme la <b>donnée</b> en <b>décisions</b> — entre intelligence artificielle et sport business.</div>
+    <div class="hd">Business Analyst CRM et architecte IA. Je transforme la <b>donnée</b> en <b>décisions</b> : connaissance client, automatisation et IA appliquée.</div>
   </div></section>
 
   <section class="chapter deep" id="c1"><div class="panel">
     <div class="eyebrow"><i></i>01 — À propos</div>
     <div class="ptitle">Le <em>parcours</em></div>
-    <div class="pbody">Entre dans la galerie : chaque pièce exposée raconte une partie du parcours.</div>
+    <div class="pbody">Business Analyst CRM et architecte IA, formé au management puis à l'IA appliquée au business. <b>Entre dans la galerie</b> : chaque pièce exposée raconte une partie du parcours.</div>
+    <div class="plist" style="grid-template-columns:1fr"><div data-n="01">MSc AI · Eugenia School, Paris</div><div data-n="02">Un an chez LVMH · CRM &amp; Client Intelligence</div><div data-n="03">8 projets IA et data</div><div data-n="04">Français · anglais courant · espagnol</div></div>
   </div></section>
 
   <section class="chapter deep" id="cx"><div class="panel">
     <div class="eyebrow"><i></i>02 — Expériences</div>
     <div class="ptitle">Le <em>terrain</em></div>
-    <div class="pbody">Entre dans le dressing : trois maisons, un fil rouge, la <b>donnée client</b>.</div>
+    <div class="pbody">Trois maisons, un fil rouge : la <b>donnée client</b>. <b>Entre dans le dressing</b> pour le détail de chaque poste.</div>
+    <div class="cards"><div class="card"><span class="cn">LVMH</span><span class="ct">Analyst CRM · 2025 — 26</span></div><div class="card"><span class="cn">VASPP</span><span class="ct">BI &amp; Growth · 2024 — 25</span></div><div class="card"><span class="cn">Le Five</span><span class="ct">Analytics &amp; CS · 2022 — 23</span></div></div>
   </div></section>
 
   <section class="chapter deep right" id="c2"><div class="panel">
     <div class="eyebrow"><i></i>03 — Compétences</div>
     <div class="ptitle"><em>Rien</em> au<br>hasard</div>
-    <div class="pbody">Entre dans la salle de données pour voir ce que je sais faire.</div>
+    <div class="pbody">De la donnée brute à la décision : mesurer, prédire, automatiser. <b>Entre dans la salle de données</b> pour voir chaque compétence et où je l'ai utilisée.</div>
+    <div class="plist"><div data-n="01">BI &amp; dashboards</div><div data-n="02">CRM analytics</div><div data-n="03">Modèles prédictifs</div><div data-n="04">Automatisation IA</div><div data-n="05">LLM, RAG &amp; agents</div><div data-n="06">NLP &amp; texte</div><div data-n="07">SQL · Python</div><div data-n="08">Gestion de projets IA</div></div>
   </div></section>
 
   <section class="chapter" id="c3"><div class="panel">
@@ -270,25 +275,29 @@
   <section class="chapter deep" id="c4"><div class="panel">
     <div class="eyebrow"><i></i>05 — Projets sport</div>
     <div class="ptitle">Vue sur le<br><em>Bernabéu</em></div>
-    <div class="pbody">Descends dans la loge : mes projets sport sont exposés face à la pelouse.</div>
+    <div class="pbody">Deux produits pensés pour le sport, du stade au scouting. <b>Descends dans la loge</b> : ils sont exposés face à la pelouse.</div>
+    <div class="cards"><div class="card"><span class="cn">Novarena</span><span class="ct">Stadium SaaS</span></div><div class="card"><span class="cn">Pythia</span><span class="ct">Football analytics</span></div></div>
   </div></section>
 
   <section class="chapter deep right" id="c5"><div class="panel">
     <div class="eyebrow"><i></i>06 — Freelance</div>
     <div class="ptitle">Le <em>Lab</em></div>
-    <div class="pbody">Entre dans l'atelier : ce que je propose en mission.</div>
+    <div class="pbody">Six façons de travailler ensemble, de l'audit à la formation. <b>Entre dans l'atelier</b> pour voir ce que je propose en mission.</div>
+    <div class="cards"><div class="card"><span class="cn">Stratégie &amp; intégration IA</span><span class="ct">Audit → prod</span></div><div class="card"><span class="cn">Analytics prédictif</span><span class="ct">ML sur mesure</span></div><div class="card"><span class="cn">Automatisation</span><span class="ct">n8n · Make</span></div></div>
   </div></section>
 
   <section class="chapter deep" id="c6"><div class="panel">
     <div class="eyebrow"><i></i>07 — Formation</div>
     <div class="ptitle">La <em>biblio</em>thèque</div>
-    <div class="pbody">Entre dans la bibliothèque : diplômes, certifications et langues.</div>
+    <div class="pbody">Un double cursus, management puis intelligence artificielle. <b>Entre dans la bibliothèque</b> : diplômes, certifications et langues.</div>
+    <div class="cards"><div class="card"><span class="cn">Eugenia School</span><span class="ct">MSc AI · 2023 — 25</span></div><div class="card"><span class="cn">AMOS</span><span class="ct">Master · 2018 — 23</span></div><div class="card"><span class="cn">Dataiku</span><span class="ct">2 certifications</span></div></div>
   </div></section>
 
   <section class="chapter deep" id="c7"><div class="panel">
     <div class="eyebrow"><i></i>08 — Loisirs</div>
     <div class="ptitle">Off <em>work</em></div>
-    <div class="pbody">Entre dans le salon : ce qui m'occupe quand l'écran est éteint.</div>
+    <div class="pbody">Ce qui m'occupe quand l'écran est éteint. <b>Entre dans le salon.</b></div>
+    <div class="tags"><span class="tag">Échecs</span><span class="tag">Boxe</span><span class="tag">Ski</span><span class="tag">Football</span><span class="tag">Voile</span><span class="tag">Cinéma</span><span class="tag">Histoire</span></div>
   </div></section>
 
   <section class="chapter" id="c8"><div class="panel">
@@ -428,7 +437,7 @@ gsap.ticker.lagSmoothing(0);
 document.querySelectorAll('.znav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();lenis.scrollTo(document.querySelector(a.getAttribute('href')));}));
 
 // camera keyframes per chapter (uv y-up) — driven per-frame from section centers (supports variable heights)
-const KEYS=[[0.5,0.5,1.0],[0.68,0.40,2.7],[0.63,0.27,1.9],[0.10,0.58,2.3],[0.745,0.43,2.3],[0.41,0.56,1.95],[0.66,0.52,1.75],[0.85,0.50,1.85],[0.83,0.33,2.3],[0.5,0.5,1.08]];
+const KEYS=[[0.5,0.5,1.0],[0.68,0.40,2.7],[0.29,0.31,2.2],[0.10,0.58,2.3],[0.745,0.43,2.3],[0.41,0.56,1.95],[0.66,0.52,1.75],[0.85,0.50,1.85],[0.83,0.33,2.3],[0.5,0.5,1.08]];
 // each chapter holds its camera key while it is pinned on screen ([top, bottom-vh]; a single point for 100vh
 // chapters), and the camera only travels between two holds — so tall sections never drift toward the next zone
 let holds=[];
@@ -454,45 +463,45 @@ function setUni(on){document.body.classList.toggle('in-uni',on);const zn=documen
 const MAIL='<a href="mailto:victorienalleg@gmail.com">victorienalleg@gmail.com</a>';
 const UNI={
   c1:{img:'musee.jpg',k:'Galerie · À propos',t:'Le <em>parcours</em>',dz:2.0,spots:[
-    {x:50,y:57,l:'Le buste',k:'Portrait',h:'Victorien Alleg',p:'Business Analyst CRM et architecte IA. Je transforme la donnée en décisions, entre intelligence artificielle, connaissance client et sport business.',g:['Paris','MSc AI','CRM & Data']},
-    {x:7.5,y:51,l:'Le profil',k:'Œuvre nº 1',h:'Un profil hybride',p:'Cinq ans de management du sport à AMOS, puis un MSc en IA appliquée au business à Eugenia School. Un pied dans le métier, un pied dans la technique.'},
-    {x:37,y:54,l:'La suite',k:'Œuvre nº 2',h:'Ce que je cherche',p:'Un poste en CDI, ouvert au VIE, autour du CRM, de la connaissance client et de la data.',g:['CDI','Ouvert au VIE']},
-    {x:63,y:54,l:'En chiffres',k:'Œuvre nº 3',h:'En chiffres',b:['3 expériences en entreprise, dont un an chez LVMH','8 projets IA et data menés de bout en bout','TOEIC 936 · 2 certifications Dataiku']},
-    {x:27.5,y:58,l:'Le Sénat',k:'Sculpture',h:'ESCP · Excellence Propulsion',p:'Programme 2025 : ateliers, puis pitch lors d\'un événement au Sénat.'},
-    {x:75,y:60,l:'Contact',k:'Pièce à emporter',h:'Travaillons ensemble',p:MAIL+'<br><a href="https://linkedin.com/in/victorien-alleg" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/valleg12" target="_blank" rel="noopener">GitHub</a>'}]},
+    {x:50,y:57,l:'Le buste',k:'Portrait',h:'Victorien Alleg',p:'Business Analyst CRM et architecte IA. Je transforme la donnée en décisions : connaissance client, automatisation et IA appliquée au métier.',b:['Un an chez LVMH, au sein de l\'équipe Client Intelligence & Programs','MSc AI Applied to Business, Eugenia School','Basé à Paris, mobile à l\'international'],g:['Paris','MSc AI','CRM & Data']},
+    {x:7.5,y:51,l:'Le profil',k:'Œuvre nº 1',h:'Un profil hybride',p:'Un pied dans le métier, un pied dans la technique : je parle aux équipes business comme aux équipes data.',b:['2018 — 2023 · AMOS : Bachelor puis Master en management','2022 — 2023 · Le Five : analytics et relation client','2023 — 2025 · Eugenia School : MSc en IA appliquée au business','2024 — 2026 · VASPP puis LVMH : BI, growth et CRM']},
+    {x:37,y:54,l:'La suite',k:'Œuvre nº 2',h:'Ce que je cherche',p:'Un poste en CDI, ouvert au VIE, autour du CRM, de la connaissance client et de la data.',b:['Analyse de la performance CRM et des programmes clients','Dashboards et KPIs pour les équipes métier','Automatisation et IA au service des équipes'],g:['CDI','Ouvert au VIE','France & international']},
+    {x:63,y:54,l:'En chiffres',k:'Œuvre nº 3',h:'En chiffres',b:['3 expériences en entreprise, dont un an chez LVMH','50+ actifs stratégiques centralisés dans un référentiel interne','8+ process marketing automatisés','8 projets IA et data menés de bout en bout','TOEIC 936 · 2 certifications Dataiku']},
+    {x:27.5,y:58,l:'Le Sénat',k:'Sculpture',h:'ESCP · Excellence Propulsion',p:'Programme 2025 : des ateliers, puis un pitch lors d\'un événement au Sénat.'},
+    {x:75,y:60,l:'Contact',k:'Pièce à emporter',h:'Travaillons ensemble',p:'Un poste, une mission ou une simple question : écrivez-moi.<br>'+MAIL+'<br><a href="https://linkedin.com/in/victorien-alleg" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/valleg12" target="_blank" rel="noopener">GitHub</a>'}]},
   cx:{img:'dressing.jpg',k:'Dressing · Expériences',t:'Le <em>terrain</em>',dz:1.5,spots:[
-    {x:7,y:45,l:'LVMH',k:'2025 — 2026 · 1 an',h:'LVMH',r:'Business Analyst CRM · Client Intelligence & Programs',b:['Performance des actifs CRM multi-maisons (playbooks, decks) et suivi des consultations','Dashboards analytiques et 5+ KPIs pour piloter le Client Development','Analyse d\'usage par secteur : Mode & Maroquinerie, Parfums & Cosmétiques, Montres & Joaillerie','Référentiel interne de 50+ actifs stratégiques, avec fonctions automatisées']},
-    {x:21,y:45,l:'VASPP',k:'2024 — 2025',h:'VASPP',r:'Business Intelligence & Growth Analyst',b:['Stratégie d\'acquisition multicanale pilotée par la donnée, KPIs de conversion sous Power BI','8+ process marketing automatisés avec n8n et Supabase','Modèle de lead scoring sous HubSpot','Newsletters d\'acquisition et de fidélisation sur Salesforce']},
-    {x:45,y:45,l:'Le Five',k:'2022 — 2023 · 1 an',h:'Le Five · Zone Revolution',r:'Business Analytics & Customer Success Manager',b:['Segmentation CRM à partir des données comportementales clients','Dashboard de performance commerciale : 37 % de conversion','Stratégie growth : 150 nouveaux membres','Fichier clients et chiffre d\'affaires sous Resamania et Uptivo']},
-    {x:50,y:70,l:'Le fil rouge',k:'L\'îlot',h:'La donnée client',p:'Du club de sport à la maison de luxe, le même métier : comprendre les clients par la donnée, puis donner aux équipes de quoi décider.'},
-    {x:34,y:72,l:'Les outils',k:'L\'étagère',h:'Les outils du quotidien',g:['Power BI','SQL','Python','HubSpot','Salesforce','Dataiku','n8n','Supabase','Looker Studio']}]},
+    {x:7,y:45,l:'LVMH',k:'Sept. 2025 — sept. 2026 · 1 an',h:'LVMH',r:'Business Analyst CRM · Client Intelligence & Programs',b:['Performance des actifs CRM multi-maisons (playbooks, decks) et suivi des consultations','Dashboards analytiques et 5+ KPIs pour piloter le Client Development','Analyse d\'usage par secteur : Mode & Maroquinerie, Parfums & Cosmétiques, Montres & Joaillerie','Conception d\'un référentiel interne de 50+ actifs stratégiques, avec fonctions automatisées, pour simplifier l\'accès des équipes aux ressources clés'],g:['CRM','Dashboards','KPIs','Automatisation']},
+    {x:21,y:45,l:'VASPP',k:'Nov. 2024 — juil. 2025',h:'VASPP',r:'Business Intelligence & Growth Analyst',b:['Stratégie d\'acquisition multicanale pilotée par la donnée, KPIs de conversion suivis et optimisés sous Power BI','8+ process marketing automatisés avec n8n et Supabase','Modèle de lead scoring sous HubSpot pour mieux prioriser les leads','Newsletters d\'acquisition et de fidélisation des partenaires sur Salesforce'],g:['Power BI','n8n','Supabase','HubSpot','Salesforce']},
+    {x:45,y:45,l:'Le Five',k:'Août 2022 — août 2023 · 1 an',h:'Le Five · Zone Revolution',r:'Business Analytics & Customer Success Manager',b:['Analyse des données comportementales clients et système de segmentation CRM','Dashboard de suivi de la performance commerciale : 37 % de conversion','Optimisation du tunnel de conversion et stratégie growth : 150 nouveaux membres','Gestion du fichier clients et du chiffre d\'affaires sous Resamania et Uptivo'],g:['CRM','Segmentation','Growth']},
+    {x:50,y:70,l:'Le fil rouge',k:'L\'îlot',h:'La donnée client',p:'Du club de sport à la maison de luxe, le même métier : comprendre les clients par la donnée, puis donner aux équipes de quoi décider.',b:['Mesurer : KPIs, dashboards, suivi de performance','Comprendre : segmentation, scoring, analyse d\'usage','Faire gagner du temps : automatisation et outils internes']},
+    {x:34,y:72,l:'Les outils',k:'L\'étagère',h:'Les outils du quotidien',p:'Ceux que j\'ai utilisés en poste, pas seulement en cours.',g:['Power BI','SQL','Python','HubSpot','Salesforce','Dataiku','n8n','Supabase','Looker Studio','Resamania']}]},
   c2:{img:'datalab.jpg',k:'Salle de données · Compétences',t:'<em>Rien</em> au hasard',dz:2.0,spots:[
-    {x:17,y:55,l:'Dashboards',k:'Le mur d\'écrans',h:'Business Intelligence',p:'Des tableaux de bord que les équipes ouvrent vraiment : KPIs, suivi de performance, visualisations pour les décideurs.',g:['Power BI','Looker Studio','Google Analytics','SQL']},
-    {x:37,y:63,l:'Prédictif',k:'La table holographique',h:'Modèles prédictifs',p:'Scoring, segmentation, recommandation et prévision, du prototype au modèle déployé.',g:['Python','Machine Learning','Dataiku']},
-    {x:57,y:55,l:'Automatisation',k:'La baie de serveurs',h:'Automatisation IA',p:'Des pipelines qui retirent le travail répétitif : collecte, enrichissement, synchronisation, alertes.',g:['n8n','Make','Zapier','Supabase']},
-    {x:76,y:58,l:'LLM & agents',k:'Le poste',h:'LLM, RAG & agents',p:'Architectures RAG, systèmes multi-agents et prompt engineering appliqués à des cas métier.',g:['RAG','Dust','Claude','Cursor']},
-    {x:93,y:55,l:'CRM & NLP',k:'Le mur de fiches',h:'CRM & analyse de texte',p:'Segmentation client, lead scoring, analyse de sentiment et marketing analytique.',g:['HubSpot','Salesforce','NLP','Airtable']}]},
+    {x:17,y:55,l:'Dashboards',k:'Le mur d\'écrans',h:'Business Intelligence',p:'Des tableaux de bord que les équipes ouvrent vraiment : KPIs, suivi de performance, visualisations pour les décideurs.',b:['LVMH : dashboards et 5+ KPIs pour le Client Development','VASPP : KPIs de conversion sous Power BI','Le Five : dashboard commercial, 37 % de conversion'],g:['Power BI','Looker Studio','Google Analytics','SQL']},
+    {x:37,y:63,l:'Prédictif',k:'La table holographique',h:'Modèles prédictifs',p:'Scoring, segmentation, recommandation et prévision, du prototype au modèle déployé.',b:['VASPP : modèle de lead scoring sous HubSpot','Pythia : scoring de recrutement et risque de blessure','Certifié Dataiku ML Practitioner'],g:['Python','Machine Learning','Dataiku','Scikit-learn']},
+    {x:57,y:55,l:'Automatisation',k:'La baie de serveurs',h:'Automatisation IA',p:'Des pipelines qui retirent le travail répétitif : collecte, enrichissement, synchronisation, alertes.',b:['VASPP : 8+ process marketing automatisés','LVMH : fonctions automatisées du référentiel interne','NARA : facturation et tri des emails automatisés'],g:['n8n','Make','Zapier','Supabase']},
+    {x:76,y:58,l:'LLM & agents',k:'Le poste',h:'LLM, RAG & agents',p:'Architectures RAG, systèmes multi-agents et prompt engineering appliqués à des cas métier.',b:['Payfit : pipeline éditorial multi-agents et scoring sur 5 LLMs','AImobbilier : agents d\'évaluation et de calcul de ROI','NARA : analyse de contrats par IA'],g:['RAG','Dust','Claude','Cursor','Prompt engineering']},
+    {x:93,y:55,l:'CRM & NLP',k:'Le mur de fiches',h:'CRM & analyse de texte',p:'Segmentation client, lead scoring, analyse de sentiment et marketing analytique.',b:['LVMH : performance des actifs CRM multi-maisons','Le Five : segmentation CRM comportementale','Carrefour : vérification de marques par NLP'],g:['HubSpot','Salesforce','NLP','Airtable']}]},
   c4:{img:'stade.jpg',k:'Loge · Projets sport',t:'Vue sur la <em>pelouse</em>',dz:1.6,spots:[
-    {x:12,y:62,l:'Pythia',k:'Le tableau tactique',h:'Pythia',r:'Football analytics',p:'Plateforme de scouting football : métriques de performance des joueurs, comparatifs de championnats et scoring de recrutement, avec des dashboards interactifs.',g:['Python','Pandas','Scikit-learn']},
-    {x:63,y:54,l:'Novarena',k:'L\'écran',h:'Novarena',r:'Stadium SaaS',p:'Suite de gestion intelligente pour stades modernes : performance et analytics, gestion des spectateurs, des talents, business et sponsoring.',g:['SaaS','Cloud']},
-    {x:71,y:59,l:'Services',k:'La vitrine',h:'L\'IA pour le sport business',b:['Performance des athlètes et prévention des blessures','Scouting augmenté par l\'IA','Pricing dynamique et billetterie','Marketing fans et business intelligence']},
-    {x:88.5,y:68,l:'Le terrain',k:'Le ballon',h:'D\'abord le terrain',p:'Cinq ans à AMOS en management du sport et un an au Five : le sport business, je l\'ai pratiqué avant de le modéliser.'},
+    {x:12,y:62,l:'Pythia',k:'Le tableau tactique',h:'Pythia',r:'Football analytics',p:'Plateforme de scouting football, pensée pour les clubs qui n\'ont pas de grande cellule de recrutement.',b:['Métriques de performance des joueurs','Prédiction du risque de blessure','Comparatifs de championnats','Scoring de recrutement et dashboards interactifs'],g:['Python','Pandas','Scikit-learn','Web scraping']},
+    {x:63,y:54,l:'Novarena',k:'L\'écran',h:'Novarena',r:'Stadium SaaS',p:'Suite intégrée de gestion intelligente pour stades modernes, sur une architecture cloud-native multi-région.',b:['Performance & analytics','Gestion des spectateurs','Gestion des talents','Business & sponsoring'],g:['SaaS','Cloud','Stadium management']},
+    {x:71,y:59,l:'Services',k:'La vitrine',h:'L\'IA pour le sport business',b:['Performance des athlètes : analyse prédictive et prévention des blessures','Événements : optimisation opérationnelle','Marketing fans : engagement personnalisé','Pricing dynamique : billetterie et revenus','Scouting : recrutement augmenté par l\'IA','Business intelligence : dashboards et KPIs']},
+    {x:88.5,y:68,l:'Le terrain',k:'Le ballon',h:'D\'abord le terrain',p:'Cinq ans à AMOS en management du sport et un an au Five : le sport business, je l\'ai pratiqué avant de le modéliser.',b:['Bachelor événementiel et marketing du sport','Master management des organisations sportives','150 nouveaux membres recrutés au Five']},
     {x:27,y:64,l:'La vue',k:'Derrière la vitre',h:'Madridista',p:'Le stade que l\'on voit depuis la fenêtre du bureau n\'est pas là par hasard.'}]},
   c5:{img:'lab.jpg',k:'Atelier · Freelance',t:'Le <em>Lab</em>',dz:1.3,spots:[
-    {x:31,y:48,l:'Stratégie IA',k:'Le tableau blanc',h:'Stratégie & intégration IA',p:'De l\'audit data au déploiement en production.'},
-    {x:13,y:60,l:'Automatisation',k:'L\'établi',h:'Automatisation des processus',p:'n8n, Make et pipelines sur mesure.',g:['n8n','Make']},
-    {x:52,y:47,l:'Product design',k:'Le mur de croquis',h:'Product design IA-first',p:'Du wireframe au prototype, avec l\'IA intégrée dès la conception.'},
-    {x:82,y:39,l:'Prédictif',k:'Les archives',h:'Analytics prédictif',p:'Modèles de machine learning sur mesure pour la prévision business.'},
-    {x:77,y:52,l:'Sport data',k:'L\'étagère',h:'Sport data & performance',p:'Modèles statistiques pour clubs et agences.'},
-    {x:74,y:66,l:'Formations',k:'La table',h:'Formations & ateliers',p:'L\'IA pratique pour des équipes non techniques.'},
-    {x:94,y:55,l:'Discutons',k:'Le café',h:'Discutons',p:'Un projet, une idée, un doute ? '+MAIL}]},
+    {x:31,y:48,l:'Stratégie IA',k:'Le tableau blanc',h:'Stratégie & intégration IA',p:'De l\'audit data au déploiement en production : où l\'IA vaut le coup, où elle ne le vaut pas.',b:['Exemple : AImobbilier, 6 secteurs classés par impact et faisabilité']},
+    {x:13,y:60,l:'Automatisation',k:'L\'établi',h:'Automatisation des processus',p:'n8n, Make et pipelines sur mesure pour retirer les tâches répétitives.',b:['Exemple : 8+ process marketing automatisés chez VASPP'],g:['n8n','Make','Supabase']},
+    {x:52,y:47,l:'Product design',k:'Le mur de croquis',h:'Product design IA-first',p:'Du wireframe au prototype, avec l\'IA intégrée dès la conception.',b:['Exemples : NARA, plateforme pour créateurs · Jungle Gather, app de planning multi-sites']},
+    {x:82,y:39,l:'Prédictif',k:'Les archives',h:'Analytics prédictif',p:'Modèles de machine learning sur mesure pour la prévision business.',b:['Exemple : lead scoring sous HubSpot chez VASPP']},
+    {x:77,y:52,l:'Sport data',k:'L\'étagère',h:'Sport data & performance',p:'Modèles statistiques pour clubs et agences.',b:['Exemple : Pythia, scouting et analytics football']},
+    {x:74,y:66,l:'Formations',k:'La table',h:'Formations & ateliers',p:'L\'IA pratique pour des équipes non techniques : comprendre, tester, adopter.'},
+    {x:94,y:55,l:'Discutons',k:'Le café',h:'Discutons',p:'Un projet, une idée, un doute ? Le premier échange est sans engagement.<br>'+MAIL}]},
   c6:{img:'bibliotheque.jpg',k:'Bibliothèque · Formation',t:'La <em>biblio</em>thèque',dz:1.4,spots:[
-    {x:5.5,y:46,l:'MSc AI',k:'Paris · 2023 — 2025',h:'Eugenia School',r:'MSc AI Applied to Business · AI Architect',p:'Business Analytics, Data Visualisation, CRM, Machine Learning, architectures RAG / LLM, NLP, éthique et gouvernance de l\'IA.'},
-    {x:14.5,y:47,l:'Master Sport',k:'Lille · 2018 — 2023',h:'AMOS',r:'Master Management des Organisations Sportives',p:'Précédé d\'un Bachelor en management et marketing des événements sportifs (2018 — 2021). Stratégie, marketing du sport, droit, sponsoring.'},
-    {x:92,y:50,l:'Certifications',k:'La vitrine',h:'Certifications Dataiku',b:['ML Practitioner · janvier 2026','Core Designer · mars 2025']},
-    {x:24,y:61,l:'DataGong',k:'Le pupitre',h:'DataGong',r:'Data Analysis Essentials · 2024',p:'Quatre mois de Python, de gestion de données et de machine learning.'},
+    {x:5.5,y:46,l:'MSc AI',k:'Paris · 2023 — 2025',h:'Eugenia School',r:'MSc AI Applied to Business · AI Architect',p:'Deux ans pour apprendre à concevoir et déployer l\'IA dans un contexte métier.',g:['Business Analytics','Data Visualisation','CRM','Machine Learning','RAG / LLM','NLP','Business Intelligence','Éthique de l\'IA','Agile / Scrum']},
+    {x:14.5,y:47,l:'Master AMOS',k:'Lille · 2018 — 2023',h:'AMOS',r:'Master Management des Organisations Sportives',p:'Cinq ans de management : un Bachelor en événementiel et marketing du sport (2018 — 2021), puis le Master (2021 — 2023).',g:['Stratégie','Marketing','Droit','Événementiel','Sponsoring & partenariats','Gestion de projet']},
+    {x:92,y:50,l:'Certifications',k:'La vitrine',h:'Certifications Dataiku',b:['ML Practitioner · janvier 2026 : machine learning, gestion des données, déploiement de modèles','Core Designer · mars 2025 : pipelines de données, feature engineering, ML no-code']},
+    {x:24,y:61,l:'DataGong',k:'Le pupitre',h:'DataGong',r:'Data Analysis Essentials · mars — juillet 2024',p:'Quatre mois de Python, de gestion de données et de machine learning.',g:['Python','Data management','Machine Learning']},
     {x:41,y:64,l:'Langues',k:'Le globe',h:'Langues',b:['Français : natif','Anglais : courant (TOEIC 936)','Espagnol : intermédiaire']},
-    {x:66,y:65,l:'Outils',k:'La table d\'étude',h:'Langages & outils',g:['Python','SQL','Power BI','Dataiku','HubSpot','n8n','Make','Supabase','Git','Looker Studio','Notion','Airtable']}]},
+    {x:66,y:65,l:'Outils',k:'La table d\'étude',h:'Langages & outils',g:['Python','SQL','Power BI','Dataiku','HubSpot','Google Analytics','Looker Studio','n8n','Make','Zapier','Supabase','Airtable','Notion','Git / GitHub','Cursor','Claude','Playwright']}]},
   c7:{img:'loisirs.jpg',k:'Salon · Loisirs',t:'Off <em>work</em>',dz:1.4,spots:[
     {x:18,y:65,l:'Échecs',k:'La table',h:'Échecs',p:'Note à moi-même : réviser l\'ouverture sicilienne.'},
     {x:29,y:52,l:'Boxe',k:'Le sac',h:'Boxe',p:'Pour la tête autant que pour les jambes.'},
@@ -506,43 +515,43 @@ const UNI={
 // EN ci-dessous le recouvre, champ par champ (même ordre de spots que UNI). ──
 const EN={
   c1:{k:'Gallery · About',t:'The <em>journey</em>',spots:[
-    {l:'The bust',k:'Portrait',p:'CRM Business Analyst and AI architect. I turn data into decisions, across artificial intelligence, client intelligence and sport business.'},
-    {l:'Profile',k:'Artwork no. 1',h:'A hybrid profile',p:'Five years of sports management at AMOS, then an MSc in AI applied to business at Eugenia School. One foot in the business, one foot in the tech.'},
-    {l:'Next',k:'Artwork no. 2',h:'What I am looking for',p:'A permanent position, open to VIE, around CRM, client intelligence and data.',g:['Permanent role','Open to VIE']},
-    {l:'In numbers',k:'Artwork no. 3',h:'In numbers',b:['3 roles in companies, including one year at LVMH','8 AI and data projects built end to end','TOEIC 936 · 2 Dataiku certifications']},
+    {l:'The bust',k:'Portrait',p:'CRM Business Analyst and AI architect. I turn data into decisions: client intelligence, automation and AI applied to the business.',b:['One year at LVMH, in the Client Intelligence & Programs team','MSc AI Applied to Business, Eugenia School','Based in Paris, open to working abroad']},
+    {l:'Profile',k:'Artwork no. 1',h:'A hybrid profile',p:'One foot in the business, one foot in the tech: I speak to business teams and to data teams alike.',b:['2018 — 2023 · AMOS: Bachelor then Master in management','2022 — 2023 · Le Five: analytics and customer success','2023 — 2025 · Eugenia School: MSc in AI applied to business','2024 — 2026 · VASPP then LVMH: BI, growth and CRM']},
+    {l:'Next',k:'Artwork no. 2',h:'What I am looking for',p:'A permanent position, open to VIE, around CRM, client intelligence and data.',b:['CRM performance and client programme analysis','Dashboards and KPIs for business teams','Automation and AI in support of the teams'],g:['Permanent role','Open to VIE','France & abroad']},
+    {l:'In numbers',k:'Artwork no. 3',h:'In numbers',b:['3 roles in companies, including one year at LVMH','50+ strategic assets centralised in an internal repository','8+ marketing processes automated','8 AI and data projects built end to end','TOEIC 936 · 2 Dataiku certifications']},
     {l:'The Senate',k:'Sculpture',p:'A 2025 programme: workshops, then a pitch at an event at the French Senate.'},
-    {l:'Contact',k:'A piece to take away',h:'Let\'s work together'}]},
+    {l:'Contact',k:'A piece to take away',h:'Let\'s work together',p:'A role, an assignment or just a question: write to me.<br>'+MAIL+'<br><a href="https://linkedin.com/in/victorien-alleg" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/valleg12" target="_blank" rel="noopener">GitHub</a>'}]},
   cx:{k:'Dressing room · Experience',t:'In the <em>field</em>',spots:[
-    {k:'2025 — 2026 · 1 year',r:'CRM Business Analyst · Client Intelligence & Programs',b:['Analysis of multi-brand CRM asset performance (playbooks, decks) and consultation tracking','Analytical dashboards and 5+ KPIs to monitor Client Development performance','Usage analysis by sector: Fashion & Leather Goods, Perfumes & Cosmetics, Watches & Jewelry','Internal knowledge repository centralising 50+ strategic assets, with automated features']},
-    {b:['Multi-channel, data-driven customer acquisition strategy, with conversion KPIs in Power BI','8+ marketing processes automated with n8n and Supabase','Lead scoring model in HubSpot','Acquisition and retention newsletters on Salesforce']},
-    {k:'2022 — 2023 · 1 year',b:['CRM segmentation built on customer behavioural data','Commercial performance dashboard: 37% conversion rate','Growth strategy: 150 new members','Customer file and revenue management in Resamania and Uptivo']},
-    {l:'The thread',k:'The island',h:'Client data',p:'From a sports club to a luxury house, the same job: understand clients through data, then give teams what they need to decide.'},
-    {l:'Tools',k:'The shelf',h:'Everyday tools'}]},
+    {k:'Sept. 2025 — Sept. 2026 · 1 year',r:'CRM Business Analyst · Client Intelligence & Programs',b:['Analysis of multi-brand CRM asset performance (playbooks, decks) and consultation tracking','Analytical dashboards and 5+ KPIs to monitor Client Development performance','Usage analysis by sector: Fashion & Leather Goods, Perfumes & Cosmetics, Watches & Jewelry','Designed and built an internal knowledge repository centralising 50+ strategic assets, with automated features, to streamline team access to key resources'],g:['CRM','Dashboards','KPIs','Automation']},
+    {k:'Nov. 2024 — July 2025',b:['Multi-channel, data-driven customer acquisition strategy, with conversion KPIs tracked and optimised in Power BI','8+ marketing processes automated with n8n and Supabase','Lead scoring model in HubSpot to improve lead prioritisation','Newsletters to attract new leads and retain partners on Salesforce']},
+    {k:'Aug. 2022 — Aug. 2023 · 1 year',b:['Customer behavioural data analysis and a CRM segmentation system','Commercial performance tracking dashboard: 37% conversion rate','Conversion funnel optimisation and growth strategy: 150 new members','Customer file and revenue management in Resamania and Uptivo']},
+    {l:'The thread',k:'The island',h:'Client data',p:'From a sports club to a luxury house, the same job: understand clients through data, then give teams what they need to decide.',b:['Measure: KPIs, dashboards, performance tracking','Understand: segmentation, scoring, usage analysis','Save time: automation and internal tools']},
+    {l:'Tools',k:'The shelf',h:'Everyday tools',p:'The ones I have used on the job, not only in class.'}]},
   c2:{k:'Data room · Skills',t:'<em>Nothing</em> left to chance',spots:[
-    {k:'The wall of screens',p:'Dashboards that teams actually open: KPIs, performance tracking, visualisations for decision-makers.'},
-    {l:'Predictive',k:'The holographic table',h:'Predictive models',p:'Scoring, segmentation, recommendation and forecasting, from prototype to deployed model.'},
-    {l:'Automation',k:'The server rack',h:'AI automation',p:'Pipelines that take away repetitive work: collection, enrichment, syncing, alerts.'},
-    {k:'The desk',h:'LLMs, RAG & agents',p:'RAG architectures, multi-agent systems and prompt engineering applied to business cases.'},
-    {k:'The wall of cards',h:'CRM & text analysis',p:'Client segmentation, lead scoring, sentiment analysis and analytical marketing.'}]},
+    {k:'The wall of screens',p:'Dashboards that teams actually open: KPIs, performance tracking, visualisations for decision-makers.',b:['LVMH: dashboards and 5+ KPIs for Client Development','VASPP: conversion KPIs in Power BI','Le Five: sales dashboard, 37% conversion rate']},
+    {l:'Predictive',k:'The holographic table',h:'Predictive models',p:'Scoring, segmentation, recommendation and forecasting, from prototype to deployed model.',b:['VASPP: lead scoring model in HubSpot','Pythia: recruitment scoring and injury risk','Dataiku ML Practitioner certified']},
+    {l:'Automation',k:'The server rack',h:'AI automation',p:'Pipelines that take away repetitive work: collection, enrichment, syncing, alerts.',b:['VASPP: 8+ marketing processes automated','LVMH: automated features of the internal repository','NARA: automated invoicing and email sorting']},
+    {k:'The desk',h:'LLMs, RAG & agents',p:'RAG architectures, multi-agent systems and prompt engineering applied to business cases.',b:['Payfit: multi-agent editorial pipeline and scoring across 5 LLMs','AImobbilier: valuation and ROI agents','NARA: AI contract analysis']},
+    {k:'The wall of cards',h:'CRM & text analysis',p:'Client segmentation, lead scoring, sentiment analysis and analytical marketing.',b:['LVMH: multi-brand CRM asset performance','Le Five: behavioural CRM segmentation','Carrefour: brand verification with NLP']}]},
   c4:{k:'The box · Sport projects',t:'A view of the <em>pitch</em>',spots:[
-    {k:'The tactics board',p:'Football scouting platform: player performance metrics, league comparisons and recruitment scoring, with interactive dashboards.'},
-    {k:'The screen',p:'Smart management suite for modern stadiums: performance and analytics, spectator and talent management, business and sponsorship.'},
-    {k:'The display case',h:'AI for sport business',b:['Athlete performance and injury prevention','AI-augmented scouting','Dynamic pricing and ticketing','Fan marketing and business intelligence']},
-    {l:'The pitch',k:'The ball',h:'The pitch first',p:'Five years at AMOS in sports management and a year at Le Five: I practised sport business before I modelled it.'},
+    {k:'The tactics board',p:'Football scouting platform, built for clubs without a large recruitment team.',b:['Player performance metrics','Injury risk prediction','League comparisons','Recruitment scoring and interactive dashboards']},
+    {k:'The screen',p:'Integrated smart management suite for modern stadiums, on a cloud-native, multi-region architecture.',b:['Performance & analytics','Spectator management','Talent management','Business & sponsorship']},
+    {k:'The display case',h:'AI for sport business',b:['Athlete performance: predictive analysis and injury prevention','Events: operational optimisation','Fan marketing: personalised engagement','Dynamic pricing: ticketing and revenue','Scouting: AI-augmented recruitment','Business intelligence: dashboards and KPIs']},
+    {l:'The pitch',k:'The ball',h:'The pitch first',p:'Five years at AMOS in sports management and a year at Le Five: I practised sport business before I modelled it.',b:['Bachelor in sports event and marketing management','Master in sports organisation management','150 new members recruited at Le Five']},
     {l:'The view',k:'Behind the glass',p:'The stadium you can see from the office window is not there by chance.'}]},
   c5:{k:'Workshop · Freelance',t:'The <em>Lab</em>',spots:[
-    {l:'AI strategy',k:'The whiteboard',h:'AI strategy & integration',p:'From data audit to production deployment.'},
-    {l:'Automation',k:'The workbench',h:'Process automation',p:'n8n, Make and custom pipelines.'},
-    {k:'The sketch wall',h:'AI-first product design',p:'From wireframe to prototype, with AI built in from the start.'},
-    {l:'Predictive',k:'The archives',h:'Predictive analytics',p:'Custom machine learning models for business forecasting.'},
-    {k:'The shelf',p:'Statistical models for clubs and agencies.'},
-    {l:'Training',k:'The table',h:'Training & workshops',p:'Practical AI for non-technical teams.'},
-    {l:'Let\'s talk',k:'The coffee',h:'Let\'s talk',p:'A project, an idea, a doubt? '+MAIL}]},
+    {l:'AI strategy',k:'The whiteboard',h:'AI strategy & integration',p:'From data audit to production deployment: where AI is worth it, and where it is not.',b:['Example: AImobbilier, 6 sectors ranked by impact and feasibility']},
+    {l:'Automation',k:'The workbench',h:'Process automation',p:'n8n, Make and custom pipelines to take repetitive tasks away.',b:['Example: 8+ marketing processes automated at VASPP']},
+    {k:'The sketch wall',h:'AI-first product design',p:'From wireframe to prototype, with AI built in from the start.',b:['Examples: NARA, a platform for creators · Jungle Gather, a multi-site scheduling app']},
+    {l:'Predictive',k:'The archives',h:'Predictive analytics',p:'Custom machine learning models for business forecasting.',b:['Example: lead scoring in HubSpot at VASPP']},
+    {k:'The shelf',p:'Statistical models for clubs and agencies.',b:['Example: Pythia, football scouting and analytics']},
+    {l:'Training',k:'The table',h:'Training & workshops',p:'Practical AI for non-technical teams: understand, test, adopt.'},
+    {l:'Let\'s talk',k:'The coffee',h:'Let\'s talk',p:'A project, an idea, a doubt? The first conversation is free of commitment.<br>'+MAIL}]},
   c6:{k:'Library · Education',t:'The <em>library</em>',spots:[
-    {p:'Business Analytics, Data Visualisation, CRM, Machine Learning, RAG / LLM architecture, NLP, AI ethics and governance.'},
-    {l:'Sport Master\'s',r:'Master in Sports Organisation Management',p:'Preceded by a Bachelor in Sports Event & Marketing Management (2018 — 2021). Strategy, sports marketing, law, sponsorship.'},
-    {k:'The display case',h:'Dataiku certifications',b:['ML Practitioner · January 2026','Core Designer · March 2025']},
-    {k:'The lectern',p:'Four months of Python, data management and machine learning.'},
+    {p:'Two years learning to design and deploy AI in a business context.',g:['Business Analytics','Data Visualisation','CRM','Machine Learning','RAG / LLM','NLP','Business Intelligence','AI ethics','Agile / Scrum']},
+    {l:'Master\'s',r:'Master in Sports Organisation Management',p:'Five years of management: a Bachelor in Sports Event & Marketing Management (2018 — 2021), then the Master (2021 — 2023).',g:['Strategy','Marketing','Law','Events','Sponsoring & partnerships','Project management']},
+    {k:'The display case',h:'Dataiku certifications',b:['ML Practitioner · January 2026: machine learning, data management, model deployment','Core Designer · March 2025: data pipeline design, feature engineering, no-code ML']},
+    {k:'The lectern',r:'Data Analysis Essentials · March — July 2024',p:'Four months of Python, data management and machine learning.'},
     {l:'Languages',k:'The globe',h:'Languages',b:['French: native','English: fluent (TOEIC 936)','Spanish: intermediate']},
     {l:'Tools',k:'The study table',h:'Languages & tools'}]},
   c7:{k:'Lounge · Off work',spots:[
@@ -561,16 +570,16 @@ const EN_PAGE={
   '.cue':'<div class="rail"></div>Scroll',
   '.znav a[href="#c1"] .zl':'About','.znav a[href="#cx"] .zl':'Experience','.znav a[href="#c2"] .zl':'Skills','.znav a[href="#c3"] .zl':'Tech projects','.znav a[href="#c4"] .zl':'Sport projects','.znav a[href="#c6"] .zl':'Education','.znav a[href="#c7"] .zl':'Off work',
   '.osbar a[data-goto="#c1"]':'About','.osbar a[data-goto="#cx"]':'Experience','.osbar a[data-goto="#c2"]':'Skills','.osbar a[data-goto="#c3"]':'Tech projects','.osbar a[data-goto="#c4"]':'Sport projects','.osbar a[data-goto="#c6"]':'Education','.osbar a[data-goto="#c7"]':'Off work',
-  '#hero .eyebrow':EB('Portfolio — AI &amp; Sport Business'),
-  '#hero .hd':'AI Architect. I turn <b>data</b> into <b>decisions</b>, between artificial intelligence and sport business.',
-  '#c1 .eyebrow':EB('01 — About'),'#c1 .ptitle':'The <em>journey</em>','#c1 .pbody':'Step into the gallery: every piece on display tells part of the story.',
-  '#cx .eyebrow':EB('02 — Experience'),'#cx .ptitle':'In the <em>field</em>','#cx .pbody':'Step into the dressing room: three houses, one thread, <b>client data</b>.',
-  '#c2 .eyebrow':EB('03 — Skills'),'#c2 .ptitle':'<em>Nothing</em> left<br>to chance','#c2 .pbody':'Step into the data room to see what I can do.',
+  '#hero .eyebrow':EB('Portfolio — AI, Data &amp; CRM'),
+  '#hero .hd':'CRM Business Analyst and AI architect. I turn <b>data</b> into <b>decisions</b>: client intelligence, automation and applied AI.',
+  '#c1 .eyebrow':EB('01 — About'),'#c1 .ptitle':'The <em>journey</em>','#c1 .pbody':"CRM Business Analyst and AI architect, trained in management and then in AI applied to business. <b>Step into the gallery</b>: every piece on display tells part of the story.",'#c1 .plist':"<div data-n=\"01\">MSc AI · Eugenia School, Paris</div><div data-n=\"02\">One year at LVMH · CRM &amp; Client Intelligence</div><div data-n=\"03\">8 AI and data projects</div><div data-n=\"04\">French · fluent English · Spanish</div>",
+  '#cx .eyebrow':EB('02 — Experience'),'#cx .ptitle':'In the <em>field</em>','#cx .pbody':"Three houses, one thread: <b>client data</b>. <b>Step into the dressing room</b> for the detail of each role.",'#cx .cards':"<div class=\"card\"><span class=\"cn\">LVMH</span><span class=\"ct\">CRM Analyst · 2025 — 26</span></div><div class=\"card\"><span class=\"cn\">VASPP</span><span class=\"ct\">BI &amp; Growth · 2024 — 25</span></div><div class=\"card\"><span class=\"cn\">Le Five</span><span class=\"ct\">Analytics &amp; CS · 2022 — 23</span></div>",
+  '#c2 .eyebrow':EB('03 — Skills'),'#c2 .ptitle':'<em>Nothing</em> left<br>to chance','#c2 .pbody':"From raw data to decision: measure, predict, automate. <b>Step into the data room</b> to see each skill and where I have used it.",'#c2 .plist':"<div data-n=\"01\">BI &amp; dashboards</div><div data-n=\"02\">CRM analytics</div><div data-n=\"03\">Predictive models</div><div data-n=\"04\">AI automation</div><div data-n=\"05\">LLMs, RAG &amp; agents</div><div data-n=\"06\">NLP &amp; text</div><div data-n=\"07\">SQL · Python</div><div data-n=\"08\">AI project management</div>",
   '#c3 .eyebrow':EB('04 — Tech projects'),'#c3 .ptitle':'What I<br><em>build</em>','#c3 .pbody':'Step into the computer to explore my projects.',
-  '#c4 .eyebrow':EB('05 — Sport projects'),'#c4 .ptitle':'A view of the<br><em>Bernabéu</em>','#c4 .pbody':'Head down to the box: my sport projects are on display, facing the pitch.',
-  '#c5 .eyebrow':EB('06 — Freelance'),'#c5 .ptitle':'The <em>Lab</em>','#c5 .pbody':'Step into the workshop: what I offer on assignment.',
-  '#c6 .eyebrow':EB('07 — Education'),'#c6 .ptitle':'The <em>library</em>','#c6 .pbody':'Step into the library: degrees, certifications and languages.',
-  '#c7 .eyebrow':EB('08 — Off work'),'#c7 .pbody':'Step into the lounge: what keeps me busy when the screen is off.',
+  '#c4 .eyebrow':EB('05 — Sport projects'),'#c4 .ptitle':'A view of the<br><em>Bernabéu</em>','#c4 .pbody':"Two products built for sport, from the stadium to scouting. <b>Head down to the box</b>: they are on display, facing the pitch.",'#c4 .cards':"<div class=\"card\"><span class=\"cn\">Novarena</span><span class=\"ct\">Stadium SaaS</span></div><div class=\"card\"><span class=\"cn\">Pythia</span><span class=\"ct\">Football analytics</span></div>",
+  '#c5 .eyebrow':EB('06 — Freelance'),'#c5 .ptitle':'The <em>Lab</em>','#c5 .pbody':"Six ways to work together, from audit to training. <b>Step into the workshop</b> to see what I offer on assignment.",'#c5 .cards':"<div class=\"card\"><span class=\"cn\">AI strategy &amp; integration</span><span class=\"ct\">Audit → prod</span></div><div class=\"card\"><span class=\"cn\">Predictive analytics</span><span class=\"ct\">Custom ML</span></div><div class=\"card\"><span class=\"cn\">Automation</span><span class=\"ct\">n8n · Make</span></div>",
+  '#c6 .eyebrow':EB('07 — Education'),'#c6 .ptitle':'The <em>library</em>','#c6 .pbody':"A double track, management then artificial intelligence. <b>Step into the library</b>: degrees, certifications and languages.",'#c6 .cards':"<div class=\"card\"><span class=\"cn\">Eugenia School</span><span class=\"ct\">MSc AI · 2023 — 25</span></div><div class=\"card\"><span class=\"cn\">AMOS</span><span class=\"ct\">Master's · 2018 — 23</span></div><div class=\"card\"><span class=\"cn\">Dataiku</span><span class=\"ct\">2 certifications</span></div>",
+  '#c7 .eyebrow':EB('08 — Off work'),'#c7 .pbody':"What keeps me busy when the screen is off. <b>Step into the lounge.</b>",'#c7 .tags':"<span class=\"tag\">Chess</span><span class=\"tag\">Boxing</span><span class=\"tag\">Skiing</span><span class=\"tag\">Football</span><span class=\"tag\">Sailing</span><span class=\"tag\">Cinema</span><span class=\"tag\">History</span>",
   '#c8 .ptitle':'Let\'s work<br><em>together</em>',
   '.egg.sticky':'Note to self:<br><b>revise the Sicilian opening</b> ♟️',
   '.egg.wgt .k':'Weather · Madrid',
@@ -716,7 +725,7 @@ window.U=U;window.lenis=lenis;_boot=true;
 (function(){
   const bootlog=document.getElementById('bootlog');
   const lines=['> booting victorien_os · v2.6','> mounting /portfolio','> loading room assets','> init webgl renderer','> depth engine · midas','> ready.'];
-  let i=0;(function type(){if(i<lines.length){bootlog.innerHTML+=lines[i]+(i<lines.length-1?' ... ok\n':'\n');i++;setTimeout(type,240);}else{document.getElementById('bootbox').classList.add('show');}})();
+  let i=0;(function type(){if(i<lines.length){bootlog.innerHTML+=lines[i]+(i<lines.length-1?' ... ok\n':'\n');i++;setTimeout(type,240);}else{document.getElementById('bootbox')?.classList.add('show');}})();
   document.getElementById('startbtn').addEventListener('click',()=>{
     const b=document.getElementById('boot');b.style.opacity='0';b.style.pointerEvents='none';setTimeout(()=>{if(b)b.remove();},750);
     try{setSound(true);}catch(e){}
