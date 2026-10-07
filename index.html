@@ -153,34 +153,6 @@
   .dock{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:12px;padding:10px 14px;background:rgba(255,255,255,.1);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.16);border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
   .dock i{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:none;transition:transform .3s var(--exp)}
   .dock i:hover{transform:translateY(-9px) scale(1.12)}
-  /* Univers "À propos" — galerie (désactivé : à refaire avec une vraie image rendue) */
-  #uAbout{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;overflow:hidden;clip-path:inset(40% 38% 40% 38% round 8px);
-    background:radial-gradient(120% 95% at 50% 2%,#241d18,#150f0c 52%,#0a0706)}
-  #uAbout.active{pointer-events:auto}
-  #uAbout .spot{position:absolute;top:-16%;width:44vw;height:88vh;background:radial-gradient(closest-side,rgba(255,238,214,.13),transparent);filter:blur(28px);pointer-events:none;z-index:1}
-  #uAbout .spot.s1{left:-2%}#uAbout .spot.s2{left:50%;transform:translateX(-50%)}#uAbout .spot.s3{right:-2%}
-  #uAbout .veins{position:absolute;inset:0;z-index:1;opacity:.05;pointer-events:none;background:radial-gradient(38% 26% at 22% 28%,transparent 39%,rgba(255,255,255,.6) 40%,transparent 41%),radial-gradient(46% 34% at 78% 62%,transparent 39%,rgba(255,255,255,.5) 40%,transparent 41%)}
-  #uAbout .gfloor{position:absolute;left:0;right:0;bottom:0;height:28%;z-index:1;background:linear-gradient(#0c0908,#050303);border-top:1px solid rgba(216,165,106,.14)}
-  #uAbout .gtitle{position:absolute;top:11%;left:50%;transform:translateX(-50%);text-align:center;z-index:2}
-  #uAbout .gtitle .k{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-  #uAbout .gtitle h3{font-family:var(--serif);font-weight:300;font-size:clamp(38px,6vw,84px);line-height:.95}#uAbout .gtitle h3 em{font-style:italic;color:var(--amber)}
-  #uAbout .plinthw{position:absolute;left:50%;bottom:25%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center}
-  #uAbout .bustsvg{width:132px;filter:drop-shadow(0 22px 44px rgba(0,0,0,.65))}
-  #uAbout .plinth{width:98px;height:120px;background:linear-gradient(160deg,#2a231d,#151009);border:1px solid rgba(216,165,106,.18);border-bottom:none;margin-top:-6px}
-  #uAbout .plinth .pl{padding:16px 8px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);line-height:1.8}
-  #uAbout .cartel{position:absolute;max-width:238px;z-index:2;padding-left:16px;border-left:2px solid rgba(216,165,106,.6)}
-  #uAbout .cartel .k{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-  #uAbout .cartel h5{font-family:var(--serif);font-weight:400;font-size:20px;color:var(--cream);margin-bottom:8px}
-  #uAbout .cartel p{font-size:12.5px;line-height:1.6;color:#C6B7A6}
-  #uAbout .cartel.c-bio{left:6%;top:40%}#uAbout .cartel.c-form{right:6%;top:36%;text-align:right;padding-left:0;padding-right:16px;border-left:none;border-right:2px solid rgba(216,165,106,.6)}
-  #uAbout .cartel.c-lvmh{left:50%;transform:translateX(-50%);bottom:8%;max-width:440px;text-align:center;border-left:none;padding-left:0}
-  #uAbout .cartel.c-lvmh h5{font-size:22px}#uAbout .cartel.c-lvmh .lv{font-style:italic;color:var(--gold)}
-  #uAbout .rack{position:absolute;bottom:23%;z-index:1;height:130px}
-  #uAbout .rack .bar{width:150px;height:4px;background:linear-gradient(90deg,#3a2f26,#6a5a48,#3a2f26);border-radius:2px}
-  #uAbout .rack .leg{position:absolute;top:2px;width:2px;height:122px;background:#4a3f34}#uAbout .rack .leg.a{left:10px}#uAbout .rack .leg.b{right:10px}
-  #uAbout .rack .g{position:absolute;top:8px;width:34px;height:76px;border-radius:6px 6px 4px 4px;box-shadow:0 10px 24px rgba(0,0,0,.4)}
-  #uAbout .rack.left{left:3%}#uAbout .rack.right{right:3%}
-  #uAbout .ghint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8a7b6c}
   #uProjets .uhint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:4;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8a7b6c}
   /* right-aligned panels must clear the right zone nav */
   @media(min-width:821px){.chapter.right{padding-right:calc(clamp(28px,7vw,120px) + 110px)}}
@@ -189,52 +161,51 @@
   body.in-uni .nav,body.in-uni .foot{opacity:0!important;pointer-events:none}
   .nav,.foot{transition:opacity .5s var(--exp)}
 
-  /* ── Expériences ── */
-  .xk{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-  .xr{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--gold);margin-top:3px}
-  .xb{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:6px}
-  .xb li{font-size:13px;line-height:1.55;color:#C4B2A0;padding-left:14px;position:relative}
-  .xb li::before{content:'';position:absolute;left:0;top:.7em;width:6px;height:1px;background:var(--amber)}
-  .xn{font-family:var(--serif);font-size:24px;color:var(--cream);line-height:1.1}
-  /* A — timeline in the side panel */
-  #cx.vA .panel{max-width:520px}
-  .xtl{margin-top:8px;display:flex;flex-direction:column}
-  .xtl .it{position:relative;padding:16px 0 16px 26px;border-left:1px solid var(--hair2)}
-  .xtl .it::before{content:'';position:absolute;left:-4px;top:22px;width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber)}
-  .xtl .it .xb{display:none}.xtl .it.lead .xb{display:flex}
-  .xtl .it.lead .xn{font-size:30px}
-  /* B — portal into a black & gold "maison" */
-  #cx.vB{display:block;height:320vh}
-  #cx.vB .panel,#cx.vC .panel{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:460px}
-  #uXp{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;clip-path:inset(42% 40% 42% 40% round 6px);background:#050404;display:flex;flex-direction:column;padding:9vh 6vw 7vh}
-  #uXp.active{pointer-events:auto}
-  #uXp .mh{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid rgba(234,196,136,.25);padding-bottom:18px}
-  #uXp .mh h3{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5.4vw,78px);line-height:.95;letter-spacing:-.02em}
-  #uXp .mh h3 em{font-style:italic;color:var(--gold)}
-  #uXp .cols{flex:1;display:grid;grid-template-columns:1.35fr 1fr 1fr;margin-top:3vh}
-  #uXp .col{padding:3vh 2.2vw;border-right:1px solid rgba(234,196,136,.14);cursor:none;transition:background .5s var(--exp);display:flex;flex-direction:column}
-  #uXp .col:last-child{border-right:none}
-  #uXp .col:hover{background:rgba(234,196,136,.05)}
-  #uXp .col .yr{font-family:var(--serif);font-size:clamp(46px,5vw,86px);font-weight:300;color:rgba(234,196,136,.18);line-height:1}
-  #uXp .col.lead .yr{color:var(--gold)}
-  #uXp .col .xn{margin-top:auto;font-size:clamp(24px,2.3vw,34px)}
-  #uXp .col.lead{background:linear-gradient(180deg,rgba(234,196,136,.07),transparent 60%)}
-  #uXp .uhint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8a7b6c}
-  /* C — horizontal scroll of cards */
-  #cx.vC{display:block;height:420vh;position:relative}
-  #cx.vC .hwrap{position:sticky;top:0;height:100vh;overflow:hidden;margin-top:-100vh;pointer-events:none}
-  #cx.vC .htrack{position:absolute;top:50%;left:0;display:flex;gap:4vw;transform:translateY(-50%);padding-left:52vw;will-change:transform}
-  #cx.vC .hcard{pointer-events:auto;width:min(560px,70vw);min-height:58vh;padding:42px 40px;border:1px solid var(--hair2);border-radius:4px;background:rgba(14,10,7,.72);backdrop-filter:blur(18px);display:flex;flex-direction:column;opacity:.25;transition:opacity .6s var(--exp),transform .6s var(--exp);transform:scale(.94)}
-  #cx.vC .hcard.on{opacity:1;transform:none}
-  #cx.vC .hcard .yr{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--amber)}
-  #cx.vC .hcard .xn{font-size:clamp(34px,3.4vw,52px);margin:18px 0 4px}
-  #cx.vC .hcard.lead{background:linear-gradient(160deg,rgba(20,15,10,.9),rgba(6,5,4,.92));border-color:rgba(234,196,136,.5)}
-  #cx.vC .hcount{position:absolute;bottom:9vh;left:clamp(28px,7vw,120px);font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted)}
-  /* PROTOTYPE variant switcher (local only) */
-  #protoBar{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:14px;padding:8px 14px;border-radius:999px;background:#fff;color:#111;font:600 13px/1 system-ui,sans-serif;box-shadow:0 8px 30px rgba(0,0,0,.5);cursor:auto}
-  #protoBar button{all:unset;cursor:pointer;padding:4px 9px;border-radius:999px;background:#eee}
-  #protoBar button:hover{background:#ddd}
-  @media(max-width:820px){.znav{display:none}.chapter{padding:0 22px}.plist{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr;overflow:auto}}
+  /* ── Univers : une image d'environnement + des objets cliquables ── */
+  .chapter.deep{display:block;height:320vh}
+  .chapter.deep .panel{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:460px}
+  .chapter.deep.right .panel{margin-left:auto;align-items:flex-end}
+  .uni{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;overflow:hidden;background:#050403;clip-path:inset(42% 40% 42% 40% round 6px)}
+  .uni.active{pointer-events:auto}
+  .uni .ustage{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);will-change:transform}
+  .uni .uscroll{position:absolute;inset:0;overflow:hidden}
+  .uni.pan .uscroll{overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+  .uni.pan .ustage{position:relative;left:0;top:0;transform:none}
+  .uni .ustage img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}
+  .uni .ushade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(5,4,3,.72) 0%,rgba(5,4,3,0) 30%,rgba(5,4,3,0) 74%,rgba(5,4,3,.7) 100%)}
+  .uni .utop{position:absolute;top:7vh;left:clamp(24px,5vw,72px);right:clamp(24px,5vw,72px);display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}
+  .uni .utop .k{font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+  .uni .utop h3{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.6vw,68px);line-height:.95;letter-spacing:-.02em}
+  .uni .utop h3 em{font-style:italic;color:var(--amber)}
+  .uni .utop .cnt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.9}
+  .uni .utop .cnt b{color:var(--gold);font-weight:400}
+  .hs{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border:none;background:none;cursor:none;padding:0}
+  .hs i{position:absolute;inset:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 1px rgba(5,4,3,.5),0 0 18px var(--amber);transition:transform .4s var(--exp),background .4s}
+  .hs::before{content:'';position:absolute;inset:6px;border-radius:50%;border:1px solid rgba(234,196,136,.7);animation:hsp 2.6s var(--exp) infinite}
+  @keyframes hsp{0%{transform:scale(.55);opacity:1}100%{transform:scale(1.5);opacity:0}}
+  .hs span{position:absolute;left:50%;top:100%;transform:translate(-50%,2px);white-space:nowrap;padding:5px 11px;border-radius:999px;background:rgba(10,7,5,.78);backdrop-filter:blur(10px);border:1px solid var(--hair2);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);transition:color .4s,border-color .4s}
+  .hs:hover i,.hs.on i,.hs:focus-visible i{transform:scale(1.5);background:#fff}
+  .hs:hover span,.hs.on span{color:var(--gold);border-color:var(--amber)}
+  .hs.seen i{background:rgba(234,196,136,.45)}
+  .hs:focus-visible{outline:1px solid var(--gold);outline-offset:2px;border-radius:50%}
+  .ucard{position:absolute;top:50%;right:clamp(24px,5vw,72px);width:min(430px,calc(100vw - 48px));transform:translate(24px,-50%);opacity:0;pointer-events:none;padding:32px 34px;background:rgba(12,9,6,.86);backdrop-filter:blur(26px);border:1px solid var(--hair2);border-radius:6px;box-shadow:0 50px 130px rgba(0,0,0,.7);transition:opacity .45s var(--exp),transform .45s var(--exp);max-height:76vh;overflow:auto}
+  .ucard.left{right:auto;left:clamp(24px,5vw,72px);transform:translate(-24px,-50%)}
+  .ucard.open{opacity:1;transform:translate(0,-50%);pointer-events:auto}
+  .ucard .x{position:absolute;top:14px;right:16px;border:none;background:none;color:var(--muted);font-size:20px;cursor:none;line-height:1;padding:6px}
+  .ucard .x:hover{color:var(--gold)}
+  .ucard .k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;padding-right:28px}
+  .ucard h4{font-family:var(--serif);font-weight:300;font-size:clamp(26px,2.6vw,38px);line-height:1.05;margin-bottom:6px}
+  .ucard .r{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--amber);margin-bottom:14px}
+  .ucard p{font-size:14px;line-height:1.7;color:#CBB9A5;margin-top:12px}
+  .ucard p a{color:var(--gold)}
+  .ucard ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  .ucard li{font-size:13.5px;line-height:1.55;color:#C4B2A0;padding-left:16px;position:relative}
+  .ucard li::before{content:'';position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--amber)}
+  .ucard .g{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .ucard .g span{font-family:var(--mono);font-size:10px;color:var(--gold);border:1px solid var(--hair2);border-radius:999px;padding:4px 11px}
+  .uni .uhint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#a39482;white-space:nowrap}
+  @media(prefers-reduced-motion:reduce){.hs::before{animation:none}}
+  @media(max-width:820px){.znav{display:none}.hs span{display:none}.hs.on span{display:block}.ucard,.ucard.left{top:auto;bottom:54px;left:16px;right:16px;width:auto;transform:translateY(20px);max-height:56vh}.ucard.open{transform:none}.chapter{padding:0 22px}.plist{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr;overflow:auto}}
 </style>
 </head>
 <body>
@@ -272,27 +243,22 @@
     <div class="hd">Architecte IA. Je transforme la <b>donnée</b> en <b>décisions</b> — entre intelligence artificielle et sport business.</div>
   </div></section>
 
-  <section class="chapter" id="c1"><div class="panel">
+  <section class="chapter deep" id="c1"><div class="panel">
     <div class="eyebrow"><i></i>01 — À propos</div>
     <div class="ptitle">Le <em>parcours</em></div>
-    <div class="pbody">MSc <b>AI Applied to Business</b> — Eugenia School, Paris. Master <b>Management des Organisations Sportives</b> — AMOS, Lille. Un profil hybride : intelligence artificielle, data et sport business.</div>
+    <div class="pbody">Entre dans la galerie : chaque pièce exposée raconte une partie du parcours.</div>
   </div></section>
 
-  <section class="chapter" id="cx"><div class="panel">
+  <section class="chapter deep" id="cx"><div class="panel">
     <div class="eyebrow"><i></i>02 — Expériences</div>
     <div class="ptitle">Le <em>terrain</em></div>
-    <div class="xbody"></div>
+    <div class="pbody">Entre dans le dressing : trois maisons, un fil rouge, la <b>donnée client</b>.</div>
   </div></section>
 
-  <section class="chapter right" id="c2"><div class="panel">
+  <section class="chapter deep right" id="c2"><div class="panel">
     <div class="eyebrow"><i></i>03 — Compétences</div>
     <div class="ptitle"><em>Rien</em> au<br>hasard</div>
-    <div class="plist">
-      <div data-n="01">Modèles prédictifs</div><div data-n="02">Business Intelligence</div>
-      <div data-n="03">NLP &amp; texte</div><div data-n="04">Automatisation IA</div>
-      <div data-n="05">Dashboards</div><div data-n="06">Gestion projets IA</div>
-      <div data-n="07">Analyse sentiment</div><div data-n="08">Recommandation</div>
-    </div>
+    <div class="pbody">Entre dans la salle de données pour voir ce que je sais faire.</div>
   </div></section>
 
   <section class="chapter" id="c3"><div class="panel">
@@ -301,39 +267,28 @@
     <div class="pbody">Entre dans l'ordinateur pour explorer mes projets.</div>
   </div></section>
 
-  <section class="chapter" id="c4"><div class="panel">
+  <section class="chapter deep" id="c4"><div class="panel">
     <div class="eyebrow"><i></i>05 — Projets sport</div>
     <div class="ptitle">Vue sur le<br><em>Bernabéu</em></div>
-    <div class="cards">
-      <div class="card"><span class="cn">Novarena</span><span class="ct">Stadium SaaS</span></div>
-      <div class="card"><span class="cn">Pythia</span><span class="ct">Football Analytics</span></div>
-    </div>
-    <div class="pbody" style="margin-top:20px">Analytics athlètes, scouting IA, pricing dynamique, business intelligence pour le sport.</div>
+    <div class="pbody">Descends dans la loge : mes projets sport sont exposés face à la pelouse.</div>
   </div></section>
 
-  <section class="chapter right" id="c5"><div class="panel">
+  <section class="chapter deep right" id="c5"><div class="panel">
     <div class="eyebrow"><i></i>06 — Freelance</div>
     <div class="ptitle">Le <em>Lab</em></div>
-    <div class="cards">
-      <div class="card"><span class="cn">Stratégie &amp; intégration IA</span><span class="ct">Audit → prod</span></div>
-      <div class="card"><span class="cn">Analytics prédictif</span><span class="ct">ML sur mesure</span></div>
-      <div class="card"><span class="cn">Automatisation</span><span class="ct">n8n · Make</span></div>
-    </div>
+    <div class="pbody">Entre dans l'atelier : ce que je propose en mission.</div>
   </div></section>
 
-  <section class="chapter" id="c6"><div class="panel">
+  <section class="chapter deep" id="c6"><div class="panel">
     <div class="eyebrow"><i></i>07 — Formation</div>
     <div class="ptitle">La <em>biblio</em>thèque</div>
-    <div class="pbody"><b>Eugenia School</b>, Paris — MSc AI. <b>AMOS</b>, Lille — Master Sport.</div>
-    <div class="plist" style="grid-template-columns:1fr;margin-top:20px">
-      <div data-n="FR">Français — Natif</div><div data-n="EN">Anglais — Bilingue</div><div data-n="ES">Espagnol — Intermédiaire</div>
-    </div>
+    <div class="pbody">Entre dans la bibliothèque : diplômes, certifications et langues.</div>
   </div></section>
 
-  <section class="chapter" id="c7"><div class="panel">
+  <section class="chapter deep" id="c7"><div class="panel">
     <div class="eyebrow"><i></i>08 — Loisirs</div>
     <div class="ptitle">Off <em>work</em></div>
-    <div class="tags"><span class="tag">Échecs</span><span class="tag">Football</span><span class="tag">Ski</span><span class="tag">Boxe</span><span class="tag">Histoire</span><span class="tag">Cinéma</span></div>
+    <div class="pbody">Entre dans le salon : ce qui m'occupe quand l'écran est éteint.</div>
   </div></section>
 
   <section class="chapter" id="c8"><div class="panel">
@@ -376,34 +331,6 @@
     <i style="background:linear-gradient(160deg,#c0392b,#7a1f16)">🎬</i>
     <i style="background:linear-gradient(160deg,#e0b34a,#b8862a)">📷</i>
   </div>
-</div>
-<div id="uXp"><div class="mh"><h3>Le <em>terrain</em></h3><div class="xk">Expériences · 2022 — 2026</div></div><div class="cols"></div><div class="uhint">Scrolle pour ressortir</div></div>
-<div id="uAbout">
-  <div class="spot s1"></div><div class="spot s2"></div><div class="spot s3"></div>
-  <div class="veins"></div><div class="gfloor"></div>
-  <div class="gtitle"><div class="k">Galerie · à propos</div><h3>Le <em>parcours</em></h3></div>
-  <div class="rack left"><div class="bar"></div><span class="leg a"></span><span class="leg b"></span>
-    <span class="g" style="left:18px;background:linear-gradient(160deg,#2a2a2e,#101013)"></span>
-    <span class="g" style="left:58px;background:linear-gradient(160deg,#c9a36a,#8a6a3a)"></span>
-    <span class="g" style="left:98px;background:linear-gradient(160deg,#ece5d9,#b6ab9b)"></span>
-  </div>
-  <div class="rack right"><div class="bar"></div><span class="leg a"></span><span class="leg b"></span>
-    <span class="g" style="left:18px;background:linear-gradient(160deg,#1b1b21,#09090c)"></span>
-    <span class="g" style="left:58px;background:linear-gradient(160deg,#7a2233,#471320)"></span>
-    <span class="g" style="left:98px;background:linear-gradient(160deg,#3a4a6a,#212f49)"></span>
-  </div>
-  <div class="plinthw">
-    <svg class="bustsvg" viewBox="0 0 120 130" xmlns="http://www.w3.org/2000/svg">
-      <defs><linearGradient id="mb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3ede2"/><stop offset="1" stop-color="#afa495"/></linearGradient></defs>
-      <path d="M60 6 C74 6 82 18 82 32 C82 45 75 53 67 57 L73 65 C92 71 104 87 104 112 L16 112 C16 87 28 71 47 65 L53 57 C45 53 38 45 38 32 C38 18 46 6 60 6 Z" fill="url(#mb)"/>
-      <path d="M60 6 C74 6 82 18 82 32" fill="none" stroke="#fff8ee" stroke-width="1.5" opacity="0.55" stroke-linecap="round"/>
-    </svg>
-    <div class="plinth"><div class="pl">Victorien<br>Alleg</div></div>
-  </div>
-  <div class="cartel c-bio"><div class="k">Profil</div><h5>IA × Data × Sport</h5><p>Architecte IA. Je transforme la donnée en décisions, à la croisée de l'intelligence artificielle et du business.</p></div>
-  <div class="cartel c-form"><div class="k">Formation</div><h5>Eugenia · AMOS</h5><p>MSc AI Applied to Business — Eugenia School, Paris. Master Management des Organisations Sportives — AMOS, Lille.</p></div>
-  <div class="cartel c-lvmh"><div class="k">Expérience</div><h5>Data &amp; CRM chez <span class="lv">LVMH</span></h5><p>L'exigence du luxe et une passion pour la mode — la donnée au service de la marque.</p></div>
-  <div class="ghint">Scrolle pour ressortir</div>
 </div>
 <div id="cur"></div><div id="dot"></div>
 <div id="boot">
@@ -490,7 +417,7 @@ gsap.registerPlugin(ScrollTrigger);
 lenis.on('scroll',ScrollTrigger.update);
 let cx=0.5,cy=0.5,cz=1.0,entered=false;
 gsap.ticker.add((time)=>{lenis.raf(time*1000);
-  if(entered){const c=camFromScroll(window.scrollY||window.pageYOffset||0);cx+=(c[0]-cx)*0.12;cy+=(c[1]-cy)*0.12;cz+=(c[2]-cz)*0.12;U.uFocus.value.set(cx,cy);U.uZoom.value=cz+(window.__dz||0);}
+  if(entered){const c=camFromScroll(window.scrollY||window.pageYOffset||0);cx+=(c[0]-cx)*0.12;cy+=(c[1]-cy)*0.12;cz+=(c[2]-cz)*0.12;U.uFocus.value.set(cx,cy);U.uZoom.value=cz+dzSum();}
   mx+=(tmx-mx)*0.06;my+=(tmy-my)*0.06;U.uMouse.value.set(mx,my);U.uTime.value=clock.getElapsedTime();renderer.render(scene,camera);});
 gsap.ticker.lagSmoothing(0);
 document.querySelectorAll('.znav a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();lenis.scrollTo(document.querySelector(a.getAttribute('href')));}));
@@ -517,40 +444,94 @@ const znavA=[...document.querySelectorAll('.znav a')];
 const znavOf=id=>znavA.find(a=>a.getAttribute('href')==='#'+id);
 function setUni(on){document.body.classList.toggle('in-uni',on);const zn=document.getElementById('znav');zn.style.opacity=on?'0':'1';zn.style.pointerEvents=on?'none':'';}
 
-// ── Expériences (source: CV) ──
-const XP=[
-  {org:'LVMH',role:'Business Analyst CRM · Client Intelligence & Programs',yr:'2025 — 2026',lead:1,b:[
-    'Performance des actifs CRM multi-maisons (playbooks, decks) et suivi des consultations',
-    'Dashboards analytiques et 5+ KPIs pour piloter le Client Development',
-    'Analyse d\'usage par secteur (Mode & Maroquinerie, Parfums & Cosmétiques, Montres & Joaillerie)',
-    'Référentiel interne de 50+ actifs stratégiques, avec fonctions automatisées']},
-  {org:'VASPP',role:'Business Intelligence & Growth Analyst',yr:'2024 — 2025',b:[
-    'Stratégie d\'acquisition multicanale data-driven, KPIs de conversion sous Power BI',
-    '8+ process marketing automatisés (n8n, Supabase)',
-    'Modèle de lead scoring sous HubSpot',
-    'Newsletters d\'acquisition et de fidélisation (Salesforce)']},
-  {org:'Le Five · Zone Revolution',role:'Business Analytics & Customer Success',yr:'2022 — 2023',b:[
-    'Segmentation CRM à partir des données comportementales clients',
-    'Dashboard de performance commerciale : 37 % de conversion',
-    'Stratégie growth : 150 nouveaux membres',
-    'Fichier clients et CA (Resamania, Uptivo)']}];
-const li=a=>'<ul class="xb">'+a.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
-// PROTOTYPE: ?variant=A|B|C picks how the Expériences chapter is presented
-const XV=(new URLSearchParams(location.search).get('variant')||'A').toUpperCase();
-const xSec=document.getElementById('cx'),xbody=xSec.querySelector('.xbody');
-xSec.classList.add('v'+XV);addEventListener('load',computeCenters);
-if(XV==='A'){
-  xbody.innerHTML='<div class="xtl">'+XP.map(x=>'<div class="it'+(x.lead?' lead':'')+'"><div class="xk">'+x.yr+'</div><div class="xn">'+x.org+'</div><div class="xr">'+x.role+'</div>'+li(x.b)+'</div>').join('')+'</div>';
-}else if(XV==='B'){
-  xbody.innerHTML='<div class="pbody">Trois maisons, un fil rouge : la <b>donnée client</b>. Entre pour voir le détail.</div>';
-  document.querySelector('#uXp .cols').innerHTML=XP.map(x=>'<div class="col'+(x.lead?' lead':'')+'" data-hover><div class="yr">'+x.yr.slice(0,4)+'</div><div class="xk" style="margin-top:14px">'+x.yr+'</div><div class="xn">'+x.org+'</div><div class="xr">'+x.role+'</div>'+li(x.b)+'</div>').join('');
-}else{
-  xbody.innerHTML='<div class="pbody">Trois maisons, un fil rouge : la <b>donnée client</b>.</div>';
-  xSec.insertAdjacentHTML('beforeend','<div class="hwrap"><div class="htrack">'+XP.map(x=>'<div class="hcard'+(x.lead?' lead':'')+'"><div class="yr">'+x.yr+'</div><div class="xn">'+x.org+'</div><div class="xr">'+x.role+'</div>'+li(x.b)+'</div>').join('')+'</div><div class="hcount">01 / 03</div></div>');
+// ── Univers : chaque zone ouvre une image d'environnement dont les objets sont cliquables ──
+// spot = {x,y (% de l'image), l: libellé, k: sur-titre, h: titre, r: rôle, p: texte, b: puces, g: tags}
+const MAIL='<a href="mailto:victorienalleg@gmail.com">victorienalleg@gmail.com</a>';
+const UNI={
+  c1:{img:'musee.jpg',k:'Galerie · À propos',t:'Le <em>parcours</em>',dz:2.0,spots:[
+    {x:50,y:57,l:'Le buste',k:'Portrait',h:'Victorien Alleg',p:'Business Analyst CRM et architecte IA. Je transforme la donnée en décisions, entre intelligence artificielle, connaissance client et sport business.',g:['Paris','MSc AI','CRM & Data']},
+    {x:7.5,y:51,l:'Le profil',k:'Œuvre nº 1',h:'Un profil hybride',p:'Cinq ans de management du sport à AMOS, puis un MSc en IA appliquée au business à Eugenia School. Un pied dans le métier, un pied dans la technique.'},
+    {x:37,y:54,l:'La suite',k:'Œuvre nº 2',h:'Ce que je cherche',p:'Un poste en CDI, ouvert au VIE, autour du CRM, de la connaissance client et de la data.',g:['CDI','Ouvert au VIE']},
+    {x:63,y:54,l:'En chiffres',k:'Œuvre nº 3',h:'En chiffres',b:['3 expériences en entreprise, dont un an chez LVMH','8 projets IA et data menés de bout en bout','TOEIC 936 · 2 certifications Dataiku']},
+    {x:27.5,y:58,l:'Le Sénat',k:'Sculpture',h:'ESCP · Excellence Propulsion',p:'Programme 2025 : ateliers, puis pitch lors d\'un événement au Sénat.'},
+    {x:75,y:60,l:'Contact',k:'Pièce à emporter',h:'Travaillons ensemble',p:MAIL+'<br><a href="https://linkedin.com/in/victorien-alleg" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/valleg12" target="_blank" rel="noopener">GitHub</a>'}]},
+  cx:{img:'dressing.jpg',k:'Dressing · Expériences',t:'Le <em>terrain</em>',dz:1.5,spots:[
+    {x:7,y:45,l:'LVMH',k:'2025 — 2026 · 1 an',h:'LVMH',r:'Business Analyst CRM · Client Intelligence & Programs',b:['Performance des actifs CRM multi-maisons (playbooks, decks) et suivi des consultations','Dashboards analytiques et 5+ KPIs pour piloter le Client Development','Analyse d\'usage par secteur : Mode & Maroquinerie, Parfums & Cosmétiques, Montres & Joaillerie','Référentiel interne de 50+ actifs stratégiques, avec fonctions automatisées']},
+    {x:21,y:45,l:'VASPP',k:'2024 — 2025',h:'VASPP',r:'Business Intelligence & Growth Analyst',b:['Stratégie d\'acquisition multicanale pilotée par la donnée, KPIs de conversion sous Power BI','8+ process marketing automatisés avec n8n et Supabase','Modèle de lead scoring sous HubSpot','Newsletters d\'acquisition et de fidélisation sur Salesforce']},
+    {x:45,y:45,l:'Le Five',k:'2022 — 2023 · 1 an',h:'Le Five · Zone Revolution',r:'Business Analytics & Customer Success Manager',b:['Segmentation CRM à partir des données comportementales clients','Dashboard de performance commerciale : 37 % de conversion','Stratégie growth : 150 nouveaux membres','Fichier clients et chiffre d\'affaires sous Resamania et Uptivo']},
+    {x:50,y:70,l:'Le fil rouge',k:'L\'îlot',h:'La donnée client',p:'Du club de sport à la maison de luxe, le même métier : comprendre les clients par la donnée, puis donner aux équipes de quoi décider.'},
+    {x:34,y:72,l:'Les outils',k:'L\'étagère',h:'Les outils du quotidien',g:['Power BI','SQL','Python','HubSpot','Salesforce','Dataiku','n8n','Supabase','Looker Studio']}]},
+  c2:{img:'datalab.jpg',k:'Salle de données · Compétences',t:'<em>Rien</em> au hasard',dz:2.0,spots:[
+    {x:17,y:55,l:'Dashboards',k:'Le mur d\'écrans',h:'Business Intelligence',p:'Des tableaux de bord que les équipes ouvrent vraiment : KPIs, suivi de performance, visualisations pour les décideurs.',g:['Power BI','Looker Studio','Google Analytics','SQL']},
+    {x:37,y:63,l:'Prédictif',k:'La table holographique',h:'Modèles prédictifs',p:'Scoring, segmentation, recommandation et prévision, du prototype au modèle déployé.',g:['Python','Machine Learning','Dataiku']},
+    {x:57,y:55,l:'Automatisation',k:'La baie de serveurs',h:'Automatisation IA',p:'Des pipelines qui retirent le travail répétitif : collecte, enrichissement, synchronisation, alertes.',g:['n8n','Make','Zapier','Supabase']},
+    {x:76,y:58,l:'LLM & agents',k:'Le poste',h:'LLM, RAG & agents',p:'Architectures RAG, systèmes multi-agents et prompt engineering appliqués à des cas métier.',g:['RAG','Dust','Claude','Cursor']},
+    {x:93,y:55,l:'CRM & NLP',k:'Le mur de fiches',h:'CRM & analyse de texte',p:'Segmentation client, lead scoring, analyse de sentiment et marketing analytique.',g:['HubSpot','Salesforce','NLP','Airtable']}]},
+  c4:{img:'stade.jpg',k:'Loge · Projets sport',t:'Vue sur la <em>pelouse</em>',dz:1.6,spots:[
+    {x:12,y:62,l:'Pythia',k:'Le tableau tactique',h:'Pythia',r:'Football analytics',p:'Plateforme de scouting football : métriques de performance des joueurs, comparatifs de championnats et scoring de recrutement, avec des dashboards interactifs.',g:['Python','Pandas','Scikit-learn']},
+    {x:63,y:54,l:'Novarena',k:'L\'écran',h:'Novarena',r:'Stadium SaaS',p:'Suite de gestion intelligente pour stades modernes : performance et analytics, gestion des spectateurs, des talents, business et sponsoring.',g:['SaaS','Cloud']},
+    {x:71,y:59,l:'Services',k:'La vitrine',h:'L\'IA pour le sport business',b:['Performance des athlètes et prévention des blessures','Scouting augmenté par l\'IA','Pricing dynamique et billetterie','Marketing fans et business intelligence']},
+    {x:88.5,y:68,l:'Le terrain',k:'Le ballon',h:'D\'abord le terrain',p:'Cinq ans à AMOS en management du sport et un an au Five : le sport business, je l\'ai pratiqué avant de le modéliser.'},
+    {x:27,y:64,l:'La vue',k:'Derrière la vitre',h:'Madridista',p:'Le stade que l\'on voit depuis la fenêtre du bureau n\'est pas là par hasard.'}]},
+  c5:{img:'lab.jpg',k:'Atelier · Freelance',t:'Le <em>Lab</em>',dz:1.3,spots:[
+    {x:31,y:48,l:'Stratégie IA',k:'Le tableau blanc',h:'Stratégie & intégration IA',p:'De l\'audit data au déploiement en production.'},
+    {x:13,y:60,l:'Automatisation',k:'L\'établi',h:'Automatisation des processus',p:'n8n, Make et pipelines sur mesure.',g:['n8n','Make']},
+    {x:52,y:47,l:'Product design',k:'Le mur de croquis',h:'Product design IA-first',p:'Du wireframe au prototype, avec l\'IA intégrée dès la conception.'},
+    {x:82,y:39,l:'Prédictif',k:'Les archives',h:'Analytics prédictif',p:'Modèles de machine learning sur mesure pour la prévision business.'},
+    {x:77,y:52,l:'Sport data',k:'L\'étagère',h:'Sport data & performance',p:'Modèles statistiques pour clubs et agences.'},
+    {x:74,y:66,l:'Formations',k:'La table',h:'Formations & ateliers',p:'L\'IA pratique pour des équipes non techniques.'},
+    {x:94,y:55,l:'Discutons',k:'Le café',h:'Discutons',p:'Un projet, une idée, un doute ? '+MAIL}]},
+  c6:{img:'bibliotheque.jpg',k:'Bibliothèque · Formation',t:'La <em>biblio</em>thèque',dz:1.4,spots:[
+    {x:5.5,y:46,l:'MSc AI',k:'Paris · 2023 — 2025',h:'Eugenia School',r:'MSc AI Applied to Business · AI Architect',p:'Business Analytics, Data Visualisation, CRM, Machine Learning, architectures RAG / LLM, NLP, éthique et gouvernance de l\'IA.'},
+    {x:14.5,y:47,l:'Master Sport',k:'Lille · 2018 — 2023',h:'AMOS',r:'Master Management des Organisations Sportives',p:'Précédé d\'un Bachelor en management et marketing des événements sportifs (2018 — 2021). Stratégie, marketing du sport, droit, sponsoring.'},
+    {x:92,y:50,l:'Certifications',k:'La vitrine',h:'Certifications Dataiku',b:['ML Practitioner · janvier 2026','Core Designer · mars 2025']},
+    {x:24,y:61,l:'DataGong',k:'Le pupitre',h:'DataGong',r:'Data Analysis Essentials · 2024',p:'Quatre mois de Python, de gestion de données et de machine learning.'},
+    {x:41,y:64,l:'Langues',k:'Le globe',h:'Langues',b:['Français : natif','Anglais : courant (TOEIC 936)','Espagnol : intermédiaire']},
+    {x:66,y:65,l:'Outils',k:'La table d\'étude',h:'Langages & outils',g:['Python','SQL','Power BI','Dataiku','HubSpot','n8n','Make','Supabase','Git','Looker Studio','Notion','Airtable']}]},
+  c7:{img:'loisirs.jpg',k:'Salon · Loisirs',t:'Off <em>work</em>',dz:1.4,spots:[
+    {x:18,y:65,l:'Échecs',k:'La table',h:'Échecs',p:'Note à moi-même : réviser l\'ouverture sicilienne.'},
+    {x:29,y:52,l:'Boxe',k:'Le sac',h:'Boxe',p:'Pour la tête autant que pour les jambes.'},
+    {x:46,y:46,l:'Ski',k:'Au mur',h:'Ski',p:'Dès que la neige est là.'},
+    {x:50,y:61,l:'Football',k:'Le ballon',h:'Football',p:'Joueur, supporter, et madridista.'},
+    {x:69,y:53,l:'Voile',k:'La maquette',h:'Voile',p:'Permis bateau en poche, skipper en Corse.'},
+    {x:77,y:52,l:'Cinéma',k:'Le projecteur',h:'Cinéma',p:'De préférence sur grand écran.'},
+    {x:68,y:40,l:'Histoire',k:'L\'étagère',h:'Histoire',p:'Des livres d\'histoire entre deux projets.'}]}
+};
+const UAR=2400/1340,dzOf={},uniOn={};
+const dzSum=()=>{let t=0;for(const k in dzOf)t+=dzOf[k];return t;};
+const syncUni=()=>setUni(Object.values(uniOn).some(Boolean));
+function loadUni(u){if(!u.loaded){u.loaded=1;u.el.querySelector('img').src=u.img;}}
+function closeCard(u){u.card.classList.remove('open');u.el.querySelectorAll('.hs.on').forEach(h=>h.classList.remove('on'));}
+function openCard(u,i){
+  const s=u.spots[i],c=u.card;
+  c.querySelector('.body').innerHTML='<div class="k">'+s.k+'</div><h4>'+s.h+'</h4>'+(s.r?'<div class="r">'+s.r+'</div>':'')+(s.p?'<p>'+s.p+'</p>':'')+(s.b?'<ul>'+s.b.map(x=>'<li>'+x+'</li>').join('')+'</ul>':'')+(s.g?'<div class="g">'+s.g.map(x=>'<span>'+x+'</span>').join('')+'</div>':'');
+  c.classList.toggle('left',s.x>52);c.classList.add('open');c.scrollTop=0;
+  u.hs.forEach((h,j)=>{h.classList.toggle('on',j===i);if(j===i)h.classList.add('seen');});
+  u.el.querySelector('.cnt b').textContent=u.el.querySelectorAll('.hs.seen').length;
 }
+for(const id in UNI){
+  const u=UNI[id],el=document.createElement('div');el.className='uni';el.id='u_'+id;
+  el.innerHTML='<div class="uscroll"><div class="ustage"><img alt="" decoding="async">'+u.spots.map((s,i)=>'<button class="hs" data-hover data-i="'+i+'" style="left:'+s.x+'%;top:'+s.y+'%" aria-label="'+s.l+'"><i></i><span>'+s.l+'</span></button>').join('')+'</div></div>'+
+    '<div class="ushade"></div><div class="utop"><div><div class="k">'+u.k+'</div><h3>'+u.t+'</h3></div><div class="cnt"><b>0</b> / '+u.spots.length+'<br>découverts</div></div>'+
+    '<div class="ucard"><button class="x" data-hover aria-label="Fermer">×</button><div class="body"></div></div><div class="uhint">Clique sur les objets · scrolle pour ressortir</div>';
+  document.body.insertBefore(el,document.getElementById('cur'));
+  u.el=el;u.card=el.querySelector('.ucard');u.stage=el.querySelector('.ustage');u.hs=[...el.querySelectorAll('.hs')];
+  el.addEventListener('click',e=>{const h=e.target.closest('.hs');if(h)openCard(u,+h.dataset.i);else if(!e.target.closest('.ucard')||e.target.closest('.x'))closeCard(u);});
+}
+addEventListener('keydown',e=>{if(e.key==='Escape')for(const id in UNI)closeCard(UNI[id]);});
+// the image covers the viewport; on narrow screens it keeps full height and pans sideways instead
+let uniPan=false;
+function sizeStages(){
+  uniPan=innerWidth<innerHeight*UAR*0.72;
+  const w=uniPan?innerHeight*UAR:Math.max(innerWidth,innerHeight*UAR)*1.05,h=w/UAR;
+  for(const id in UNI){const u=UNI[id];u.el.classList.toggle('pan',uniPan);u.stage.style.width=w+'px';u.stage.style.height=h+'px';
+    if(uniPan){const sc=u.el.querySelector('.uscroll');sc.scrollLeft=(w-innerWidth)/2;}}
+}
+sizeStages();addEventListener('resize',sizeStages);
+gsap.ticker.add(()=>{if(uniPan)return;for(const id in UNI){const u=UNI[id];if(uniOn[id])u.stage.style.transform='translate(calc(-50% + '+(-mx*16).toFixed(2)+'px),calc(-50% + '+(my*10).toFixed(2)+'px))';}});
+
 function sm(x){x=Math.max(0,Math.min(1,x));return x*x*(3-2*x);}
 const uni=document.getElementById('uProjets');
-const uAbout=document.getElementById('uAbout');
 document.querySelectorAll('#uProjets .folder').forEach(f=>f.addEventListener('click',()=>{document.querySelectorAll('#uProjets .win').forEach(w=>w.classList.remove('open'));const t=document.getElementById(f.dataset.win);if(t)t.classList.add('open');}));
 document.querySelectorAll('#uProjets .win .r').forEach(c=>c.addEventListener('click',()=>c.closest('.win').classList.remove('open')));
 document.querySelectorAll('.osbar .l a').forEach(a=>a.addEventListener('click',()=>{const t=document.querySelector(a.dataset.goto);if(t)window.lenis.scrollTo(t);}));
@@ -571,50 +552,34 @@ chapters.forEach((ch,i)=>{
       panel.style.opacity=pv;kids.forEach((el,j)=>{const e=sm(Math.max(0,pv-j*0.05));el.style.transform=`translateY(${(1-e)*36}px)`;});
       // approach: dive deep INTO the iMac screen first, portal opens only once we're inside (p>=0.5)
       let az;if(p<0.5)az=sm(p/0.5)*4.4;else if(p<0.9)az=4.4;else az=4.4*(1-sm((p-0.9)/0.1));
-      window.__dz=az;
+      dzOf.c3=az;
       let fv;if(p<0.5)fv=0;else if(p<0.62)fv=(p-0.5)/0.12;else if(p<0.86)fv=1;else if(p<0.95)fv=1-(p-0.86)/0.09;else fv=0;
       fv=fv<0?0:fv>1?1:fv;const fe=sm(fv);
       uni.style.opacity=Math.min(1,fe*1.7);
       const z=(1-fe)*42,w=(1-fe)*40;
       uni.style.clipPath='inset('+z+'% '+w+'% '+z+'% '+w+'% round '+(6+fe*6)+'px)';
       uni.classList.toggle('active',fv>0.6);
-      setUni(fv>0.5);
+      uniOn.c3=fv>0.5;syncUni();
       if(fv<0.4)uni.querySelectorAll('.win.open').forEach(w=>w.classList.remove('open'));
       znavOf('c3')?.classList.toggle('on',p>0.18&&p<0.86);
     }});
     return;
   }
-  if(ch.id==='cx'&&XV==='B'){
-    const ux=document.getElementById('uXp');
+  if(UNI[ch.id]){
+    const u=UNI[ch.id],DZ=u.dz||1.6;
     ScrollTrigger.create({trigger:ch,start:'top bottom',end:'bottom top',onUpdate:self=>{
       const p=self.progress;
       const pv=Math.max(0,1-Math.abs(p-0.2)/0.15);
       panel.style.opacity=pv;kids.forEach((el,j)=>{const e=sm(Math.max(0,pv-j*0.05));el.style.transform=`translateY(${(1-e)*36}px)`;});
-      window.__dz=p<0.45?sm(p/0.45)*1.6:p<0.88?1.6:1.6*(1-sm((p-0.88)/0.12));
-      let fv=p<0.42?0:p<0.54?(p-0.42)/0.12:p<0.84?1:p<0.93?1-(p-0.84)/0.09:0;
-      const fe=sm(fv);ux.style.opacity=Math.min(1,fe*1.7);
-      const z=(1-fe)*42,w=(1-fe)*40;ux.style.clipPath='inset('+z+'% '+w+'% '+z+'% '+w+'% round '+(6-fe*6)+'px)';
-      ux.classList.toggle('active',fv>0.6);setUni(fv>0.5);
-      znavOf('cx')?.classList.toggle('on',p>0.15&&p<0.88);
-    }});
-    return;
-  }
-  if(ch.id==='cx'&&XV==='C'){
-    const track=ch.querySelector('.htrack'),cards=[...ch.querySelectorAll('.hcard')],cnt=ch.querySelector('.hcount');
-    ScrollTrigger.create({trigger:ch,start:'top bottom',end:'bottom top',onUpdate:self=>{
-      const p=self.progress;
-      const pv=Math.max(0,1-Math.abs(p-0.2)/0.14);
-      panel.style.opacity=pv;kids.forEach((el,j)=>{const e=sm(Math.max(0,pv-j*0.05));el.style.transform=`translateY(${(1-e)*36}px)`;});
-      // cards slide right→left across the pinned span
-      const h=sm(Math.max(0,Math.min(1,(p-0.22)/0.6)));
-      const last=cards[cards.length-1],maxX=last.offsetLeft+last.offsetWidth/2-innerWidth/2;
-      track.style.transform='translate('+(-h*maxX)+'px,-50%)';
-      const k=Math.min(cards.length-1,Math.round(h*(cards.length-1)));
-      cards.forEach((c,j)=>c.classList.toggle('on',p>0.2&&j===k));
-      cnt.textContent='0'+(k+1)+' / 0'+cards.length;cnt.style.opacity=p>0.2&&p<0.9?1:0;
-      track.style.opacity=p<0.12||p>0.94?0:1;
-      window.__dz=0.25*Math.sin(Math.PI*Math.max(0,Math.min(1,p)));
-      znavOf('cx')?.classList.toggle('on',p>0.15&&p<0.88);
+      if(p>0.02&&p<0.98)loadUni(u);
+      // dive toward the object, the portal opens once we are close, then everything reverses on the way out
+      dzOf[ch.id]=p<0.46?sm(p/0.46)*DZ:p<0.88?DZ:DZ*(1-sm((p-0.88)/0.12));
+      const fv=p<0.42?0:p<0.54?(p-0.42)/0.12:p<0.84?1:p<0.93?1-(p-0.84)/0.09:0,fe=sm(fv);
+      u.el.style.opacity=Math.min(1,fe*1.7);
+      const z=(1-fe)*42,w=(1-fe)*40;u.el.style.clipPath='inset('+z+'% '+w+'% '+z+'% '+w+'% round '+(6-fe*6)+'px)';
+      u.el.classList.toggle('active',fv>0.6);uniOn[ch.id]=fv>0.5;syncUni();
+      if(fv<0.4)closeCard(u);
+      znavOf(ch.id)?.classList.toggle('on',p>0.15&&p<0.88);
     }});
     return;
   }
@@ -655,16 +620,6 @@ window.U=U;window.lenis=lenis;_boot=true;
     runEntrance();
   });
 })();
-// PROTOTYPE switcher: only on localhost, never on the live site
-if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){
-  const VS=['A','B','C'],NAMES={A:'Timeline dans le panneau',B:'Portail « maison » noir & or',C:'Défilement horizontal'};
-  const go=d=>{const q=new URLSearchParams(location.search);q.set('variant',VS[(VS.indexOf(XV)+d+VS.length)%VS.length]);location.search=q.toString();};
-  const bar=document.createElement('div');bar.id='protoBar';
-  bar.innerHTML='<button>←</button><span>Expériences · '+XV+' ('+NAMES[XV]+')</span><button>→</button>';
-  bar.children[0].onclick=()=>go(-1);bar.children[2].onclick=()=>go(1);
-  document.body.appendChild(bar);
-  addEventListener('keydown',e=>{if(e.target.closest('input,textarea,[contenteditable]'))return;if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1);});
-}
 </script>
 </body>
 </html>
